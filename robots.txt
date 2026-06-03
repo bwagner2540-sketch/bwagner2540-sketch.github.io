@@ -1,0 +1,20 @@
+# DAVG — robots policy
+# Full crawling permitted. Sitemap declared below.
+
+User-agent: *
+Allow: /
+
+# Block common nuisance/spam crawlers (does not affect Google, Bing, etc.)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+Sitemap: https://davg.ai/sitemap.xml
