@@ -348,7 +348,9 @@
   .hdr__logo {
     height: 42px; width: auto; display: block;
     animation: logoPulse 5s ease-in-out infinite;
+    will-change: filter;
   }
+    
   @keyframes logoPulse {
     0%,100%{ filter: drop-shadow(0 0 1px rgba(232,233,230,.30)) drop-shadow(0 0 16px rgba(34,181,137,.28)); }
     50%    { filter: drop-shadow(0 0 1px rgba(232,233,230,.15)) drop-shadow(0 0  8px rgba(34,181,137,.12)); }
