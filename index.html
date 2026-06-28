@@ -226,7 +226,12 @@
     background: var(--color-teal);
     display: inline-block; flex-shrink: 0;
   }
-
+/* Accessibility: darken teal labels on cream backgrounds for WCAG AA compliance */
+  [data-bg="cream"] .eyebrow,
+  [data-bg="cream"] .svc__num,
+  [data-bg="cream"] .region__label {
+    color: #0B7A5C;
+  }
   /* ─────────── HEADINGS ─────────── */
   .h1 {
     font-family: var(--font-display);
