@@ -1668,7 +1668,7 @@ html{scroll-snap-type:y mandatory}
         <div class="fform"><div class="fcard">
         <label class="fld2 fnotes"><span class="mono">Client notes</span><textarea class="ff" rows="4" placeholder="Rooms that matter most, how you plan to use the home, anything we should know."></textarea></label>
         <div class="frow3 fcn"><label class="fld2"><span class="mono rq">Client name</span><input class="ff" type="text" placeholder="Full name" autocomplete="name" data-req="1" required aria-required="true"></label><label class="fld2"><span class="mono rq">Phone number</span><input class="ff" type="tel" placeholder="Phone number" autocomplete="tel" data-req="1" required aria-required="true"></label><label class="fld2"><span class="mono rq">Email</span><input class="ff" type="email" placeholder="Email address" autocomplete="email" data-req="1" required aria-required="true"></label></div>
-        <div class="frow3 fsig fsd"><label class="fld2"><span class="mono rq">Client signature</span><input class="ff" type="text" placeholder="Type full name to sign" data-req="1" required aria-required="true"></label><label class="fld2"><span class="mono rq">Date</span><input class="ff" type="date" value="2026-10-14" data-req="1" required aria-required="true"></label></div>
+        <div class="frow3 fsig fsd"><label class="fld2"><span class="mono rq">Client signature</span><input class="ff" type="text" placeholder="Type full name to sign" data-req="1" required aria-required="true"></label><label class="fld2"><span class="mono rq">Date</span><input class="ff" type="date" data-req="1" required aria-required="true"></label></div>
         <p class="reqmsg" id="reqmsg" hidden>Please fill in the highlighted fields (client name, phone, email, signature and date) before downloading.</p>
         <div class="fact"><button class="dlpdf" type="button">Download PDF</button><p class="fnote">Celebrity Custom Homes<br><span class="fgap"></span>303-907-2387<br><span class="fgap"></span>stacey@celebritycustomhomes.com</p></div>
       </div></div>
@@ -1808,6 +1808,25 @@ class Component extends DCLogic {
     window.print();
     setTimeout(restore,2000);
   });
+})();
+</script>
+<script>
+(function(){
+  function today(){var d=new Date(),m=d.getMonth()+1,day=d.getDate();return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(day<10?'0':'')+day;}
+  var touched=false;
+  ['input','change'].forEach(function(ev){document.addEventListener(ev,function(e){var t=e.target;if(t&&t.matches&&t.matches('#selections input[type="date"]'))touched=true;},true);});
+  function sync(){
+    var el=document.querySelector('#selections input[type="date"]');
+    if(!el||touched)return;
+    var t=today();
+    if(el.value!==t){el.value=t;el.classList.remove('bad');}
+  }
+  var n=0,iv=setInterval(function(){sync();if(++n>60)clearInterval(iv);},250);
+  setInterval(sync,60000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)sync();});
+  window.addEventListener('focus',sync);
+  window.addEventListener('pageshow',sync);
+  document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('.dlpdf'))sync();},true);
 })();
 </script>
 </body>
