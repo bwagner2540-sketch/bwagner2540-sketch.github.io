@@ -1660,10 +1660,10 @@ html{scroll-snap-type:y mandatory}
         <div class="irow itot ftot"><span class="mono">Total</span><span class="iv">{{ui.total}}</span></div>
         <div class="fform"><div class="fcard">
         <label class="fld2 fnotes"><span class="mono">Client notes</span><textarea class="ff" rows="4" placeholder="Rooms that matter most, how you plan to use the home, anything we should know."></textarea></label>
-        <div class="frow3 fcn"><label class="fld2"><span class="mono rq">Client name</span><input class="ff" type="text" placeholder="Full name" autocomplete="name" data-req="1" required aria-required="true" oninput="this.classList.remove('bad')"></label><label class="fld2"><span class="mono rq">Phone number</span><input class="ff" type="tel" placeholder="Phone number" autocomplete="tel" data-req="1" required aria-required="true" oninput="this.classList.remove('bad')"></label><label class="fld2"><span class="mono rq">Email</span><input class="ff" type="email" placeholder="Email address" autocomplete="email" data-req="1" required aria-required="true" oninput="this.classList.remove('bad')"></label></div>
-        <div class="frow3 fsig fsd"><label class="fld2"><span class="mono rq">Client signature</span><input class="ff" type="text" placeholder="Type full name to sign" data-req="1" required aria-required="true" oninput="this.classList.remove('bad')"></label><label class="fld2"><span class="mono rq">Date</span><input class="ff" type="date" value="2026-10-14" data-req="1" required aria-required="true" oninput="this.classList.remove('bad')"></label></div>
+        <div class="frow3 fcn"><label class="fld2"><span class="mono rq">Client name</span><input class="ff" type="text" placeholder="Full name" autocomplete="name" data-req="1" required aria-required="true"></label><label class="fld2"><span class="mono rq">Phone number</span><input class="ff" type="tel" placeholder="Phone number" autocomplete="tel" data-req="1" required aria-required="true"></label><label class="fld2"><span class="mono rq">Email</span><input class="ff" type="email" placeholder="Email address" autocomplete="email" data-req="1" required aria-required="true"></label></div>
+        <div class="frow3 fsig fsd"><label class="fld2"><span class="mono rq">Client signature</span><input class="ff" type="text" placeholder="Type full name to sign" data-req="1" required aria-required="true"></label><label class="fld2"><span class="mono rq">Date</span><input class="ff" type="date" value="2026-10-14" data-req="1" required aria-required="true"></label></div>
         <p class="reqmsg" id="reqmsg" hidden>Please fill in the highlighted fields (client name, phone, email, signature and date) before downloading.</p>
-        <div class="fact"><button class="dlpdf" type="button" onclick="var b=[];document.querySelectorAll('[data-req]').forEach(function(e){var v=e.value.trim(),ok=v!=='';if(ok&&e.type==='email')ok=/^[^@ ]+@[^@ ]+[.][^@ ]+$/.test(v);if(ok&&e.type==='tel')ok=v.replace(/[^0-9]/g,'').length>=10;e.classList.toggle('bad',!ok);if(!ok)b.push(e)});var m=document.getElementById('reqmsg');if(b.length){m.hidden=false;b[0].scrollIntoView({behavior:'smooth',block:'center'});b[0].focus();return false}m.hidden=true;window.print()">Download PDF</button><p class="fnote">Celebrity Custom Homes<br><span class="fgap"></span>303-907-2387<br><span class="fgap"></span>stacey@celebritycustomhomes.com</p></div>
+        <div class="fact"><button class="dlpdf" type="button">Download PDF</button><p class="fnote">Celebrity Custom Homes<br><span class="fgap"></span>303-907-2387<br><span class="fgap"></span>stacey@celebritycustomhomes.com</p></div>
       </div></div>
       </div>
     </div>
@@ -1776,6 +1776,31 @@ class Component extends DCLogic {
   window.addEventListener('resize',later);
   window.addEventListener('load',function(){fit();setTimeout(fit,400);setTimeout(fit,1200);setTimeout(fit,3000);});
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){setTimeout(fit,50);});
+})();
+</script>
+<script>
+(function(){
+  document.addEventListener('input',function(e){var t=e.target;if(t&&t.matches&&t.matches('[data-req]'))t.classList.remove('bad');},true);
+  document.addEventListener('click',function(e){
+    var btn=e.target&&e.target.closest?e.target.closest('.dlpdf'):null; if(!btn)return;
+    e.preventDefault();
+    var bad=[];
+    document.querySelectorAll('[data-req]').forEach(function(el){
+      var v=el.value.trim(),ok=v!=='';
+      if(ok&&el.type==='email')ok=/^[^@ ]+@[^@ ]+[.][^@ ]+$/.test(v);
+      if(ok&&el.type==='tel')ok=v.replace(/[^0-9]/g,'').length>=10;
+      el.classList.toggle('bad',!ok); if(!ok)bad.push(el);
+    });
+    var m=document.getElementById('reqmsg');
+    if(bad.length){ if(m)m.hidden=false; bad[0].scrollIntoView({behavior:'smooth',block:'center'}); bad[0].focus(); return; }
+    if(m)m.hidden=true;
+    var t0=document.title,nm=document.querySelector('#selections input[autocomplete="name"]');
+    document.title='Celebrity Pradera System Options'+(nm&&nm.value.trim()?' - '+nm.value.trim():'');
+    var restore=function(){document.title=t0;window.removeEventListener('afterprint',restore);};
+    window.addEventListener('afterprint',restore);
+    window.print();
+    setTimeout(restore,2000);
+  });
 })();
 </script>
 </body>
