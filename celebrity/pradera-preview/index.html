@@ -1289,20 +1289,23 @@ html{scroll-snap-type:y mandatory}
 .vdet .vrows+.vsel{margin-top:16px}
 .vsel{padding:11px 15px;font-size:12.5px}
 .vsel .box{width:20px;height:20px}
-/* final allowances: heading top-left, level with the table's first row */
-#selections .fmain{display:grid!important;grid-template-columns:minmax(240px,26%) 1fr;column-gap:56px!important;row-gap:0!important;align-items:start!important;padding:0!important;margin:0!important;gap:0 56px!important}
-#selections .fmain .txt{position:static!important;left:auto!important}
-#selections .fpanel{display:grid!important;grid-template-columns:.72fr 1.28fr;column-gap:24px;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;background:none!important;box-shadow:none!important;border:0!important;box-sizing:border-box}
-#selections .fpanel>.fxh,#selections .fpanel>.dec,#selections .fpanel>.itot,#selections .fpanel>.reqmsg,#selections .fpanel>.fact{grid-column:1/-1}
-#selections .fpanel .dec.fx{padding:6px 0!important;min-height:0!important}
-#selections .fxh,#selections .fx,#selections .ftot{margin-left:0!important;width:auto!important;max-width:none!important;grid-template-columns:200px minmax(0,1fr) 90px 130px!important;column-gap:20px!important;justify-content:stretch!important}
-#selections .fxh{padding:0 0 8px!important;margin-top:0!important}
-#selections .ftot{padding:8px 0 2px!important}
+/* final allowances: heading on its own first row, table full width below it, then the form in symmetrical rows */
+#selections .fmain{display:block!important;padding:0!important;margin:0!important}
+#selections .fmain .txt{position:static!important;left:auto!important;padding:0 0 var(--gap)!important}
+#selections .fpanel{display:block!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;background:none!important;box-shadow:none!important;border:0!important;box-sizing:border-box}
+#selections .fpanel .fxh,#selections .fpanel .fx,#selections .fpanel .ftot{margin-left:0!important;width:auto!important;max-width:none!important;grid-template-columns:230px minmax(0,1fr) 150px 150px!important;column-gap:28px!important;justify-content:stretch!important}
+#selections .fpanel .fxh .x4,#selections .fpanel .fx .dpr,#selections .fpanel .ftot .iv{justify-self:end!important;text-align:right!important}
+#selections .fpanel .fxh{padding:0 0 10px!important;margin-top:0!important}
+#selections .fpanel .dec.fx{padding:10px 0!important;min-height:0!important}
+#selections .fpanel .ftot{padding:12px 0 0!important}
 #selections .fx .dt:not(.dpr),#selections .fxh .x1{left:0!important}
-#selections .fx .dt{font-size:16px!important}
-#selections .fx .dpr{font-size:16px!important}
-#selections .fact{margin-top:8px!important}
-#selections .fact .reqmsg{margin:4px 0 0!important}
+#selections .fx .dt,#selections .fx .dpr{font-size:17px!important}
+#selections .fpanel .fnotes{display:flex!important;flex-direction:column;margin-top:var(--gap)!important}
+#selections .fpanel .fnotes textarea{height:80px!important;min-height:80px!important}
+#selections .fpanel .ff{min-height:44px!important;padding:10px 14px!important}
+#selections .fpanel .frow3.fcn{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0 28px!important;padding:20px 0 0!important}
+#selections .fpanel .frow3.fsd{grid-template-columns:2fr 1fr!important;gap:0 28px!important;padding:20px 0 0!important}
+#selections .fpanel .fact{margin-top:var(--gap)!important}
 #selections .fact{flex-direction:row!important;justify-content:flex-start!important;align-items:center!important;text-align:left!important;gap:24px!important}
 #selections .fact .fnote{text-align:left!important;max-width:none!important;margin:0!important}
 #selections{display:flex!important;flex-direction:column}
@@ -1314,9 +1317,7 @@ html{scroll-snap-type:y mandatory}
 #selections .pbw .pbc .mv br{display:none}
 #selections .pbw .pbc .mv .fgap{display:inline}
 #selections .pbw .pbc .mv .fgap::before{content:"\00a0\00a0\00b7\00a0\00a0"}
-#selections .fnotes{grid-column:1;grid-row:span 2;display:flex!important;flex-direction:column;margin-top:12px!important}
-#selections .fnotes textarea{flex:1;min-height:80px;height:auto!important}
-#selections .fcn,#selections .fsd{grid-column:2;padding:4px 0 4px!important}
+
 }
 </style>
 </helmet>
@@ -1751,6 +1752,7 @@ class Component extends DCLogic {
     if(!mq.matches){secs.forEach(function(s){s.style.removeProperty('--fitz');});return;}
     var zmin=1;
     secs.forEach(function(s){
+      if(s.id==='selections'){s.style.removeProperty('--fitz');return;}
       var wraps=[].filter.call(s.children,function(c){return c.classList.contains('wrap');});
       var cs=getComputedStyle(s),avail=H-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom)-4;
       var z=1;s.style.setProperty('--fitz','1');
@@ -1762,7 +1764,7 @@ class Component extends DCLogic {
       }
       zmin=Math.min(zmin,z);
     });
-    secs.forEach(function(s){s.style.setProperty('--fitz',zmin.toFixed(4));});
+    secs.forEach(function(s){if(s.id!=='selections')s.style.setProperty('--fitz',zmin.toFixed(4));});
   }
   window.__fit=fit;
   var t;function later(){clearTimeout(t);t=setTimeout(fit,120);}
