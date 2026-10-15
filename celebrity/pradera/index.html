@@ -1106,6 +1106,40 @@ html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color
 @media (min-width:1340px){.hero .decs.cv4{background:#E8E4D8;box-shadow:0 0 0 24px #E8E4D8}}
 /* switch icon: standard green */
 .sec.network .swg rect.pl-room.ls{fill:#1A8F6E!important;stroke:#1A8F6E!important}
+/* phone layout */
+@media (max-width:640px){
+.hero .wrap{padding-left:0!important;padding-right:0!important}
+.hero .main.cover .decs,.hero .decs.cv4{margin-left:0!important;margin-right:0!important;width:100%!important;flex:0 0 100%!important;max-width:none!important;box-shadow:none!important;background:transparent!important}
+.hero .decs.cv4 .dec{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:6px!important;padding:18px 0!important;grid-template-columns:none!important}
+.hero .decs.cv4 .dec .dt:not(.dpr){display:flex!important;align-items:baseline!important;white-space:normal!important;width:auto!important;padding:0!important;text-align:left!important;justify-self:auto!important}
+.hero .decs.cv4 .dec .tn{flex:0 0 32px!important}
+.hero .decs.cv4 .dec .dopt{white-space:normal!important;text-align:left!important;padding-left:32px!important;justify-self:auto!important;grid-column:auto!important}
+.art{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;padding:0!important}
+.art svg{width:100%!important}
+}
+/* selected label: one line, no stray dot */
+.tier .sw .mono{white-space:nowrap!important}
+.st-on::before{display:none!important}
+@media (min-width:1340px){.tier .top .sw{gap:8px!important}.tier .sw .st-on,.tier .sw .st-off{font-size:11px!important;letter-spacing:.06em!important}}
+@media (min-width:1340px) and (max-width:1439px){.tier .sw .st-on,.tier .sw .st-off{font-size:10px!important;letter-spacing:.03em!important}.tier .top .sw{gap:6px!important}}
+@media (min-width:1340px) and (max-width:1399px){.tier .top .tprice{font-size:20px!important}}
+@media (max-width:1339px){
+.cw,#baseline .main{margin-left:0!important;margin-right:0!important}
+.sec.audio .main>.txt,.sec.surround .main>.txt,.sec.network .main>.txt,.sec.cameras .main>.txt,#selections .fmain>.txt{left:0!important}
+#selections .dec.fx{display:grid!important;grid-template-columns:1fr auto!important;grid-template-areas:"t t" "d d" "s p"!important;row-gap:6px!important;column-gap:12px!important;align-items:baseline!important;padding-right:0!important}
+#selections .dec.fx .dt:not(.dpr){grid-area:t!important;display:flex!important;align-items:baseline!important;white-space:normal!important;width:auto!important;left:0!important;padding:0!important;flex:none!important}
+#selections .dec.fx .tn{flex:0 0 32px!important}
+#selections .dec.fx .dopt{grid-area:d!important;white-space:normal!important;padding-left:32px!important;flex:none!important;text-align:left!important}
+#selections .dec.fx .stt{grid-area:s!important;padding-left:32px!important;text-align:left!important;justify-self:start!important;min-width:0!important}
+#selections .dec.fx .dpr{grid-area:p!important;justify-self:end!important;text-align:right!important;margin:0!important}
+}
+@media (max-width:640px){#selections .dec.fx .dt:not(.dpr){font-size:20px!important}}
+@media (max-width:1339px){
+.sec.cover .chdr,.chdr{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:16px!important;height:auto!important;padding:28px 0 24px!important}
+.chdr .logo,.chdr .clogo{position:static!important;transform:none!important;left:auto!important;right:auto!important;top:auto!important;width:auto!important;max-width:calc(50% - 8px)!important;object-fit:contain}
+.chdr .logo{height:54px!important}.chdr .clogo{height:50px!important}
+}
+@media (max-width:640px){.chdr .logo,.chdr .clogo{height:auto!important;max-height:34px!important}}
 </style>
 </helmet>
 
