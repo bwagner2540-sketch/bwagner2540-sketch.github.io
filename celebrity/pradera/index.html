@@ -1154,6 +1154,8 @@ html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color
 #selections .fsig{margin-top:6px!important}
 .dlpdf{display:none!important}
 }
+.pplogos{display:none}
+@media print{.pplogos{display:flex!important;justify-content:space-between;align-items:center;margin:0 0 8px!important;padding:0 0 8px;border-bottom:1px solid rgba(11,13,12,.35)}.pplogos img{height:30px;width:auto;display:block}}
 </style>
 </helmet>
 
@@ -1598,6 +1600,7 @@ html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color
 <!-- ============ 07 SELECTIONS ============ -->
 <section id="selections" class="sec paper dir-{{ui.d}} int-{{ui.t}}">
   <div class="wrap">
+    <div class="pplogos" aria-hidden="true"><img src="./davg-logo.png" alt=""><img src="./celebrity-logo.png" alt=""></div>
     <div class="hdr">
       <span class="mono"><span class="vl">Selections</span></span>
     </div>
@@ -1676,6 +1679,17 @@ class Component extends DCLogic {
     };
   }
 }
+</script>
+<script>
+(function(){try{
+  var q=new URLSearchParams(location.search).get('client');
+  if(!q)return; q=q.trim().slice(0,80); if(!q)return;
+  var n=0,t=setInterval(function(){
+    var el=document.querySelector('#selections input[autocomplete="name"]');
+    if(el){ if(!el.value){el.value=q;} clearInterval(t); }
+    else if(++n>100){clearInterval(t);}
+  },100);
+}catch(e){}})();
 </script>
 </body>
 </html>
