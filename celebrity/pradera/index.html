@@ -1284,6 +1284,22 @@ html{scroll-snap-type:y mandatory}
 .sec.cover #baseline .h1.lvt{font-size:19px!important;line-height:1.2!important;margin:0!important}
 .sec.cover #baseline .bt{background:#E6E1D3!important;border:0!important;box-shadow:none!important;padding:16px 24px 10px!important;margin:0!important;box-sizing:border-box}
 .sec.cover #baseline .bcol .br{padding:5px 0!important}
+/* cover: H1 left, four category cards right (2x2) */
+.sec.cover .cw{display:grid!important;grid-template-columns:minmax(300px,32%) minmax(0,1fr)!important;column-gap:clamp(48px,6vw,110px)!important;align-items:start!important}
+.sec.cover .cw .ptitle{grid-column:1;grid-row:1}
+.sec.cover .cw .hero{grid-column:2;grid-row:1;margin:7px 0 0!important}
+.sec.cover .hero .decs.cv4{display:grid!important;grid-template-columns:1fr 1fr!important;gap:clamp(14px,2vh,20px)!important}
+.sec.cover .hero .decs.cv4{height:calc((100vh - 225px)/var(--fitz,1))!important;grid-template-rows:1fr 1fr!important}
+.sec.cover .hero .decs.cv4 .fxh{display:none!important}
+.sec.cover .hero .decs.cv4 .dec{display:grid!important;grid-template-columns:1fr auto!important;grid-template-areas:"n n" "t t" "d d" "p s"!important;grid-template-rows:auto auto 1fr auto!important;row-gap:6px!important;column-gap:12px!important;align-items:end!important;background:#E6E1D3!important;border:0!important;padding:22px 24px 20px!important;min-height:0!important;box-sizing:border-box;transition:background .2s ease}
+.sec.cover .hero .decs.cv4 .dec:hover{background:#D9E3DA!important}
+.sec.cover .hero .decs.cv4 .dec .dt:not(.dpr){grid-area:t!important;font-size:22px!important;padding:0!important;display:block!important;justify-self:start!important}
+.sec.cover .hero .decs.cv4 .dec .dt .tn{display:block!important;width:auto!important;margin:0 0 14px!important;font-size:12px!important}
+.sec.cover .hero .decs.cv4 .dec .dopt{grid-area:d!important;padding:0!important;align-self:start!important;font-size:13px!important;color:#51544F!important;justify-self:start!important}
+.sec.cover .hero .decs.cv4 .dec .dpr{grid-area:p!important;font-size:19px!important;display:block!important;justify-self:start!important;text-align:left!important}
+.sec.cover .hero .decs.cv4 .dec .stt{grid-area:s!important;justify-self:end!important;text-align:right!important;font-size:12px!important}
+.sec.cover .hero .decs.cv4 .dec .stt::before{display:none!important}
+.sec.cover .hero .decs.cv4 .dec .dt .tn{grid-area:n}
 .sec.cover>.sw,#selections>.sw{display:none!important}
 /* system sections */
 .vtab{padding:11px 18px 9px;gap:3px}
@@ -1372,33 +1388,6 @@ html{scroll-snap-type:y mandatory}
     </div>
   </div>
   </div>
-  </div>
-  <div class="wrap" id="baseline">
-    <div class="main">
-      <div class="txt">
-        <h2 class="h1 lvt">Low-Voltage Base Model</h2>
-      </div>
-      <div class="bt"><div class="bcols">
-<div class="bcol"><div class="bth mono"><span style="flex:1 1 220px">Description</span><span style="flex:0 0 48px;text-align:right">QTY</span><span class="bu">Unit</span><span class="bb"></span></div>
-<div class="br"><div class="bi"><span class="bn">Heritage Series Base Pre-wire</span></div><span class="bq">1</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:11%"></i></span></span></div>
-<div class="br"><div class="bi"><span class="bn">1-1 Basic Port (1Cat6+1RG6)</span></div><span class="bq">6</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:67%"></i></span></span></div>
-<div class="br"><div class="bi"><span class="bn">3-1 Tech Port (3Cat6+1RG6)</span></div><span class="bq">1</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:11%"></i></span></span></div>
-<div class="br"><div class="bi"><span class="bn">Audio Zone Pre-wire (1Cat5E+1-16/4+2-16/2)</span></div><span class="bq">3</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:33%"></i></span></span></div>
-</div>
-<div class="bcol"><div class="bth mono"><span style="flex:1 1 220px">Description</span><span style="flex:0 0 48px;text-align:right">QTY</span><span class="bu">Unit</span><span class="bb"></span></div>
-<div class="br"><div class="bi"><span class="bn">1-0 Telco/Data (1Cat6) Wireless Access</span></div><span class="bq">4</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:44%"></i></span></span></div>
-<div class="br"><div class="bi"><span class="bn">Camera, Single Location (2Cat6)</span></div><span class="bq">4</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:44%"></i></span></span></div>
-<div class="br"><div class="bi"><span class="bn">7.2 Surround Sound Pre-wire (7-14/2+2-RG6)</span></div><span class="bq">1</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:11%"></i></span></span></div>
-<div class="br"><div class="bi"><span class="bn">Floor Box Combo Installation</span></div><span class="bq">2</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:22%"></i></span></span></div>
-</div>
-<div class="bcol"><div class="bth mono"><span style="flex:1 1 220px">Description</span><span style="flex:0 0 48px;text-align:right">QTY</span><span class="bu">Unit</span><span class="bb"></span></div>
-<div class="br"><div class="bi"><span class="bn">Security Device</span></div><span class="bq">9</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:100%"></i></span></span></div>
-<div class="br"><div class="bi"><span class="bn">Security Communicator</span></div><span class="bq">2</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:22%"></i></span></span></div>
-<div class="br"><div class="bi"><span class="bn">Security Smoke Detector</span></div><span class="bq">0</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:0%"></i></span></span></div>
-</div>
-</div>
-</div>
-    </div>
   </div>
   <div class="sw" aria-hidden="true">Pradera</div>
 </section>
