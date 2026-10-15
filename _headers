@@ -10,3 +10,6 @@
 /robots.txt
   Cache-Control: public, max-age=86400
 
+
+/celebrity/*
+  X-Robots-Tag: noindex, nofollow

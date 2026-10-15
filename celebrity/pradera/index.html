@@ -1,0 +1,1681 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>System Options</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500&family=Montserrat:wght@400;500;600&family=Schibsted+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#EDE9E0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.paper{--fg:#0B0D0C;--fg2:#51544F;--fg3:#51544F;--line:rgba(11,13,12,.16);--line2:rgba(11,13,12,.10);--raise:#F2EFE7;background:#EDE9E0;color:#0B0D0C}
+.green-unused{--fg:#F1F0EB;--fg2:#E6E9E2;--fg3:#DDE3DA;--line:rgba(241,240,235,.30);--line2:rgba(241,240,235,.18);--raise:rgba(241,240,235,.08);background:#090B0A;color:#F1F0EB}
+.sec{position:relative;overflow:hidden}
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 64px}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.35;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.h1{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:44px;line-height:1;letter-spacing:-.02em;text-transform:uppercase;margin:0}
+.h1.xl{font-size:72px;letter-spacing:-.025em}
+.dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#3A6E5B;margin-right:10px;vertical-align:middle}
+.eb{color:var(--fg2);margin-bottom:36px}
+.note{color:var(--fg3);margin:32px 0 0;max-width:360px;letter-spacing:.1em}
+.logo{height:54px;width:auto;display:block}
+.hdr{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:28px 0 24px;border-bottom:1px solid var(--line)}
+.hdr{justify-content:flex-end}
+.hdr .mono{color:var(--fg2)}
+.cd{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:21px;line-height:1.3;letter-spacing:-.02em;color:#51544F;margin:22px 0 0;max-width:440px}
+.main{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;padding:64px 0 56px}
+.txt{flex:1 1 360px;max-width:480px}
+.art{flex:2 1 520px;min-width:0;background:transparent;border-radius:2px;padding:28px;--fg:#000000;--fg3:rgba(0,0,0,.42);--line:rgba(0,0,0,.30)}
+.art svg{width:100%;height:auto;display:block}
+.btn{display:inline-block;margin-top:40px;padding:16px 26px;background:#EDE9E0;color:#0B0D0C;font-family:'Instrument Sans',system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:2px}
+.btn:hover{background:#F2EFE7}
+.btn.g{background:#3A6E5B;color:#F1F0EB}
+.btn.g:hover{background:#447A66}
+
+/* cover */
+.dt{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:32px;letter-spacing:-.02em;line-height:1.05}
+
+/* baseline table */
+.bar{display:block;height:2px;background:var(--line);margin-top:0}
+.bar i{display:block;height:2px;background:#3A6E5B}
+.bt{flex:2 1 560px;min-width:0}
+.bth{display:flex;gap:16px;padding:0 0 14px;color:var(--fg3);border-bottom:1px solid var(--line)}
+.br{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--line2)}
+.bi{flex:1 1 220px;min-width:0}
+.bn{font-size:17px;font-weight:500}
+.bf{flex:0 0 150px;color:var(--fg2)}
+.bq{flex:0 0 48px;text-align:right;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:32px;letter-spacing:-.03em;line-height:1}
+.bb{flex:0 0 130px}
+.bt{background:#F7F4ED;border:1px solid rgba(11,13,12,.55);border-radius:2px;padding:6px 32px 10px;box-shadow:0 1px 0 rgba(11,13,12,.5),0 30px 42px -30px rgba(11,13,12,.45)}
+.bth{padding:20px 0 14px;color:#0B0D0C;border-bottom:2px solid #0B0D0C}
+.br{padding:20px 0}
+.br:last-child{border-bottom:0}
+.br:hover{background:rgba(58,110,91,.07)}
+.bn{font-size:18px;color:#0B0D0C}
+.br .bf{color:#0B0D0C}
+.bq{font-size:40px;color:#3A6E5B}
+.bar{height:4px;background:rgba(11,13,12,.10)}
+.bar i{height:4px;background:#3A6E5B}
+
+/* tier cards */
+.tiers{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px}
+.tier{appearance:none;-webkit-appearance:none;border:1px solid #090B0A;font:inherit;text-align:left;cursor:pointer;flex:1 1 260px;padding:0 32px 32px;overflow:hidden;position:relative;display:flex;flex-direction:column;border-radius:2px;--fg:#F1F0EB;--fg2:#E6E9E2;--fg3:#DDE3DA;--line:rgba(241,240,235,.30);--line2:rgba(241,240,235,.18);background-color:#3A6E5B;background-image:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,0) 38%,rgba(0,0,0,.16) 100%);color:#F1F0EB;box-shadow:0 1px 0 rgba(11,13,12,.5),0 22px 34px -20px rgba(11,13,12,.55);transition:transform .2s ease,box-shadow .2s ease}
+.tier::after{content:"";position:absolute;left:10px;right:10px;bottom:10px;top:10px;border:1px solid rgba(241,240,235,.20);border-radius:1px;pointer-events:none}
+.tier:hover{background-color:#447A66;transform:translateY(-3px);box-shadow:0 1px 0 rgba(11,13,12,.5),0 30px 40px -20px rgba(11,13,12,.6)}
+.tier .top{padding-top:32px}
+.tier .tname{margin-top:30px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.tier .rows{background:rgba(0,0,0,.20);padding:2px 18px;border-top:0;border-radius:1px;margin-top:26px}
+.tier .row:last-child{border-bottom:0}
+/* luxury pass: deep green gradient, quiet watermark numeral, airy specs */
+.tiers{counter-reset:tn}
+.tier{counter-increment:tn;background-color:#3A6E5B;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.17) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#4C8772 0%,#3A6E5B 36%,#2C5646 72%,#203F35 100%);box-shadow:0 1px 0 rgba(11,13,12,.6),0 30px 42px -28px rgba(11,13,12,.5)}
+.tier:hover{filter:brightness(1.07);outline:3px solid #090B0A;outline-offset:0}
+.tier::before{content:counter(tn,decimal-leading-zero);position:absolute;right:22px;bottom:4px;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;font-size:150px;line-height:1;letter-spacing:-.05em;color:rgba(241,240,235,.07);pointer-events:none}
+.tier::after{border-color:rgba(241,240,235,.24)}
+.tier>span{position:relative;z-index:1}
+.tier .tname{font-weight:300;font-size:50px;letter-spacing:-.035em;padding-bottom:22px;color:#FFFFFF}
+.tier .tscope{font-size:15px;letter-spacing:.01em;margin-top:18px;color:var(--fg)}
+.tier .tdesc{font-size:14px;line-height:1.6;color:var(--fg2)}
+.tier .rows{background:none;padding:0;margin-top:22px;border-top:1px solid var(--line)}
+.tier .row{padding:15px 0}
+.tier:focus-visible{outline:2px solid #090B0A;outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.top .mono{color:var(--fg3)}
+.sw{display:flex;align-items:center;gap:14px}
+.st-on{display:none}
+.box{width:22px;height:22px;border:1px solid var(--fg3);border-radius:2px;display:inline-flex;align-items:center;justify-content:center;background:transparent}
+.tick{opacity:0}
+.tname{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:44px;letter-spacing:-.025em;line-height:1.02;margin-top:30px;display:block}
+.tscope{font-size:17px;line-height:1.35;margin-top:12px;display:block}
+.tdesc{font-size:14px;line-height:1.5;color:var(--fg2);margin-top:10px;display:block;min-height:64px}
+.rows{display:block;margin-top:24px;border-top:1px solid var(--line)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:14px 0;border-bottom:1px solid var(--line2)}
+.row .k{color:var(--fg3);flex:0 0 auto;font-size:11.5px}
+.row .v{font-size:14px;text-align:right;line-height:1.35}
+.sel-1 .t1,.sel-2 .t2,.sel-3 .t3,.sel-4 .t4{background-color:#3A6E5B;outline:3px solid #F1F0EB;outline-offset:-4px;box-shadow:0 0 0 3px #090B0A,0 26px 38px -18px rgba(11,13,12,.6)}
+.sel-1 .t1 .box,.sel-2 .t2 .box,.sel-3 .t3 .box,.sel-4 .t4 .box{background:#F1F0EB;border-color:#F1F0EB}
+.sel-1 .t1 .tick,.sel-2 .t2 .tick,.sel-3 .t3 .tick,.sel-4 .t4 .tick{opacity:1}
+.sel-1 .t1 .st-on,.sel-2 .t2 .st-on,.sel-3 .t3 .st-on,.sel-4 .t4 .st-on{display:inline;color:#F1F0EB}
+.sel-1 .t1 .st-off,.sel-2 .t2 .st-off,.sel-3 .t3 .st-off,.sel-4 .t4 .st-off{display:none}
+.st-on::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#F1F0EB;margin-right:8px;vertical-align:middle}
+.fn{font-size:13px;line-height:1.45;color:var(--fg2);max-width:760px;margin:24px 0 0}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:36px 0 32px;color:var(--fg3)}
+.foot .mid{letter-spacing:.1em;font-size:11px}
+
+/* layouts: black panel, white speakers and icons */
+.pl-wall{fill:none;stroke:var(--fg3);stroke-width:1.2;opacity:1}
+.pl-room{fill:none;stroke:var(--line);stroke-width:1}
+.pl-lab{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;fill:var(--fg3)}
+.pl-n{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;font-weight:600;letter-spacing:.1em;fill:var(--fg3)}
+.te{text-anchor:end}
+.tm{text-anchor:middle}
+.spk{fill:none;stroke:var(--fg3);stroke-width:1}
+.spk-d{fill:var(--fg3)}
+.solid{fill:var(--fg3);stroke:none;opacity:.8}
+.trace{fill:none;stroke:transparent;stroke-width:1.4}
+.cov{fill:none;stroke:transparent;stroke-width:1}
+.dash{stroke-dasharray:3 5}
+.fov{fill:none;stroke:transparent;stroke-width:1}
+.locr{fill:none;stroke:var(--fg3);stroke-width:1.2}
+.locd{fill:var(--fg3)}
+.bell{fill:none;stroke:var(--fg3);stroke-width:1.4}
+.add .locr{stroke:transparent}
+.add .pl-lab{fill:transparent}
+.pl-room,.spk,.spk-d,.trace,.cov,.pl-lab,.pl-n,.locr,.locd,.fov,.bell{transition:stroke .3s ease,fill .3s ease}
+.sel-1 .u1 .ls,.sel-2 .u1 .ls,.sel-2 .u2 .ls,.sel-3 .u1 .ls,.sel-3 .u2 .ls,.sel-3 .u3 .ls,.sel-4 .u1 .ls,.sel-4 .u2 .ls,.sel-4 .u3 .ls,.sel-4 .u4 .ls{stroke:#000000}
+.sel-1 .u1 .lf,.sel-2 .u1 .lf,.sel-2 .u2 .lf,.sel-3 .u1 .lf,.sel-3 .u2 .lf,.sel-3 .u3 .lf,.sel-4 .u1 .lf,.sel-4 .u2 .lf,.sel-4 .u3 .lf,.sel-4 .u4 .lf{fill:#000000;opacity:1}
+.sel-1 .u1 .lt,.sel-2 .u1 .lt,.sel-2 .u2 .lt,.sel-3 .u1 .lt,.sel-3 .u2 .lt,.sel-3 .u3 .lt,.sel-4 .u1 .lt,.sel-4 .u2 .lt,.sel-4 .u3 .lt,.sel-4 .u4 .lt{fill:#000000}
+.sel-1 .loc .locr{stroke:#000000;stroke-dasharray:3 3}
+.sel-2 .loc .locr,.sel-3 .loc .locr{stroke:#000000;stroke-dasharray:none}
+.sel-1 .loc .locd,.sel-2 .loc .locd,.sel-3 .loc .locd{fill:#000000}
+.sel-1 .loc .pl-lab,.sel-2 .loc .pl-lab,.sel-3 .loc .pl-lab{fill:#000000}
+.sel-2 .fov,.sel-3 .fov{stroke:#000000}
+.sel-1 .bell,.sel-2 .bell,.sel-3 .bell{stroke:#000000}
+.sel-3 .add .locr{stroke:#000000;stroke-dasharray:3 3}
+.sel-3 .add .pl-lab{fill:#000000}
+
+/* selections */
+.sr{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 28px;padding:26px 0;border-top:1px solid var(--line)}
+.sr:last-child{border-bottom:1px solid var(--line)}
+.sr:hover{background:var(--raise)}
+.sr .mono{flex:0 0 220px;color:var(--fg3)}
+.sr-t{flex:0 0 190px;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:32px;letter-spacing:-.025em;line-height:1.05}
+.sr-s{flex:1 1 260px;font-size:15px;line-height:1.4;color:var(--fg2)}
+.progress{display:flex;gap:6px;margin-top:36px;max-width:340px}
+.progress i{flex:1;height:3px;display:block}
+.form{display:flex;flex-wrap:wrap;gap:40px;padding:8px 0 24px}
+.fcol{flex:1 1 360px;display:flex;flex-direction:column;gap:28px}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld .mono{color:var(--fg3)}
+.fld input,.fld textarea{background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:400 16px 'Instrument Sans',system-ui,sans-serif;padding:10px 0;outline:none;border-radius:0;resize:vertical}
+.fld input:focus,.fld textarea:focus{border-bottom-color:#3A6E5B}
+.opt{appearance:none;-webkit-appearance:none;background:transparent;border:0;border-top:1px solid var(--line);color:inherit;font:inherit;text-align:left;cursor:pointer;display:flex;align-items:center;gap:16px;padding:20px 0;width:100%;font-size:15px;line-height:1.4}
+.opt:hover{background:var(--raise)}
+.opt:focus-visible{outline:2px solid #3A6E5B;outline-offset:-2px}
+.dir-1 .o1 .box,.dir-2 .o2 .box{background:#3A6E5B;border-color:#3A6E5B}
+.dir-1 .o1 .tick,.dir-2 .o2 .tick{opacity:1}
+.ack{font-size:13px;line-height:1.45;color:var(--fg2);margin:8px 0 0;max-width:520px}
+
+@media (max-width:1024px){
+.wrap,.navin{padding-left:40px;padding-right:40px}
+.txt{max-width:none}
+}
+@media (max-width:640px){
+.wrap,.navin{padding-left:24px;padding-right:24px}
+.h1{font-size:40px}
+.h1.xl{font-size:48px}
+.tname{font-size:36px}
+.tier{padding:24px}
+.bf,.bb{display:none}
+.sr .mono,.sr-t{flex:1 1 100%}
+.dt{font-size:26px}
+.art{padding:14px}
+}
+@media (min-width:1000px){
+.main{padding:30px 0 22px}
+.tier .row{padding:9px 0}
+.hdr{padding:18px 0 14px}
+.foot{padding:20px 0 18px}
+.main{justify-content:space-between}
+.art{max-width:640px}
+.art{padding:8px}
+.tier{padding-bottom:26px}
+.tier .top{padding-top:22px}
+.tier .tname{font-size:44px;padding-bottom:14px;margin-top:18px}
+.tier .tscope{margin-top:14px}
+.tier .tdesc{min-height:45px}
+.tier .rows{margin-top:16px}
+.br{padding:11px 0}
+.bq{font-size:34px}
+.bt{padding:2px 32px 6px}
+.bth{padding:14px 0 12px}
+}
+
+/* ---- cover rebuild + palette audit (Korta tokens) ---- */
+.chdr{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:30px 0}
+.clogo{height:50px;width:auto;display:block}
+.hero{container-type:inline-size;position:relative;overflow:hidden;--fg:#F1F0EB;--fg2:#E6E9E2;--fg3:#DDE3DA;--line:rgba(241,240,235,.30);--line2:rgba(241,240,235,.18);--raise:rgba(241,240,235,.08);color:#F1F0EB;background-color:#3A6E5B;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.17) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#4C8772 0%,#3A6E5B 36%,#2C5646 72%,#203F35 100%)}
+.hero .dot{background:#F1F0EB}
+.client{padding:68px 0 48px;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:44px;line-height:1.1;letter-spacing:-.02em;border-bottom:1px solid var(--line)}
+.client .cl{color:var(--fg3);font-weight:300;margin-right:.25em}
+.main.cover{padding:52px 0 44px;align-items:flex-start}
+.hero .h1.xl{font-size:52px;letter-spacing:-.03em}
+.hero .eb{margin-bottom:28px}
+.meta{display:flex;flex-direction:column;gap:22px;margin-top:44px}
+.meta>div{display:flex;flex-direction:column;gap:8px}
+.meta .mono{color:var(--fg3)}
+.meta b{font-weight:400;font-size:17px;line-height:1.35}
+.decs{flex:1.4 1 520px;min-width:0}
+.dec{display:flex;align-items:baseline;gap:24px;padding:20px 0;border-top:1px solid var(--line)}
+.dec:last-child{border-bottom:1px solid var(--line)}
+.dec:hover{background:var(--raise)}
+.dt{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:26px;letter-spacing:-.02em;line-height:1.1;flex:1 1 auto}
+.dopt{color:var(--fg2);text-align:right}
+.stt{color:var(--fg2);text-align:right;min-width:92px}
+.stt.on-1{color:#F1F0EB}
+.stt.on-1::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#F1F0EB;margin-right:10px;vertical-align:middle}
+.hero .foot{padding:0 0 30px}
+.hero .sw{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:.1em 0 0 4cqw;white-space:nowrap;color:rgba(241,240,235,.14);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%);pointer-events:none;user-select:none}
+.bt{background:#EBE7DC;border:1px solid rgba(11,13,12,.16);box-shadow:none}
+.br:hover{background:rgba(26,143,110,.07)}
+.bq{color:#0B0D0C}
+.bar i{background:#1A8F6E}
+.dot{background:#1A8F6E}
+.btn.g{background:#090B0A;color:#F1F0EB}
+.btn.g:hover{background:#1B1F1D}
+.dir-1 .o1 .box,.dir-2 .o2 .box{background:#1A8F6E;border-color:#1A8F6E}
+.fld input:focus,.fld textarea:focus{border-bottom-color:#1A8F6E}
+
+/* cover frame: cream page, framed green panel */
+.cover>.wrap{padding-bottom:56px}
+.hero{border:1px solid #090B0A;border-radius:2px;box-shadow:0 1px 0 rgba(11,13,12,.6),0 30px 42px -28px rgba(11,13,12,.5)}
+.hero::after{content:"";position:absolute;left:10px;right:10px;top:10px;bottom:0;border:1px solid rgba(241,240,235,.24);border-bottom:0;pointer-events:none}
+.hero .wrap{padding:0 48px}
+.client{padding:44px 0 30px}
+.main.cover{padding:34px 0 30px}
+.meta{margin-top:32px}
+.bu{flex:0 0 56px;text-align:right;color:var(--fg2)}
+
+/* nav + spacing refine, cards without numerals */
+.tier::before{content:none}
+.sec.paper:not(.cover)>.wrap{padding-bottom:56px}
+.top{justify-content:flex-end}
+@media (min-width:1100px){
+.wrap{padding-left:80px;padding-right:80px}
+.hdr{padding:36px 0 30px}
+.main{padding:56px 0 40px}
+}
+
+/* category page composition */
+.art{max-width:720px;--fg3:rgba(0,0,0,.55);--line:rgba(0,0,0,.34)}
+.pl-wall{opacity:1}
+.h1{letter-spacing:-.035em}
+
+/* category page: title row, art below */
+.fmain .txt{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px;max-width:none;flex:none}
+.fmain .txt .deck{margin:0;max-width:440px}
+/* selections form */
+.fmain{flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:32px}
+.fpanel{background:#EBE7DC;border:1px solid rgba(11,13,12,.16);border-radius:2px;padding:12px 40px 36px;width:100%}
+.frow3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 32px;padding:24px 0 28px}
+.fld2{display:flex;flex-direction:column;gap:8px}
+.fld2>.mono{color:var(--fg2)}
+.ff{display:block;background:#F4F1EA;border:1px solid rgba(11,13,12,.22);border-radius:2px;padding:11px 14px;min-height:46px;font:400 16px/1.4 'Instrument Sans',system-ui,sans-serif;color:#0B0D0C;outline:none;width:100%}
+textarea.ff{resize:vertical}
+.fh{display:flex;gap:24px;padding:16px 0 12px;border-bottom:2px solid #0B0D0C;color:#0B0D0C;margin-top:6px}
+.fsel{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;padding:14px 0;border-bottom:1px solid var(--line2)}
+.fsel:hover{background:rgba(26,143,110,.07)}
+.fsel .ff{width:auto}
+.fh .c1,.fsel .c1{flex:0 0 200px}
+.fh .c2,.fsel .c2{flex:0 0 200px}
+.fh .c3,.fsel .c3{flex:1 1 260px}
+.fsel .c1{color:#0B0D0C}
+.fsel .c2{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:22px;letter-spacing:-.02em}
+.fopts{padding-bottom:12px}
+.fnotes{margin-top:20px}
+.fpanel .ack{margin-top:18px}
+.intwrap{margin-top:28px;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.inttog{appearance:none;-webkit-appearance:none;background:transparent;border:1px solid rgba(11,13,12,.3);border-radius:2px;padding:9px 14px;color:var(--fg2);cursor:pointer}
+.inttog:hover{background:rgba(11,13,12,.05)}
+.inttog[aria-pressed="true"]{background:#090B0A;color:#F1F0EB;border-color:#090B0A}
+.intbox{display:none;width:100%;max-width:420px;border:1px solid rgba(11,13,12,.3);border-radius:2px;padding:6px 20px 14px;background:#F4F1EA}
+.int-1 .intbox{display:block}
+.irow{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--line2)}
+.irow .iv{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:20px;letter-spacing:-.01em}
+.itot{border-bottom:0;border-top:2px solid #0B0D0C;margin-top:4px}
+.itot .iv{font-size:30px}
+@media print{.inttog{display:none}}
+
+/* height budget */
+@media (min-width:1100px){
+.hdr{padding:28px 0 24px}
+.main{padding:44px 0 28px}
+}
+.sec.paper:not(.cover)>.wrap{padding-bottom:40px}
+.frow3{padding:18px 0 20px}
+.fsel{padding:10px 0}
+.ff{min-height:42px;padding:9px 14px}
+.opt{padding:14px 0}
+
+.client{padding:36px 0 24px}
+.main.cover{padding:28px 0 24px}
+.fpanel{padding-bottom:26px}
+.fnotes{margin-top:14px}
+.intwrap{margin-top:18px}
+.irow{padding:9px 0}
+.tier .box{width:32px;height:32px;border:2px solid #F1F0EB;border-radius:3px;background:rgba(241,240,235,.12)}
+.tier:hover .box{background:rgba(241,240,235,.24)}
+.tier .tick{width:20px;height:20px}
+.tier .tick path{stroke:#090B0A;stroke-width:2.4}
+.sel-1 .t1 .box,.sel-2 .t2 .box,.sel-3 .t3 .box,.sel-4 .t4 .box{background:#F1F0EB;border-color:#F1F0EB}
+.tier .sw{gap:16px}
+.sec.paper:not(.cover){border-top:4px solid #090B0A}
+.sec.paper:not(.cover) .hdr{padding-top:22px;padding-bottom:18px}
+.sec.paper:not(.cover) .main{padding-top:68px}
+.top{justify-content:space-between;align-items:center}
+.tprice{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:30px;letter-spacing:-.03em;line-height:1;color:#F1F0EB}
+.fh .c4,.fsel .c4{flex:0 0 150px;text-align:right}
+.fsel .c4{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:22px;letter-spacing:-.02em;min-height:46px}
+.ftot{margin-top:6px;padding:16px 0 4px;border-top:2px solid #0B0D0C;border-bottom:0}
+.ftot .iv{font-size:34px}
+.hero{--fg:#0B0D0C;--fg2:#51544F;--fg3:#51544F;--line:rgba(11,13,12,.20);--line2:rgba(11,13,12,.10);--raise:rgba(11,13,12,.05);color:#0B0D0C;background-color:#EBE7DC;background-image:none}
+.hero .dot{background:#1A8F6E}
+.hero .sw{color:rgba(11,13,12,.075)}
+.hero::after{border-color:rgba(11,13,12,.18)}
+.stt.on-1{color:#0B0D0C}
+.stt.on-1::before{background:#1A8F6E}
+.bt{position:relative;border:1px solid #090B0A;box-shadow:0 1px 0 rgba(11,13,12,.6),0 30px 42px -28px rgba(11,13,12,.5)}
+.bt::after{content:"";position:absolute;left:10px;right:10px;top:10px;bottom:10px;border:1px solid rgba(11,13,12,.18);pointer-events:none}
+.cw{container-type:inline-size}
+.cw .sw{display:block;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:.14em 0 0 4cqw;white-space:nowrap;color:rgba(11,13,12,.09);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%);pointer-events:none;user-select:none}
+body{background:#F2EFE7}
+.paper,.sec.paper{background:#F2EFE7;--raise:#EBE7DC}
+.hero{background-color:#E5E0D2}
+.bt{background:#E5E0D2}
+.fpanel{background:#E5E0D2}
+.br:hover{background:rgba(26,143,110,.08)}
+.cw .sw{color:rgba(11,13,12,.07)}
+/* colour system: Cream 01 section, Cream 03 cards, 1px hairline, no shadow */
+.sec.cover{container-type:inline-size;padding-bottom:0}
+.cover>.wrap{padding-bottom:0}
+.cw{padding-bottom:28px}
+.hero{background-color:#E2DDCE;border:1px solid rgba(11,13,12,.16);box-shadow:none}
+.hero::after{display:none}
+.bt{background:#E2DDCE;border:1px solid rgba(11,13,12,.16);box-shadow:none}
+.bt::after{display:none}
+.fpanel{background:#E2DDCE;border:1px solid rgba(11,13,12,.16)}
+.sec.cover>.sw{display:block;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:0 0 0 4cqw;margin:0;white-space:nowrap;color:rgba(24,56,49,.14);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%);pointer-events:none;user-select:none;overflow:visible}
+.cw .hero{margin:28px 40px 0}
+.cw{padding-bottom:36px}
+.sec.paper:not(.cover)>.wrap{padding-bottom:88px}
+.sec.paper:not(.cover) .hdr{padding-top:30px}
+.tiers{width:100%;box-sizing:border-box}
+.sec.paper:not(.cover) .hdr{border-bottom:0;padding-bottom:0}
+.sec.paper:not(.cover) .hdr .mono{padding:0 0 16px 28px;border-bottom:1px solid rgba(11,13,12,.35)}
+.top{justify-content:flex-end}
+.tprice{display:block;margin:0 0 18px;font-size:30px;line-height:1}
+.tier .tname{padding-bottom:6px}
+@media (min-width:760px) and (max-width:1339px){
+.main.cover{flex-wrap:nowrap;gap:32px}
+.main.cover .txt{flex:1 1 240px}
+.main.cover .decs{flex:1.4 1 300px;min-width:0}
+}
+#selections{container-type:inline-size}
+#selections>.wrap{padding-bottom:40px}
+.sec.cover>.sw,#selections>.sw{display:block;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:0 0 0 4cqw;margin:0;white-space:nowrap;color:rgba(24,56,49,.12);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%),linear-gradient(180deg,#000 30%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 55%,transparent 100%),linear-gradient(180deg,#000 30%,transparent 100%);mask-composite:intersect;pointer-events:none;user-select:none}
+.bb{display:none}
+.bq{font-size:22px;font-weight:500;letter-spacing:-.01em;flex:0 0 44px}
+.br{padding:15px 0}
+@media (min-width:1000px){
+.tiers{gap:28px}
+.tier{flex:0 0 calc((100% - 84px)/4);max-width:calc((100% - 84px)/4)}
+}
+.tier .tname{padding-bottom:0}
+.tprice{margin:14px 0 22px}
+@media (min-width:1000px){
+.tier .tdesc{min-height:72px}
+.tier .tscope{min-height:44px}
+}
+@media (min-width:1000px){
+.tier .tdesc{min-height:92px}
+.tier{min-height:690px}
+}
+@media (min-width:1300px){
+.tier{min-height:560px}
+}
+.sec.paper:not(.cover)>.wrap{padding-bottom:64px}
+@media (min-width:1300px){
+.tier{min-height:548px}
+}
+@media (min-width:1000px) and (max-width:1299px){
+.tier{min-height:640px}
+.sec.paper:not(.cover) .main{padding-top:44px}
+.sec.paper:not(.cover)>.wrap{padding-bottom:48px}
+.tier .tdesc{min-height:88px}
+}
+/* plan fills for active levels */
+.sel-1 .u1 rect.ls,.sel-2 .u1 rect.ls,.sel-2 .u2 rect.ls,.sel-3 .u1 rect.ls,.sel-3 .u2 rect.ls,.sel-3 .u3 rect.ls,.sel-4 .u1 rect.ls,.sel-4 .u2 rect.ls,.sel-4 .u3 rect.ls,.sel-4 .u4 rect.ls{fill:rgba(26,143,110,.10)}
+.sel-2 .fov,.sel-3 .fov{fill:rgba(26,143,110,.08)}
+.sel-1 .u1 .cov.ls,.sel-2 .u1 .cov.ls,.sel-2 .u2 .cov.ls,.sel-3 .u1 .cov.ls,.sel-3 .u2 .cov.ls,.sel-3 .u3 .cov.ls{fill:rgba(26,143,110,.06)}
+.cvd{margin:0;max-width:340px;font-size:20px}
+.hero .meta b{font-size:16px}
+.hero .meta{margin-top:30px}
+/* plan states: clear off / on */
+.art .ls{stroke:rgba(0,0,0,.16)}
+.art .lf{fill:rgba(0,0,0,.16);opacity:1}
+.art .lt{fill:rgba(0,0,0,.26)}
+.art .trace.ls{stroke:rgba(0,0,0,.14)}
+:is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .pl-room.ls{stroke:#000;stroke-width:1.6;fill:rgba(26,143,110,.24)}
+:is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .spk.ls{stroke:#000;fill:#000}
+:is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .spk-d.lf{fill:#fff}
+:is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .sub.ls{stroke:#000;fill:#000}
+:is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .cov.ls{stroke:#000;stroke-width:1.4;fill:rgba(26,143,110,.18)}
+:is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .trace.ls{stroke:#000;stroke-width:1.8}
+:is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .lt{fill:#000}
+.fov{display:none}
+.cameras .loc .locr{stroke:rgba(0,0,0,.28);fill:none;stroke-dasharray:3 3}
+.cameras .loc .locd{fill:rgba(0,0,0,.28)}
+.cameras .loc .pl-lab{fill:rgba(0,0,0,.35)}
+.sel-1 .loc .locr,.sel-2 .loc .locr,.sel-3 .loc .locr{stroke:#000;fill:#000;stroke-dasharray:none}
+.sel-1 .loc .locd,.sel-2 .loc .locd,.sel-3 .loc .locd{fill:#fff}
+.sel-1 .loc .pl-lab,.sel-2 .loc .pl-lab,.sel-3 .loc .pl-lab{fill:#000}
+.cameras .add .locr{stroke:rgba(26,143,110,.55);fill:none;stroke-dasharray:3 3}
+.cameras .add .locd{fill:transparent}
+.cameras .add .pl-lab{fill:rgba(17,100,77,.55)}
+.sel-3 .add .locr{stroke:#1A8F6E;fill:#1A8F6E;stroke-dasharray:none}
+.sel-3 .add .locd{fill:#fff}
+.sel-3 .add .pl-lab{fill:#11644D}
+@media (min-width:1340px){
+.dec .dt{white-space:nowrap;flex:0 0 auto;font-size:25px}
+.dec .dopt{flex:1 1 0;min-width:0;white-space:nowrap;letter-spacing:.06em;font-size:11px}
+.dec .stt{min-width:84px}
+}
+.art .vref{margin:6px 0 0;text-align:right;font-size:8px;letter-spacing:.16em;line-height:1;text-transform:uppercase;color:rgba(0,0,0,.5)}
+.tiers{justify-content:center;margin-top:28px}
+@media (min-width:1000px) and (max-width:1299px){
+.sec.paper:not(.cover) .main{padding-top:34px}
+.sec.paper:not(.cover) .hdr{padding-top:22px}
+.sec.paper:not(.cover)>.wrap{padding-bottom:40px}
+}
+@media (min-width:1300px){
+.sec.paper:not(.cover) .main{padding-top:54px}
+.tier{min-height:536px}
+}
+.cfoot{display:flex;justify-content:center;align-items:flex-start;gap:20px 96px;flex-wrap:wrap;text-align:center;border-top:1px solid var(--line);padding:26px 0 34px}
+.cfoot>div{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cfoot .mono{color:var(--fg3)}
+.cfoot b{font-weight:400;font-size:16px;line-height:1.4}
+.hero .meta .mono{color:var(--fg3)}
+.hero .meta b{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:25px;line-height:1.1;letter-spacing:-.02em}
+.cfoot{gap:12px 64px;padding:20px 0 26px}
+@media (min-width:1000px) and (max-width:1299px){
+.cw{padding-bottom:22px}
+.client{padding:30px 0 22px}
+}
+.hero .client{text-transform:uppercase}
+.cameras .add .locr{stroke:rgba(0,0,0,.35);fill:none;stroke-dasharray:3 3}
+.cameras .add .pl-lab{fill:rgba(0,0,0,.4)}
+.sel-3 .add .locr{stroke:#000;fill:#000;stroke-dasharray:none}
+.sel-3 .add .locd{fill:#fff}
+.sel-3 .add .pl-lab{fill:#000}
+.fnotes{margin-top:30px}
+.fnotes{margin-top:26px}
+@media (min-width:1000px) and (max-width:1299px){
+#selections>.wrap{padding-bottom:24px}
+.ftot{padding-top:12px}
+}
+.cfoot{column-gap:160px}
+.hero .meta{margin-top:72px}
+.hero .meta{margin-top:0}
+.hero .cvd{margin:20px 0 0;font-size:16px;line-height:1.4;letter-spacing:-.01em;max-width:340px}
+.hero h2.cvd{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:400;line-height:1.8;letter-spacing:.1em;text-transform:uppercase;color:var(--fg2);margin:22px 0 0;max-width:340px}
+.wrap{max-width:1840px}
+@media (min-width:1500px){.wrap{padding-left:56px;padding-right:56px}}
+.sec.paper:not(.cover) .main{padding-top:30px}
+.sec.paper:not(.cover) .hdr{padding-top:22px}
+.sec.paper:not(.cover) .hdr .mono{padding-bottom:12px}
+.hero{background-color:#E8E4D8;border-color:rgba(11,13,12,.13)}
+.bt,.fpanel{background:#E8E4D8;border-color:rgba(11,13,12,.13)}
+.cfoot{column-gap:300px}
+@media (max-width:1100px){.cfoot{column-gap:120px}}
+.chead{display:flex;justify-content:space-between;align-items:center;gap:24px;border-bottom:1px solid var(--line)}
+.chead .client{border-bottom:0}
+.cb,.pb{display:flex;flex-direction:column;gap:8px}
+.cb{align-items:flex-end;text-align:right}
+.cb .mono,.pb .mono:first-child{color:var(--fg3)}
+.mv{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.55;letter-spacing:.02em;text-transform:none;color:#0B0D0C;font-weight:400}
+.pb{margin-top:28px}
+.cb{flex-direction:row;align-items:baseline;gap:12px}
+.cb .sep{color:var(--fg3);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px}
+.pb{gap:6px}
+.pbl{display:flex;align-items:baseline;gap:14px}
+.cw{padding-bottom:64px}
+@media (min-width:1000px) and (max-width:1299px){.cw{padding-bottom:50px}}
+.tier{padding-bottom:50px}
+@media (max-width:640px){.tier{padding-bottom:40px}}
+@media (min-width:1100px){.art{padding-right:64px}}
+.sec.paper:not(.cover) .hdr .mono{display:block;min-height:calc(1.35em + 13px);border-bottom-color:transparent;padding-left:0}
+.sec.paper:not(.cover) .hdr .vl{position:absolute;right:22px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;white-space:nowrap;line-height:1;color:var(--fg2)}
+@media (max-width:640px){.sec.paper:not(.cover) .hdr .vl{right:5px;font-size:10px}}
+.cmeta{padding-top:52px}
+@media (min-width:1000px){.cmeta{padding-top:34px}}
+@media (min-width:1100px){.cmeta{padding-top:28px}}
+.hero .main.cover{padding-top:0}
+.hero .main.cover .decs{margin-top:22px}
+.h1,.client{font-family:'Montserrat',system-ui,sans-serif}
+.h1{letter-spacing:-.01em}
+.client{letter-spacing:-.01em}
+.chdr{padding-left:40px;padding-right:40px}
+.dec .dt{font-family:'Montserrat',system-ui,sans-serif;letter-spacing:-.01em}
+.hero h2.cvd{font-family:'Inter',system-ui,sans-serif}
+.sec.paper:not(.cover) .hdr .vl{display:none}
+.sec.paper:not(.cover) .hdr{display:none}
+.kick{display:flex;align-items:center;gap:14px;margin:28px 0 46px}
+.kick i{display:block;flex:0 0 40px;height:1px;background:#090B0A}
+.kick .mono{font-size:11px;font-weight:500;letter-spacing:.16em;color:#183831}
+.tier.t1{background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.17) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#5A9680 0%,#467E69 36%,#386855 72%,#2B5444 100%)}
+.tier.t2{background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.17) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#4C8772 0%,#3A6E5B 36%,#2C5646 72%,#203F35 100%)}
+.tier.t3{background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.17) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#3F7662 0%,#2E5A49 36%,#234839 72%,#1A382D 100%)}
+.tier.t4{background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.17) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#2F5E4D 0%,#214538 36%,#183529 72%,#11291F 100%)}
+.tier .box{background:#F1F0EB;border-color:#F1F0EB}
+.tier:hover .box{background:#FFFFFF;border-color:#FFFFFF}
+.tier .tick path{stroke:#F1F0EB}
+.sel-1 .t1 .box,.sel-2 .t2 .box,.sel-3 .t3 .box,.sel-4 .t4 .box{background:#090B0A;border-color:#F1F0EB}
+.hero h2.cvd{font-family:'Segoe UI','Segoe UI Variable',system-ui,-apple-system,sans-serif}
+.art .ls{stroke:rgba(0,0,0,.5)}
+.art .trace.ls{stroke:rgba(0,0,0,.38)}
+.art{--line:rgba(0,0,0,.55);--fg3:rgba(0,0,0,.62)}
+.art rect[stroke="rgba(0,0,0,.30)"],.art path[stroke="rgba(0,0,0,.30)"],.art line[stroke="rgba(0,0,0,.30)"]{stroke:rgba(0,0,0,.6)}
+.art [stroke="rgba(0,0,0,.20)"],.art [stroke="rgba(0,0,0,.28)"]{stroke:rgba(0,0,0,.5)}
+.h1,.client,.dec .dt{font-weight:600}
+.sec.cover .mono:not(.cvd),#selections .mono{font-family:'Inter',system-ui,sans-serif}
+.hero .meta b{font-weight:500}
+.tier::before{right:24px;bottom:-10px;font-size:170px;line-height:1;color:transparent;background:linear-gradient(180deg,rgba(241,240,235,0) 8%,rgba(241,240,235,.30) 100%);-webkit-background-clip:text;background-clip:text;z-index:0}
+.tier::before{display:none}
+.tier .top{justify-content:space-between}
+.tier .top::before{content:counter(tn,decimal-leading-zero);font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;font-size:30px;line-height:1;letter-spacing:-.02em;color:rgba(241,240,235,.6)}
+.tier{outline:2px solid #090B0A;outline-offset:0}
+.tier .tname{font-weight:400}
+.tier .tprice{font-weight:500}
+.tier .top{padding-bottom:14px}
+.tier .tprice{color:#FFFFFF}
+.art{margin-left:auto}
+@media (min-width:1300px){.art{max-width:806px}}
+.fsig{margin-top:22px}
+.fact{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:26px}
+.dlpdf{appearance:none;-webkit-appearance:none;border:1px solid #090B0A;background:#183831;color:#F1F0EB;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:15px 26px;border-radius:2px;cursor:pointer}
+.dlpdf:hover{background:#090B0A}
+.fhint{color:var(--fg3)}
+@media print{
+@page{size:letter landscape;margin:.4in}
+html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sec:not(#selections){display:none!important}
+#selections .sw,#selections .hdr,.fact{display:none!important}
+#selections{overflow:visible}
+#selections .wrap{padding:0 6px!important}
+#selections .main{padding:6px 0 0!important;gap:14px!important}
+#selections .h1{font-size:30px}
+#selections .fpanel{padding:4px 22px 16px!important}
+#selections .frow3{padding:10px 0 12px!important;gap:12px 22px!important}
+#selections .fh .c1,#selections .fsel .c1{flex:0 0 190px}
+#selections .fh .c2,#selections .fsel .c2{flex:0 0 150px}
+#selections .fh .c3,#selections .fsel .c3{flex:1 1 220px}
+#selections .fh .c4,#selections .fsel .c4{flex:0 0 130px}
+#selections .fsel{padding:6px 0!important}
+#selections .fsel .c2,#selections .fsel .c4{font-size:18px;min-height:0}
+#selections .fnotes textarea{min-height:60px;height:60px}
+#selections .fsig{margin-top:10px}
+#selections .frow3{grid-template-columns:repeat(4,1fr)!important}
+#selections .ff{min-height:0!important;padding:7px 10px!important}
+#selections .fsel .c2,#selections .fsel .c4{padding:0!important}
+}
+.fmain .txt .kick{flex:0 0 100%}
+@media print{#selections .kick{display:none}}
+#selections .fmain{gap:64px}
+#selections .fmain .txt .h1{margin-bottom:8px}
+.cin{display:grid;grid-template-columns:1.4fr 1fr 1.4fr;gap:32px;width:100%}
+.cin .ff{width:100%;box-sizing:border-box}
+.cin .fld2>.mono{color:var(--fg3)}
+@media (max-width:900px){.cin{grid-template-columns:1fr;gap:18px}}
+@media (max-width:1299px){.art{max-width:480px}}
+.tier{transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s ease,filter .28s ease,outline-color .2s ease}
+.tier:hover{transform:translateY(-12px) scale(1.03);z-index:3;filter:brightness(1.12);outline:4px solid #090B0A;box-shadow:0 46px 64px -26px rgba(11,13,12,.72),0 12px 18px -8px rgba(11,13,12,.45)}
+.tier:active{transform:translateY(-6px) scale(1.015)}
+.vrefs{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:8px;font-weight:500;letter-spacing:.16em;fill:rgba(0,0,0,.55)}
+
+/* darker plan contrast */
+.art .ls{stroke:rgba(0,0,0,.42)}
+.art .lf{fill:rgba(0,0,0,.42)}
+.art .lt{fill:rgba(0,0,0,.7)}
+.art .trace.ls{stroke:rgba(0,0,0,.38)}
+.art .pl-lab,.art .pl-n{fill:rgba(0,0,0,.78)}
+.art .lt{fill:rgba(0,0,0,.78)}
+.cameras .loc .locr{stroke:rgba(0,0,0,.55)}
+.cameras .loc .locd{fill:rgba(0,0,0,.55)}
+.cameras .loc .pl-lab{fill:rgba(0,0,0,.72)}
+.cameras .add .locr{stroke:rgba(0,0,0,.55)}
+.cameras .add .pl-lab{fill:rgba(0,0,0,.7)}
+.art .vrefs{fill:rgba(0,0,0,.7)}
+:is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .pl-n{fill:#000}
+.sel-1 .loc .pl-lab,.sel-2 .loc .pl-lab,.sel-3 .loc .pl-lab,.sel-3 .add .pl-lab{fill:#000}
+.fnote{margin:0;max-width:640px;font-family:'Inter',system-ui,sans-serif;font-size:13px;line-height:1.55;color:#090B0A}
+.fnote b{font-weight:500}
+
+/* low voltage table: two even columns, tighter type and spacing */
+.bcols{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;align-items:start}
+.bcol{min-width:0}
+.bt{padding:2px 24px 8px!important}
+.bt .bth{padding:14px 0 10px;font-size:10px}
+.bt .br{padding:11px 0;gap:12px}
+.bt .bn{font-size:14.5px;line-height:1.25}
+.bt .bq{font-size:24px;flex:0 0 34px}
+.bt .bu{flex:0 0 34px}
+.bt .bth span[style*="48px"]{flex:0 0 34px!important}
+.bt .bth .bu{flex:0 0 34px}
+.bcol .br:last-child{border-bottom:0}
+@media (min-width:1400px){
+#baseline .txt{flex:0 0 350px}
+#baseline .deck{max-width:350px}
+#baseline .bt{flex:1 1 0}
+}
+@media (max-width:1399px){#baseline .bt{flex:1 1 100%}}
+@media (max-width:760px){
+.bcols{grid-template-columns:1fr}
+.bcol2 .bth{display:none}
+}
+
+/* wider tier ladder */
+.tier.t1{background-color:#4B8A73;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#66A58D 0%,#549179 40%,#477F69 100%)}
+.tier.t2{background-color:#32705B;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#44806A 0%,#35705B 40%,#2A604D 100%)}
+.tier.t3{background-color:#1E4638;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#2B5646 0%,#204839 40%,#183A2E 100%)}
+.tier.t4{background-color:#0C1F17;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#15291F 0%,#0D2018 40%,#07140E 100%)}
+
+
+/* gray tables on pages 1-2 */
+.hero{background-color:#D9DAD2;border-color:rgba(11,13,12,.22)}
+.bt{background:#D9DAD2;border-color:rgba(11,13,12,.22)}
+
+
+/* fillable boxes: brand paper */
+.ff,.cin .ff,#selections .ff{background:#EDE9E0}
+
+/* cover: Prepared by sits at the bottom of the left column */
+.hero .main.cover{align-items:stretch}
+.hero .main.cover .txt{display:flex;flex-direction:column}
+.hero .main.cover .pb{margin-top:auto;padding-top:28px}
+
+/* cover table: system names nudged inward */
+@media (min-width:1340px){
+.hero .dec .dt{padding-left:32px}
+}
+
+/* final allowances table mirrors the cover table */
+.fxh{display:flex;gap:24px;padding:16px 0 12px;border-bottom:2px solid #0B0D0C;color:#0B0D0C;margin-top:6px}
+.fxh .x1{flex:0 0 280px}
+.fxh .x2{flex:1 1 0;text-align:right}
+.fxh .x3{flex:0 0 110px;text-align:right}
+.fxh .x4{flex:0 0 150px;text-align:right}
+.fx{border-top:0;border-bottom:1px solid var(--line2)}
+.fx .dt{flex:0 0 280px;white-space:nowrap;font-size:25px}
+.fx .dopt{flex:1 1 0;min-width:0;text-align:right}
+.fx .stt{flex:0 0 110px;min-width:0}
+.fx .dpr{flex:0 0 150px;text-align:right;font-size:25px}
+@media (max-width:1339px){
+.fxh{display:none}
+.fx{flex-wrap:wrap;gap:6px 24px}
+.fx .dt{flex:1 1 100%;white-space:normal}
+.fx .dopt{flex:1 1 auto;text-align:left}
+.fx .stt{flex:0 0 auto}
+.fx .dpr{flex:0 0 auto;margin-left:auto}
+}
+@media print{
+#selections .fx{padding:8px 0}
+#selections .fx .dt,#selections .fx .dpr{font-size:18px}
+#selections .fxh{padding:8px 0 6px}
+}
+
+/* final selections: client row matches cover; date beside signature; off-white boxes */
+.frow3.fcl{grid-template-columns:1.4fr 1fr 1.4fr;gap:32px}
+.frow3.fsd{grid-template-columns:2.6fr 1fr;gap:32px}
+@media (max-width:900px){.frow3.fcl,.frow3.fsd{grid-template-columns:1fr;gap:18px}}
+@media print{#selections .frow3.fcl{grid-template-columns:1.4fr 1fr 1.4fr!important;gap:22px!important}#selections .frow3.fsd{grid-template-columns:2.6fr 1fr!important;gap:22px!important}}
+.ff,.cin .ff,#selections .ff{background:#FAF9F5;border:1px solid rgba(11,13,12,.34)}
+
+/* low voltage table: natural width so the title breathes */
+@media (min-width:761px){
+#baseline .bt{flex:0 0 auto!important;width:fit-content;margin-left:auto}
+#baseline .bcols{grid-template-columns:max-content max-content;column-gap:28px}
+#baseline .bt{padding:2px 22px 8px!important}
+#baseline .bi{flex:1 1 auto;min-width:0}
+#baseline .bn{white-space:nowrap;font-size:14px}
+#baseline .br{gap:10px}
+#baseline .bq,#baseline .bth span[style*="48px"]{flex:0 0 26px!important}
+#baseline .bu,#baseline .bth .bu{flex:0 0 28px}
+#baseline .bq{font-size:22px}
+}
+@media (min-width:761px) and (max-width:1399px){#baseline .bt{margin-left:0}}
+
+/* selected plan areas: brand ink fill, white text and icons */
+.audio :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .pl-room.ls{fill:#090B0A;stroke:rgba(241,240,235,.4);stroke-width:1.2}
+.audio :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .spk.ls{stroke:#FFFFFF;fill:#FFFFFF}
+.audio :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .spk-d.lf{fill:#090B0A}
+.audio :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .lt{fill:#FFFFFF}
+.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .cov.ls{fill:#090B0A;stroke:#090B0A;stroke-dasharray:none}
+.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .spk.ls{stroke:#FFFFFF;fill:#FFFFFF}
+.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .spk-d.lf{fill:#090B0A}
+.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .cov~.lt{fill:#FFFFFF}
+.network :is(.sel-1,.sel-2,.sel-3) .rn1,.network :is(.sel-2,.sel-3) .rn2,.network .sel-3 .rn3{fill:#FFFFFF}
+.network.sel-1 .rn1,.network.sel-2 .rn1,.network.sel-3 .rn1,.network.sel-2 .rn2,.network.sel-3 .rn2,.network.sel-3 .rn3{fill:#FFFFFF}
+.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .pl-room.ls{fill:#090B0A;stroke:#090B0A}
+
+/* required fields */
+.rq::after{content:" *";color:#A33A2A}
+.ff.bad{border-color:#A33A2A;background:#FBF1EE;box-shadow:0 0 0 1px #A33A2A}
+.reqmsg{margin:20px 0 0;font:500 13px/1.4 'Inter',system-ui,sans-serif;color:#A33A2A}
+.reqmsg[hidden]{display:none}
+@media print{.reqmsg{display:none!important}.rq::after{content:""}}
+
+/* low voltage table: left edge at the 40% line, extra width goes between the two columns */
+@media (min-width:1400px){
+#baseline .bt{width:60%;min-width:max-content}
+#baseline .bcols{justify-content:space-between}
+}
+
+/* cover + low voltage as one page */
+.cw .hero{margin-left:0;margin-right:0}
+.cw{padding-bottom:0!important}
+#baseline.wrap{padding-bottom:36px}
+#baseline .main{padding:28px 0 0}
+
+/* page title outside the first table; H2 beside the Low voltage table */
+.ptitle{padding:0}
+.ptitle .kick{margin:28px 0 30px}
+.ptitle .h1{margin:0 0 8px}
+.cw .hero{margin-top:20px}
+.hero .cmeta{padding-top:40px}
+#baseline .main{align-items:center}
+#baseline .deck{margin:0}
+
+/* cover title spacing; secondary title beside the Low voltage table */
+.ptitle .h1{margin:44px 0 52px}
+.cw .hero{margin-top:0}
+#baseline .txt .kick{margin:0 0 22px}
+#baseline .txt .h1.sm{font-size:30px;margin:0 0 16px}
+
+/* Low voltage line: top-aligned with the table, between H2 and H1 size */
+#baseline .main{align-items:flex-start}
+#baseline .deck.lvh{font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:0;max-width:350px;text-align:left}
+
+/* logos moved inward */
+@media (min-width:701px){
+.chdr{position:relative;display:block;height:114px;padding:0!important}
+.chdr .logo{position:absolute;top:30px;left:26.1%;transform:translateX(-50%)}
+.chdr .clogo{position:absolute;top:32px;left:70.1%;transform:translateX(-50%)}
+}
+
+@media (min-width:1400px){#baseline .txt{flex:0 0 440px}#baseline .deck.lvh{max-width:440px}}
+
+/* Prepared by: bottom-right corner of Final Allowances */
+.pbw{position:absolute;left:0;right:0;bottom:30px;padding-top:0!important;padding-bottom:0!important;pointer-events:none;z-index:2}
+.pbw .pbc{margin:0 0 0 auto;width:fit-content;text-align:right;align-items:flex-end;gap:6px}
+.pbw .pbc .mono:first-child{color:#51544F}
+@media print{.pbw{display:none!important}}
+
+/* more room under the logos; Low voltage line on one line, slightly heavier */
+.ptitle .h1{margin-top:84px}
+#baseline .deck.lvh{white-space:nowrap;font-weight:500;max-width:none}
+@media (min-width:1400px){#baseline .txt{min-width:0}#baseline .deck.lvh{font-size:1.1vw}}
+@media (max-width:1399px) and (min-width:901px){#baseline .deck.lvh{font-size:26px}}
+@media (max-width:900px){#baseline .deck.lvh{white-space:normal;font-size:22px}}
+
+/* cover table: zones + level columns nudged left */
+@media (min-width:1340px){
+.hero .dec{padding-right:6.5%}
+}
+
+/* Low voltage: table centered under the first table, quantities line in the gap above it */
+@media (min-width:761px){
+#baseline .main{display:grid!important;grid-template-columns:max-content;justify-content:center;justify-items:stretch;row-gap:26px;padding:40px 0 0!important}
+#baseline .txt{flex:none!important;width:auto!important;min-width:0}
+#baseline .bt{width:auto!important;min-width:0!important;margin:0!important}
+#baseline .deck.lvh{font-size:22px!important;white-space:nowrap;max-width:none;margin:0;text-align:left}
+}
+/* Black frame on all tables, same as the cards */
+.hero,.bt,.fpanel{border:1px solid #090B0A!important}
+/* Low voltage: table 2 same width as table 1, three even columns (4/4/3), title in the H1 style two to three sizes down, left aligned */
+@media (min-width:761px){
+#baseline .main{grid-template-columns:minmax(0,1fr)!important;justify-content:stretch!important;row-gap:22px}
+#baseline .txt{width:100%!important;max-width:none!important}
+#baseline .bt{width:100%!important;min-width:0!important;padding:2px 32px 8px!important}
+#baseline .bcols{grid-template-columns:repeat(3,minmax(0,1fr))!important;column-gap:40px;justify-content:stretch!important}
+#baseline .bn{white-space:normal;font-size:14px}
+#baseline .lvt{font-size:30px;line-height:1.1;text-align:left;margin:0}
+}
+/* Cover: table 1 sits on the cream page (no fill, no frame); eyebrow back above the title; Pradera right aligned; table 2 title one size down */
+.hero{background:none!important;background-color:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important}
+.hero::after{display:none!important}
+.ptitle .kick{margin:84px 0 22px}
+.ptitle .h1{margin-top:0}
+.sec.cover>.sw{text-align:right;padding:0 4cqw 0 0}
+#baseline .lvt{font-size:26px}
+/* Cover: title, table 1 and table 2 start at the Pradera line (left edge of the P) and mirror it on the right */
+@media (min-width:761px){
+.sec.cover{--l0:calc(max((100vw - 1840px)/2,0px) + 80px);--l1:calc(4vw + .027*clamp(72px,17vw,300px))}
+.cw,#baseline .main{margin-left:calc(var(--l1) - var(--l0));margin-right:calc(var(--l1) - var(--l0))}
+.hero .wrap{padding-left:0!important;padding-right:0!important}
+}
+@media (min-width:761px) and (min-width:1500px){
+.sec.cover{--l0:calc(max((100vw - 1840px)/2,0px) + 56px)}
+}
+/* Cover: title System Options, H2 under it, client fields stacked in the left column and level with Home Audio */
+.ptitle .h1{margin-bottom:14px}
+.hero .cmeta{width:100%;padding-top:0!important}
+.hero .cin{grid-template-columns:1fr!important;gap:20px;max-width:460px;margin-top:-7px}
+.hero .main.cover .decs{margin-top:0}
+.hero .main.cover{padding-top:0}
+.hero .main.cover .txt{padding-top:0}
+/* Cover: fix clipped Client name label; system rows put the options column on the purple line, left aligned; freed space stays empty */
+.hero{overflow:visible!important}
+@media (min-width:1340px){
+.hero .dec .dt{flex:0 0 max(calc(41.7% - 24px),306px);box-sizing:border-box}
+.hero .dec .dopt{flex:1 1 auto;text-align:left}
+.hero .dec .stt{flex:0 0 auto;text-align:right}
+}
+/* Cover: fine full-width line under the logo bar, 30px above the logos and 30px below them */
+.sec.cover{overflow-x:clip}
+.sec.cover .chdr::after{content:"";position:absolute;left:calc(50% - 50vw);bottom:0;width:100vw;height:1px;background:rgba(11,13,12,.35);pointer-events:none}
+/* Table 2 closer to the cream page; same greener hover on both tables */
+.bt{background:#E4E3DB!important}
+.br:hover,.hero .dec:hover{background:rgba(40,98,78,.17)!important}
+/* Four category pages: eyebrow, H1 and H2 line up with the cover title; cards and visuals do not move */
+@media (min-width:761px){
+.sec.audio,.sec.surround,.sec.network,.sec.cameras{--l0:calc(max((100vw - 1840px)/2,0px) + 80px);--l1:calc(4vw + .027*clamp(72px,17vw,300px))}
+.sec.audio .main>.txt,.sec.surround .main>.txt,.sec.network .main>.txt,.sec.cameras .main>.txt{position:relative;left:calc(var(--l1) - var(--l0))}
+}
+@media (min-width:1500px){
+.sec.audio,.sec.surround,.sec.network,.sec.cameras{--l0:calc(max((100vw - 1840px)/2,0px) + 56px)}
+}
+/* Tier cards: every card meets 4.5:1 for white text; ladder steps down from there; all card text at the same white as the tier name and price */
+.tier.t1{background-color:#35705A;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#3A7660 0%,#316A55 40%,#295C49 100%)}
+.tier.t2{background-color:#235240;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#2B5E4B 0%,#235240 40%,#1B4435 100%)}
+.tier.t3{background-color:#153629;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#1B4033 0%,#153629 40%,#0F291F 100%)}
+.tier.t4{background-color:#0A1A13;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#10231A 0%,#0A1A13 40%,#06110C 100%)}
+.tier{--fg:#F4F3EE;--fg2:#F4F3EE;--fg3:#EAEDE6;color:#F4F3EE}
+.tier .tdesc,.tier .tscope,.tier .v,.tier .tprice,.tier .tname{color:#F4F3EE}
+.tier .mono.k{color:#EAEDE6}
+/* White text on the black selected visuals: pure white, heavier, so it reads like the cards */
+.audio :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .lt{fill:#FFFFFF;font-weight:700;stroke:#FFFFFF;stroke-width:.35px;paint-order:stroke}
+.network :is(.sel-1,.sel-2,.sel-3) .rn1,.network :is(.sel-2,.sel-3) .rn2,.network .sel-3 .rn3,.network.sel-1 .rn1,.network.sel-2 .rn1,.network.sel-3 .rn1,.network.sel-2 .rn2,.network.sel-3 .rn2,.network.sel-3 .rn3,.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .cov~.lt{fill:#FFFFFF;font-weight:700;stroke:#FFFFFF;stroke-width:.35px}
+.tier .top::before{color:#F4F3EE;font-weight:400}
+.tier .sw .mono{color:#F4F3EE}
+/* Cover system rows: last letter of every category at the purple line, zones start at the yellow line, status stays right */
+@media (min-width:1340px){
+.hero .dec{display:grid!important;grid-template-columns:max(40.75%,285px) calc(min(70.7%,100% - 321px) - max(40.75%,285px)) 1fr;column-gap:0!important;align-items:baseline}
+.hero .dec .dt{flex:none;grid-column:1;grid-row:1;text-align:right;padding-right:0}
+.hero .dec .dopt{grid-column:3;grid-row:1;justify-self:start;text-align:left;white-space:nowrap;flex:none}
+.hero .dec .stt{grid-column:3;grid-row:1;justify-self:end;text-align:right}
+}
+#baseline .lvt{text-align:center!important}
+.cvh2{margin:0 0 44px;max-width:none}
+.cvh2{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:21px;line-height:1.3;letter-spacing:-.02em}
+/* Cover: the four rows exactly match the client stack (label top to email box bottom); the saved space goes above the table */
+@media (min-width:1340px){
+.hero .main.cover .decs{margin-top:-7px;height:239.7px;display:grid;grid-template-rows:repeat(4,1fr)}
+.hero .decs .dec{padding-top:0!important;padding-bottom:0!important;align-items:center!important;box-sizing:border-box}
+.hero .decs .dec .dt{font-size:22px}
+.cvh2{margin-bottom:86px}
+}
+/* Cover rows: names left aligned on the first letter of Surround Sound; zones and status stay put */
+@media (min-width:1340px){
+.hero .decs .dec .dt{justify-self:end;width:8.298em;text-align:left!important;padding-left:0!important;padding-right:0!important;white-space:nowrap}
+}
+#baseline .lvt{text-align:left!important;text-transform:capitalize}
+/* Five matching page headers: eyebrow 46px above H1, H2 22px below, same left edge on the cover, the four categories and Final Allowances */
+.ptitle .kick{margin:84px 0 46px}
+.ptitle .h1{margin-bottom:22px}
+.cvh2{margin-top:0}
+#selections .fmain .txt{display:block!important}
+#selections .fmain .txt .kick{margin:28px 0 46px}
+#selections .fmain .txt .h1{margin:0}
+#selections .fmain .txt .cd{margin:22px 0 0;max-width:440px}
+@media (min-width:761px){
+#selections{--l0:calc(max((100vw - 1840px)/2,0px) + 80px);--l1:calc(4vw + .027*clamp(72px,17vw,300px))}
+#selections .fmain>.txt{position:relative;left:calc(var(--l1) - var(--l0))}
+}
+@media (min-width:1500px){
+#selections{--l0:calc(max((100vw - 1840px)/2,0px) + 56px)}
+}
+/* Final Allowances table: System names start on the Builder box, Total sits in the Scope column; Scope, Level and Allowance untouched */
+@media (min-width:901px){
+#selections .fx .dt:not(.dpr){font-size:22px}
+#selections .fx .dt:not(.dpr),#selections .fxh .x1{position:relative;left:max(0px,min(calc(36.84% + 8.42px),calc(100% - 854px)))}
+#selections .ftot{display:grid;grid-template-columns:280px 1fr 110px 150px;column-gap:24px;align-items:baseline}
+#selections .ftot .mono{grid-column:2;grid-row:1;text-align:right}
+#selections .ftot .iv{grid-column:4;grid-row:1;text-align:right}
+}
+/* Cover: no client stack, rows span the table. Final: contact row above signature, centered Download PDF and two-line note, same hover as the cover */
+.hero .main.cover .decs{margin-top:0!important}
+.frow3.fcn{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;padding:0;margin-top:22px}
+#selections .frow3.fcn{gap:22px!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;padding:0!important}
+@media (max-width:900px){.frow3.fcn,#selections .frow3.fcn{grid-template-columns:1fr!important;gap:18px!important}}
+@media print{#selections .frow3.fcn{grid-template-columns:repeat(3,1fr)!important;gap:22px!important}}
+.fact{flex-direction:column;justify-content:center;align-items:center;gap:16px;text-align:center}
+.fact .fnote{text-align:center;max-width:none;text-wrap:balance}
+.dlpdf{background-color:#235240;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#2B5E4B 0%,#235240 40%,#1B4435 100%);color:#F4F3EE;border:1px solid #090B0A}
+#selections .dec.fx:hover{background:rgba(40,98,78,.17)!important}
+/* Cover rows: stack starts under the word "systems." in the H2, three left-aligned columns with equal gaps, row lines start at the stack */
+@media (min-width:1340px){
+.hero .main.cover .decs{margin-left:calc(24.279 * 21px)}
+.hero .decs .dec{grid-template-columns:220px 211px 101px!important;justify-content:space-between!important;padding-right:0!important}
+.hero .decs .dec .dt{grid-column:1;justify-self:start;width:auto;text-align:left!important}
+.hero .decs .dec .dopt{grid-column:2;justify-self:start;text-align:left}
+.hero .decs .dec .stt{grid-column:3;justify-self:start;text-align:left;min-width:0;white-space:nowrap}
+}
+/* Final: fine line at the midpoint between Client notes and the contact row, spacing doubled */
+.frow3.fcn,#selections .frow3.fcn{margin-top:44px!important;position:relative}
+.frow3.fcn::before{content:"";position:absolute;left:0;right:0;top:-22px;height:1px;background:rgba(11,13,12,.35);pointer-events:none}
+/* Final: labels above the white boxes in Segoe UI, black; centered note; centered footer contact */
+#selections .fld2>.mono{font-family:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;color:#000}
+.fnote .fgap{display:block;height:1.55em}
+.fact .fnote{text-align:center}
+.pbw .pbc{text-align:center!important;align-items:center!important}
+/* Cover rows: same width, centered with the Base Model Home table */
+@media (min-width:1340px){
+.hero .main.cover .decs{margin-left:auto;margin-right:auto;flex:0 0 calc(100% - 24.279 * 21px);width:calc(100% - 24.279 * 21px)}
+}
+.fact .fnote{font-size:14px}
+#selections .ftot .iv{font-family:'Montserrat',system-ui,sans-serif;font-size:25px;font-weight:600;letter-spacing:-.01em}
+/* Cover H2 wraps at the end of the S in "Options" */
+.cvh2{max-width:394.8px}
+/* Final Allowances: Description replaces Scope; System stack starts on the last "s" of the H1; Description and Level left aligned; row lines start at the System stack */
+@media (min-width:1340px){
+#selections .fxh,#selections .fx,#selections .ftot{display:grid;grid-template-columns:220.5px minmax(0,249px) 68.5px 98px;column-gap:24px;justify-content:space-between;margin-left:max(0px,min(calc(var(--l1) - var(--l0) + 401.1px),calc(100% - 830px)))}
+#selections .fx .dt:not(.dpr),#selections .fxh .x1{left:0}
+#selections .fx .dopt{text-align:left;white-space:normal}
+#selections .fx .stt{text-align:left}
+#selections .fxh .x2,#selections .fxh .x3{text-align:left}
+#selections .ftot .mono{grid-column:3;grid-row:1;text-align:left}
+}
+/* Cover: same four-column table as Final Allowances, starting on the S of "Options"; fourth column shows the price range */
+@media (min-width:1340px){
+.hero>.wrap{max-width:none}
+.hero .main.cover .decs.cv4{height:auto;display:block;flex:none;min-width:0;margin-top:0;margin-right:0;width:max(calc(100% - (var(--l0) - var(--l1)) - 483.1px),830px);margin-left:max(0px,min(367.5px,calc(100% - max(calc(100% - (var(--l0) - var(--l1)) - 483.1px),830px))))}
+.hero .decs.cv4 .fxh,.hero .decs.cv4 .dec{display:grid!important;grid-template-columns:220.5px minmax(0,249px) 80.5px 208px!important;column-gap:24px!important;justify-content:space-between!important}
+.hero .decs.cv4 .dec{padding:20px 0!important;align-items:baseline!important;border-top:0;border-bottom:1px solid var(--line2);box-sizing:border-box}
+.hero .decs.cv4 .dec .dt{grid-column:auto;grid-row:auto;justify-self:start;width:auto;padding:0!important;text-align:left!important;font-size:22px;white-space:nowrap}
+.hero .decs.cv4 .dec .dpr{font-size:25px;justify-self:end;text-align:right!important}
+.hero .decs.cv4 .dec .dopt{grid-column:auto;grid-row:auto;justify-self:start;text-align:left;white-space:normal}
+.hero .decs.cv4 .dec .stt{grid-column:auto;grid-row:auto;justify-self:start;text-align:left;min-width:0;white-space:nowrap}
+.hero .decs.cv4 .fxh .x2,.hero .decs.cv4 .fxh .x3{text-align:left}
+}
+@media (max-width:1339px){.hero .decs.cv4 .dpr{display:none}}
+/* Cover: H2 to table gap narrowed 24px; the 24px goes between Base Model table and Pradera */
+@media (min-width:1340px){
+.cvh2{margin-bottom:62px}
+.sec.cover>.sw{margin-top:24px}
+}
+/* Card descriptions: reserve the longest description per width band so the rows line up across cards */
+@media (min-width:1340px) and (max-width:1535px){.tier .tdesc{min-height:112px}}
+@media (min-width:1200px) and (max-width:1339px){.tier .tdesc{min-height:157px}}
+@media (min-width:1000px) and (max-width:1199px){.tier .tdesc{min-height:202px}}
+/* Final: one blank line between each of the three lines under Download PDF, and the same one-line spacing in the Prepared by footer */
+.pbc .fgap{display:block;height:.775em}
+.pbw .pbc{gap:11px}
+.fnote .fgap{height:.775em}
+/* Both tables: sentence-case body text (column labels stay caps), same row height, Package label */
+.hero .decs.cv4 .dec .dopt,.hero .decs.cv4 .dec .stt,#selections .fx .dopt,#selections .fx .stt,#selections .ftot .mono{text-transform:none;letter-spacing:.01em;font-size:13px}
+.hero .decs.cv4 .dec,#selections .fx{box-sizing:border-box;min-height:68.5px}
+#selections .fx .stt{color:#0B0D0C}
+/* Cameras plan: extra four cameras appear only with the 8-camera package, same icon as the rest; doorbell icon is light red */
+.sec.cameras .add{opacity:0;transition:opacity .3s ease}
+.sec.cameras.sel-3 .add{opacity:1}
+.sec.cameras.sel-3 .add .locr{stroke:rgba(0,0,0,.55);fill:#000;stroke-dasharray:none}
+.sec.cameras.sel-3 .add .locd{fill:rgba(0,0,0,.55)}
+.sec.cameras .bell{stroke:#EE6A5E;fill:rgba(238,106,94,.2);stroke-width:1.6}
+/* card spacing: 3x the old 28px gap (84px); 2-up below 1340px; rows pin to card bottom so they align */
+.tiers{gap:84px!important}
+.tier{flex:0 0 calc((100% - 252px)/4)!important;max-width:calc((100% - 252px)/4)!important}
+.tier .tdesc{min-height:0!important;flex:1 0 auto}
+.tier .rows{margin-top:auto}
+@media (max-width:1339px){.tier{flex:0 0 calc((100% - 84px)/2)!important;max-width:calc((100% - 84px)/2)!important}}
+@media (max-width:999px){.tiers{gap:48px!important}.tier{flex:1 1 260px!important;max-width:none!important}}
+@media (min-width:1340px) and (max-width:1699px){#audio .tier .row:nth-child(4),#surround .tier .row:nth-child(4),#network .tier .row:nth-child(2){min-height:57px;box-sizing:border-box}}
+/* cover header: logos +20%, DAVG logo on the System Options left edge, Celebrity logo the same distance from the right page edge, nav line 25% lighter */
+.chdr .logo{height:65px;top:24.5px;left:-56px;transform:none}
+.chdr .clogo{height:60px;top:27px;left:auto;right:-56px;transform:none}
+@media (min-width:761px){.chdr .logo{left:calc(var(--l1) - var(--l0))}.chdr .clogo{right:calc(var(--l1) - var(--l0))}}
+.sec.cover .chdr::after{background:rgba(11,13,12,.2625)}
+/* ONE shared table spec for cover table 1 and Final Allowances: same left edge, width and four column tracks; all columns left aligned */
+@media (min-width:1340px){
+.hero .main.cover .decs.cv4{margin-left:367.5px;width:max(860px,calc(100vw - var(--l1) - 367.5px - var(--l0) - 115.6px))!important;max-width:none}
+#selections .fxh,#selections .fx,#selections .ftot{margin-left:calc(var(--l1) + 367.5px - var(--l0) - 41px)!important;width:max(860px,calc(100vw - var(--l1) - 367.5px - var(--l0) - 115.6px))!important;max-width:none!important;box-sizing:border-box}
+.hero .decs.cv4 .fxh,.hero .decs.cv4 .dec,#selections .fxh,#selections .fx,#selections .ftot{display:grid!important;grid-template-columns:250px minmax(0,249px) 80.5px 208px!important;column-gap:24px!important;justify-content:space-between!important}
+.hero .decs.cv4 .fxh .x1,.hero .decs.cv4 .fxh .x2,.hero .decs.cv4 .fxh .x3,.hero .decs.cv4 .fxh .x4,#selections .fxh .x1,#selections .fxh .x2,#selections .fxh .x3,#selections .fxh .x4{text-align:left!important;justify-self:start!important;left:0!important}
+.hero .decs.cv4 .dec .dpr,#selections .fx .dpr{justify-self:start!important;text-align:left!important;margin-left:0!important;flex:none!important}
+#selections .ftot .mono{grid-column:3!important;grid-row:1!important;text-align:left!important;justify-self:start}
+#selections .ftot .iv{grid-column:4!important;grid-row:1!important;text-align:left!important;justify-self:start}
+}
+@media (min-width:1340px){.hero .decs.cv4 .dec .stt{position:relative}.hero .decs.cv4 .dec .stt::before{position:absolute;left:-14px;top:50%;margin:-2.5px 0 0!important}}
+/* visuals: all four identical. Left edge = middle gap of the 4-up card row (50% of the card row), right edge = outside edge of the 4th card */
+@media (min-width:1340px){
+.art{flex:none!important;width:50%!important;max-width:none!important;min-width:0;margin-left:auto!important;padding:0!important;box-sizing:border-box}
+.art svg{width:100%;height:auto;display:block}
+}
+.hero .decs.cv4 .dec .dt .tn{display:inline-block;width:30px;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;color:rgba(11,13,12,.55);vertical-align:baseline}
+@media (min-width:1340px) and (max-width:1399px){
+.hero .main.cover .decs.cv4{width:max(830px,calc(100vw - var(--l1) - 367.5px - var(--l0) - 115.6px))!important}
+#selections .fxh,#selections .fx,#selections .ftot{width:max(830px,calc(100vw - var(--l1) - 367.5px - var(--l0) - 115.6px))!important}
+.hero .decs.cv4 .fxh,.hero .decs.cv4 .dec,#selections .fxh,#selections .fx,#selections .ftot{grid-template-columns:250px minmax(0,249px) 80.5px 208px!important}
+}
+/* Surround visual: three color systems. Black = front speakers (unchanged), blue = surround speakers, yellow = subwoofers */
+.sec.surround .srd .spk.ls{stroke:rgba(31,111,235,.6)}
+.sec.surround .srd .spk-d.lf{fill:rgba(31,111,235,.6)}
+.sec.surround .ylw .sub.ls{stroke:rgba(214,160,0,.8)}
+.sec.surround .ylw .spk-d.lf{fill:rgba(214,160,0,.8)}
+.sec.surround :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3).srd .spk.ls{stroke:#1F6FEB;fill:#1F6FEB}
+.sec.surround :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3).srd .spk-d.lf{fill:#fff}
+.sec.surround :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3).ylw .sub.ls{stroke:#F2B600;fill:#F2B600}
+.sec.surround :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3).ylw .spk-d.lf{fill:#090B0A}
+/* Networking visual: WAP coverage in a light violet, slightly transparent */
+.sec.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .cov.ls{fill:rgba(139,92,246,.8);stroke:rgba(124,77,232,.9);stroke-dasharray:none}
+.sec.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .spk-d.lf{fill:#5B2FC4}
+/* Surround front speakers (L, C, R): red */
+.sec.surround .frd .spk.ls{stroke:rgba(224,60,60,.6)}
+.sec.surround .frd .spk-d.lf{fill:rgba(224,60,60,.6)}
+.sec.surround :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3).frd .spk.ls{stroke:#E03C3C;fill:#E03C3C}
+.sec.surround :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3).frd .spk-d.lf{fill:#fff}
+/* Audio visual: speakers only appear for the tier(s) chosen, in red. Rooms with speakers get a medium black border, no black fill */
+.sec.audio .spk,.sec.audio .spk-d{opacity:0;transition:opacity .3s ease,fill .3s ease,stroke .3s ease}
+.sec.audio :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .spk.ls{opacity:1;stroke:#E03C3C;fill:#E03C3C}
+.sec.audio :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .spk-d.lf{opacity:1;fill:#fff}
+.sec.audio :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) rect.pl-room.ls{fill:none;stroke:#000;stroke-width:2.6}
+.sec.audio :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .lt{fill:#0B0D0C;font-weight:500;stroke:none}
+/* Networking: router black, switch gray */
+.sec.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3).swg rect.pl-room.ls{fill:#9A9D99;stroke:#9A9D99}
+/* Camera system icons: standard green instead of black */
+.sec.cameras .loc .locr,.sec.cameras .add .locr{stroke:rgba(26,143,110,.55)}
+.sec.cameras .loc .locd{fill:rgba(26,143,110,.55)}
+.sec.cameras:is(.sel-1,.sel-2,.sel-3) .loc .locr,.sec.cameras.sel-3 .add .locr{stroke:#1A8F6E;fill:#1A8F6E;stroke-dasharray:none}
+.sec.cameras:is(.sel-1,.sel-2,.sel-3) .loc .locd,.sec.cameras.sel-3 .add .locd{fill:#fff}
+/* Cards: price replaces the 01/02/03 counter; even 22px spacing between every block; rows align across cards (subgrid) */
+.tier .top::before{content:none!important}
+.tier .top{padding-top:32px!important;padding-bottom:0!important;align-items:center}
+.tier .top .tprice{margin:0!important;display:block;font-size:30px;line-height:1;font-weight:400}
+.tier .tname{margin-top:22px!important;padding-bottom:22px!important}
+.tier .tscope{margin-top:22px!important;min-height:0!important}
+.tier .tdesc{margin-top:22px!important;min-height:0!important;flex:none!important}
+.tier .rows{margin-top:22px!important}
+.tier{padding-bottom:32px!important}
+@media (min-width:1340px){
+.tiers{display:grid!important;grid-template-columns:repeat(4,calc((100% - 252px)/4));column-gap:84px;row-gap:0!important;align-items:stretch;justify-content:start}
+.tier{display:grid!important;grid-template-rows:subgrid;grid-row:span 5;flex:none!important;width:auto!important;max-width:none!important;min-height:0!important;align-content:start;justify-items:stretch;row-gap:0!important}
+.tier .tdesc{flex:none!important}
+}
+.tier .top{width:100%;justify-self:stretch}
+.sec.cameras .bell{stroke:#000;fill:#000}
+.tier .top .tprice{font-size:24px!important;letter-spacing:-.02em}
+.tier .top .sw{gap:10px}
+/* Cameras: purple icons. Networking: blue coverage (~30% less opaque), solid black WAP icon, black text */
+.sec.cameras .loc .locr,.sec.cameras .add .locr{stroke:rgba(124,77,232,.55)}
+.sec.cameras .loc .locd{fill:rgba(124,77,232,.55)}
+.sec.cameras:is(.sel-1,.sel-2,.sel-3) .loc .locr,.sec.cameras.sel-3 .add .locr{stroke:#7C4DE8;fill:#7C4DE8;stroke-dasharray:none}
+.sec.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .cov.ls{fill:rgba(47,111,235,.56);stroke:rgba(47,111,235,.7);stroke-dasharray:none}
+.sec.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .spk.ls{stroke:#000;fill:#000}
+.sec.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .spk-d.lf{fill:#000}
+.sec.network :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3) .cov~.lt{fill:#000!important;stroke:#000!important}
+.sec.network:is(.sel-1,.sel-2,.sel-3) .rn1,.sec.network:is(.sel-2,.sel-3) .rn2,.sec.network.sel-3 .rn3{fill:#000!important;stroke:#000!important}
+/* 3-card rows: middle card (Signature) centered on the left edge of the visual box (= 50% of row) */
+@media (min-width:1340px){
+.sec:is(.surround,.network,.cameras) .tiers{position:relative;left:calc(12.5% + 10.5px)}
+}
+/* Premier (8 cameras): left-middle camera moves to the bottom-left corner; bottom-left add camera moves right of the front door */
+.sec.cameras .lm{transition:transform .3s ease}
+.sec.cameras.sel-3 .lm{transform:translate(17.24px,98.26px)}
+/* Control4 Chime doorbell: red, left of the sidewalk */
+.sec.cameras .bell{stroke:#E03C3C!important;fill:#E03C3C!important}
+/* one hover color for both cover tables and the final table */
+.br:hover,.hero .dec:hover,#selections .dec.fx:hover{background:#BCD5C6!important}
+/* Home audio: speaker S# labels follow their dots */
+.sec.audio .sl{opacity:0;transition:opacity .3s ease}
+.sec.audio :is(.sel-1 .u1,.sel-2 .u1,.sel-2 .u2,.sel-3 .u1,.sel-3 .u2,.sel-3 .u3,.sel-4 .u1,.sel-4 .u2,.sel-4 .u3,.sel-4 .u4) .sl{opacity:1}
+/* cards: tier name on top, price + select row below it (divider moves under the price row) */
+.tier .tname{order:1;margin-top:0!important;padding-top:32px!important;padding-bottom:0!important;border-bottom:0!important}
+.tier .top{order:2;padding-top:0!important;margin-top:18px!important;padding-bottom:22px!important;border-bottom:1px solid var(--line)}
+.tier .tscope{order:3}
+.tier .tdesc{order:4}
+.tier .rows{order:5}
+/* Surround: remote icon, label follows tier (HALO std/signature, NEEO premier) */
+.sec.surround text.rl{fill:#000!important;stroke:none;opacity:0;transition:opacity .3s ease}
+.sec.surround:is(.sel-1,.sel-2) text.rl-h{opacity:1}
+.sec.surround.sel-3 text.rl-n{opacity:1}
+/* contact info under Download PDF: tighter line spacing */
+.fnote{line-height:1.3!important}
+.fnote .fgap,.pbc .fgap{height:.2em!important}
+/* brand forest green for eyebrows and table numbers; numbers added to the final table */
+.kick .mono{color:#235240!important;font-weight:600}
+.kick i{background:#235240!important}
+.hero .decs.cv4 .dec .dt .tn,#selections .dec.fx .dt .tn{display:inline-block;width:30px;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;color:#235240!important;vertical-align:baseline}
+/* cover table 1: same panel shade as the final allowance table (#E8E4D8), painted outside the layout box so nothing moves */
+@media (min-width:1340px){.hero .decs.cv4{background:#E8E4D8;box-shadow:0 0 0 24px #E8E4D8}}
+/* switch icon: standard green */
+.sec.network .swg rect.pl-room.ls{fill:#1A8F6E!important;stroke:#1A8F6E!important}
+/* phone layout */
+@media (max-width:640px){
+.hero .wrap{padding-left:0!important;padding-right:0!important}
+.hero .main.cover .decs,.hero .decs.cv4{margin-left:0!important;margin-right:0!important;width:100%!important;flex:0 0 100%!important;max-width:none!important;box-shadow:none!important;background:transparent!important}
+.hero .decs.cv4 .dec{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:6px!important;padding:18px 0!important;grid-template-columns:none!important}
+.hero .decs.cv4 .dec .dt:not(.dpr){display:flex!important;align-items:baseline!important;white-space:normal!important;width:auto!important;padding:0!important;text-align:left!important;justify-self:auto!important}
+.hero .decs.cv4 .dec .tn{flex:0 0 32px!important}
+.hero .decs.cv4 .dec .dopt{white-space:normal!important;text-align:left!important;padding-left:32px!important;justify-self:auto!important;grid-column:auto!important}
+.art{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;padding:0!important}
+.art svg{width:100%!important}
+}
+/* selected label: one line, no stray dot */
+.tier .sw .mono{white-space:nowrap!important}
+.st-on::before{display:none!important}
+@media (min-width:1340px){.tier .top .sw{gap:8px!important}.tier .sw .st-on,.tier .sw .st-off{font-size:11px!important;letter-spacing:.06em!important}}
+@media (min-width:1340px) and (max-width:1439px){.tier .sw .st-on,.tier .sw .st-off{font-size:10px!important;letter-spacing:.03em!important}.tier .top .sw{gap:6px!important}}
+@media (min-width:1340px) and (max-width:1399px){.tier .top .tprice{font-size:20px!important}}
+@media (max-width:1339px){
+.cw,#baseline .main{margin-left:0!important;margin-right:0!important}
+.sec.audio .main>.txt,.sec.surround .main>.txt,.sec.network .main>.txt,.sec.cameras .main>.txt,#selections .fmain>.txt{left:0!important}
+#selections .dec.fx{display:grid!important;grid-template-columns:1fr auto!important;grid-template-areas:"t t" "d d" "s p"!important;row-gap:6px!important;column-gap:12px!important;align-items:baseline!important;padding-right:0!important}
+#selections .dec.fx .dt:not(.dpr){grid-area:t!important;display:flex!important;align-items:baseline!important;white-space:normal!important;width:auto!important;left:0!important;padding:0!important;flex:none!important}
+#selections .dec.fx .tn{flex:0 0 32px!important}
+#selections .dec.fx .dopt{grid-area:d!important;white-space:normal!important;padding-left:32px!important;flex:none!important;text-align:left!important}
+#selections .dec.fx .stt{grid-area:s!important;padding-left:32px!important;text-align:left!important;justify-self:start!important;min-width:0!important}
+#selections .dec.fx .dpr{grid-area:p!important;justify-self:end!important;text-align:right!important;margin:0!important}
+}
+@media (max-width:640px){#selections .dec.fx .dt:not(.dpr){font-size:20px!important}}
+@media (max-width:1339px){
+.sec.cover .chdr,.chdr{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:16px!important;height:auto!important;padding:28px 0 24px!important}
+.chdr .logo,.chdr .clogo{position:static!important;transform:none!important;left:auto!important;right:auto!important;top:auto!important;width:auto!important;max-width:calc(50% - 8px)!important;object-fit:contain}
+.chdr .logo{height:54px!important}.chdr .clogo{height:50px!important}
+}
+@media (max-width:640px){.chdr .logo,.chdr .clogo{height:auto!important;max-height:34px!important}}
+/* Download PDF: one-page letter summary, independent of width media queries */
+@media print{
+@page{size:letter portrait;margin:.35in}
+#selections .dec.fx:hover,.br:hover{background:transparent!important}
+#selections .main,#selections .fmain{padding-top:0!important;gap:8px!important}
+#selections .h1{font-size:26px!important}
+#selections .fmain .txt p,#selections .cd{font-size:15px!important;margin-top:8px!important}
+#selections .dec.fx{padding:8px 0!important;row-gap:2px!important}
+#selections .fpanel{padding:0 18px 12px!important}
+#selections .frow3{padding:6px 0 8px!important}
+#selections .fnotes textarea{min-height:44px!important;height:44px!important}
+#selections .fsig{margin-top:6px!important}
+.dlpdf{display:none!important}
+}
+</style>
+</helmet>
+
+<div id="top">
+
+<!-- ============ 01 COVER ============ -->
+<section class="sec paper cover">
+  <div class="wrap">
+    <div class="chdr">
+      <img class="logo" src="./davg-logo.png" alt="DAVG Denver AV Guy">
+      <img class="clogo" src="./celebrity-logo.png" alt="Celebrity Custom Homes">
+    </div>
+  <div class="cw">
+  <div class="ptitle"><p class="kick"><i aria-hidden="true"></i><span class="mono">Celebrity Custom Homes</span></p><h1 class="h1">System Options</h1><h2 class="cd cvh2">Choose your selection for each of the four low voltage systems.</h2></div>
+  <div class="hero">
+    <div class="wrap">
+      
+      <div class="main cover">
+        <div class="decs cv4">
+          <div class="fxh mono"><span class="x1">System</span><span class="x2">Description</span><span class="x3">Package</span><span class="x4">Price range</span></div>
+          <a class="dec" href="#audio">
+            <span class="dt"><span class="tn">01</span>Home Audio</span><span class="mono dopt">Music throughout selected rooms.</span>
+            <span class="mono stt on-{{ui.aOn}}">{{ui.cA}}</span><span class="dt dpr">$4,000 – $17,000</span>
+          </a>
+          <a class="dec" href="#surround">
+            <span class="dt"><span class="tn">02</span>Surround Sound</span><span class="mono dopt">A dedicated media room experience.</span>
+            <span class="mono stt on-{{ui.sOn}}">{{ui.cS}}</span><span class="dt dpr">$7,000 – $15,000</span>
+          </a>
+          <a class="dec" href="#network">
+            <span class="dt"><span class="tn">03</span>Network &amp; Wifi</span><span class="mono dopt">Whole-home connectivity.</span>
+            <span class="mono stt on-{{ui.nOn}}">{{ui.cN}}</span><span class="dt dpr">$3,000 – $9,000</span>
+          </a>
+          <a class="dec" href="#cameras">
+            <span class="dt"><span class="tn">04</span>Camera System</span><span class="mono dopt">Entry, perimeter and exterior coverage.</span>
+            <span class="mono stt on-{{ui.cOn}}">{{ui.cC}}</span><span class="dt dpr">$3,500 – $12,500</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="wrap" id="baseline">
+    <div class="main">
+      <div class="txt">
+        <h2 class="h1 lvt">Low-Voltage Base Model</h2>
+      </div>
+      <div class="bt"><div class="bcols">
+<div class="bcol"><div class="bth mono"><span style="flex:1 1 220px">Description</span><span style="flex:0 0 48px;text-align:right">QTY</span><span class="bu">Unit</span><span class="bb"></span></div>
+<div class="br"><div class="bi"><span class="bn">Heritage Series Base Pre-wire</span></div><span class="bq">1</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:11%"></i></span></span></div>
+<div class="br"><div class="bi"><span class="bn">1-1 Basic Port (1Cat6+1RG6)</span></div><span class="bq">6</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:67%"></i></span></span></div>
+<div class="br"><div class="bi"><span class="bn">3-1 Tech Port (3Cat6+1RG6)</span></div><span class="bq">1</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:11%"></i></span></span></div>
+<div class="br"><div class="bi"><span class="bn">Audio Zone Pre-wire (1Cat5E+1-16/4+2-16/2)</span></div><span class="bq">3</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:33%"></i></span></span></div>
+</div>
+<div class="bcol"><div class="bth mono"><span style="flex:1 1 220px">Description</span><span style="flex:0 0 48px;text-align:right">QTY</span><span class="bu">Unit</span><span class="bb"></span></div>
+<div class="br"><div class="bi"><span class="bn">1-0 Telco/Data (1Cat6) Wireless Access</span></div><span class="bq">4</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:44%"></i></span></span></div>
+<div class="br"><div class="bi"><span class="bn">Camera, Single Location (2Cat6)</span></div><span class="bq">4</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:44%"></i></span></span></div>
+<div class="br"><div class="bi"><span class="bn">7.2 Surround Sound Pre-wire (7-14/2+2-RG6)</span></div><span class="bq">1</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:11%"></i></span></span></div>
+<div class="br"><div class="bi"><span class="bn">Floor Box Combo Installation</span></div><span class="bq">2</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:22%"></i></span></span></div>
+</div>
+<div class="bcol"><div class="bth mono"><span style="flex:1 1 220px">Description</span><span style="flex:0 0 48px;text-align:right">QTY</span><span class="bu">Unit</span><span class="bb"></span></div>
+<div class="br"><div class="bi"><span class="bn">Security Device</span></div><span class="bq">9</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:100%"></i></span></span></div>
+<div class="br"><div class="bi"><span class="bn">Security Communicator</span></div><span class="bq">2</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:22%"></i></span></span></div>
+<div class="br"><div class="bi"><span class="bn">Security Smoke Detector</span></div><span class="bq">0</span><span class="mono bu">EA</span><span class="bb"><span class="bar"><i style="width:0%"></i></span></span></div>
+</div>
+</div>
+</div>
+    </div>
+  </div>
+  <div class="sw" aria-hidden="true">Pradera</div>
+</section>
+
+<!-- ============ 03 AUDIO ============ -->
+<section id="audio" class="sec paper audio sel-{{ui.a}}">
+  <div class="wrap">
+    <div class="hdr">
+      <span class="mono"><span class="vl">Home audio</span></span>
+    </div>
+    <div class="main">
+      <div class="txt">
+        <p class="kick"><i aria-hidden="true"></i><span class="mono">System options - 01</span></p>
+        <h2 class="h1">Home audio</h2>
+        <p class="cd">Selectable whole-home audio packages with in-ceiling speakers, amplification, and mobile app control.</p>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 760 470" role="img" aria-label="Floor plan showing audio zones that activate as the level increases">
+          <rect class="pl-wall" x="3" y="32" width="754" height="414"/>
+          <rect x="3" y="32" width="754" height="414" fill="#E2DED3"/><rect x="1" y="346" width="371" height="101" fill="#F2EFE7"/><path d="M 9.32 37.97H 750.68V 440.03H 377.9V 340.62H 9.32Z" fill="none" stroke="rgba(0,0,0,.30)" stroke-width=".8"/><rect x="0" y="29" width="6" height="6" fill="rgba(0,0,0,.55)"/><rect x="754" y="29" width="6" height="6" fill="rgba(0,0,0,.55)"/><rect x="754" y="443" width="6" height="6" fill="rgba(0,0,0,.55)"/><path d="M 3 26.03v 6M 49.34 26.03v 6M 95.67 26.03v 6M 142.01 26.03v 6M 188.34 26.03v 6M 234.68 26.03v 6M 281.01 26.03v 6M 327.35 26.03v 6M 373.68 26.03v 6M 420.02 26.03v 6M 466.35 26.03v 6M 512.69 26.03v 6M 559.02 26.03v 6M 605.36 26.03v 6M 651.69 26.03v 6M 698.03 26.03v 6M 744.36 26.03v 6" fill="none" stroke="rgba(0,0,0,.30)" stroke-width=".8"/>
+          <g class="u1">
+            <rect class="pl-room ls" x="380" y="85.74" width="368.58" height="183.12"/>
+            <circle class="spk ls" cx="472.14" cy="177.30" r="9"/><circle class="spk-d lf" cx="472.14" cy="177.30" r="3"/>
+            <circle class="spk ls" cx="656.43" cy="177.30" r="9"/><circle class="spk-d lf" cx="656.43" cy="177.30" r="3"/>
+            <text class="pl-lab lt" x="564.29" y="109.63" style="text-anchor:middle">GREAT ROOM (ZONE 1)</text><text class="pl-n lt sl" x="456.14" y="180.80" style="text-anchor:end;font-size:10px;letter-spacing:.06em">S1</text><text class="pl-n lt sl" x="672.43" y="180.80" style="text-anchor:start;font-size:10px;letter-spacing:.06em">S2</text>
+          </g>
+          <g class="u2">
+            <rect class="pl-room ls" x="11.42" y="39.96" width="210.61" height="169.18"/>
+            <circle class="spk ls" cx="116.73" cy="88.72" r="9"/><circle class="spk-d lf" cx="116.73" cy="88.72" r="3"/>
+            <circle class="spk ls" cx="116.73" cy="160.38" r="9"/><circle class="spk-d lf" cx="116.73" cy="160.38" r="3"/>
+            <text class="pl-lab lt" x="116.73" y="63.85" style="text-anchor:middle;font-size:11px;letter-spacing:.1em">MASTER BEDROOM (ZONE 3)</text><text class="pl-n lt sl" x="100.73" y="92.22" style="text-anchor:end;font-size:10px;letter-spacing:.06em">S5</text><text class="pl-n lt sl" x="132.73" y="163.88" style="text-anchor:start;font-size:10px;letter-spacing:.06em">S6</text>
+          </g>
+          <g class="u2">
+            <rect class="pl-room ls" x="222.04" y="39.96" width="157.96" height="169.18"/>
+            <circle class="spk ls" cx="301.02" cy="88.72" r="9"/><circle class="spk-d lf" cx="301.02" cy="88.72" r="3"/>
+            <circle class="spk ls" cx="301.02" cy="160.38" r="9"/><circle class="spk-d lf" cx="301.02" cy="160.38" r="3"/>
+            <text class="pl-lab lt" x="301.02" y="63.85" style="text-anchor:middle">KITCHEN (ZONE 4)</text><text class="pl-n lt sl" x="285.02" y="92.22" style="text-anchor:end;font-size:10px;letter-spacing:.06em">S7</text><text class="pl-n lt sl" x="317.02" y="163.88" style="text-anchor:start;font-size:10px;letter-spacing:.06em">S8</text>
+          </g>
+          <g class="u3">
+            <rect class="pl-room ls" x="380" y="39.96" width="368.58" height="45.78"/>
+            <circle class="spk ls" cx="472.14" cy="62.85" r="9"/><circle class="spk-d lf" cx="472.14" cy="62.85" r="3"/>
+            <circle class="spk ls" cx="656.43" cy="62.85" r="9"/><circle class="spk-d lf" cx="656.43" cy="62.85" r="3"/>
+            <text class="pl-lab lt" x="564.29" y="66.85" style="text-anchor:middle">DECK (ZONE 5)</text><text class="pl-n lt sl" x="456.14" y="66.35" style="text-anchor:end;font-size:10px;letter-spacing:.06em">S9</text><text class="pl-n lt sl" x="672.43" y="66.35" style="text-anchor:start;font-size:10px;letter-spacing:.06em">S10</text>
+          </g>
+          <g class="u4">
+            <rect class="pl-room ls" x="222.04" y="209.14" width="157.96" height="129.38"/>
+            <circle class="spk ls" cx="301.02" cy="256.00" r="9"/><circle class="spk-d lf" cx="301.02" cy="256.00" r="3"/>
+            <circle class="spk ls" cx="301.02" cy="306.00" r="9"/><circle class="spk-d lf" cx="301.02" cy="306.00" r="3"/>
+            <text class="pl-lab lt" x="301.02" y="233.03" style="text-anchor:middle;font-size:10px;letter-spacing:.08em">STUDY/LOFT (ZONE 7)</text><text class="pl-n lt sl" x="285.02" y="259.50" style="text-anchor:end;font-size:10px;letter-spacing:.06em">S13</text><text class="pl-n lt sl" x="317.02" y="309.50" style="text-anchor:start;font-size:10px;letter-spacing:.06em">S14</text>
+          </g>
+          <g class="u3">
+            <rect class="pl-room ls" x="380" y="268.86" width="73.72" height="169.18"/>
+            <circle class="spk ls" cx="416.86" cy="320.45" r="9"/><circle class="spk-d lf" cx="416.86" cy="320.45" r="3"/>
+            <circle class="spk ls" cx="416.86" cy="386.45" r="9"/><circle class="spk-d lf" cx="416.86" cy="386.45" r="3"/>
+            <text class="pl-lab lt" x="416.86" y="292.74" style="text-anchor:middle;font-size:9px;letter-spacing:.06em"><tspan x="416.86">DINING</tspan><tspan x="416.86" dy="12">(ZONE 6)</tspan></text><text class="pl-n lt sl" x="403.86" y="323.95" style="text-anchor:end;font-size:10px;letter-spacing:.06em">S11</text><text class="pl-n lt sl" x="429.86" y="389.95" style="text-anchor:start;font-size:10px;letter-spacing:.06em">S12</text>
+          </g>
+          <g class="u4">
+            <rect class="pl-room ls" x="11.42" y="209.14" width="210.61" height="129.38"/>
+            <circle class="spk ls" cx="116.73" cy="247.98" r="9"/><circle class="spk-d lf" cx="116.73" cy="247.98" r="3"/>
+            <circle class="spk ls" cx="116.73" cy="299.68" r="9"/><circle class="spk-d lf" cx="116.73" cy="299.68" r="3"/>
+            <text class="pl-lab lt" x="116.73" y="233.03" style="text-anchor:middle">BEDROOM 2 (ZONE 8)</text><text class="pl-n lt sl" x="100.73" y="251.48" style="text-anchor:end;font-size:10px;letter-spacing:.06em">S15</text><text class="pl-n lt sl" x="132.73" y="303.18" style="text-anchor:start;font-size:10px;letter-spacing:.06em">S16</text>
+          </g>
+          <g class="u1">
+            <rect class="pl-room ls" x="453.72" y="268.86" width="294.86" height="169.18"/>
+            <circle class="spk ls" cx="527.44" cy="353.45" r="9"/><circle class="spk-d lf" cx="527.44" cy="353.45" r="3"/>
+            <circle class="spk ls" cx="674.87" cy="353.45" r="9"/><circle class="spk-d lf" cx="674.87" cy="353.45" r="3"/>
+            <text class="pl-lab lt" x="601.15" y="292.74" style="text-anchor:middle">MEDIA ROOM (ZONE 2)</text><text class="pl-n lt sl" x="511.44" y="356.95" style="text-anchor:end;font-size:10px;letter-spacing:.06em">S3</text><text class="pl-n lt sl" x="690.87" y="356.95" style="text-anchor:start;font-size:10px;letter-spacing:.06em">S4</text>
+          </g>
+        <text class="vrefs" x="757" y="463" text-anchor="end">VISUAL REFERENCE ONLY</text>
+        <path class="vframe" d="M 3 32H 757V 446H 372V 346H 3Z" fill="none" stroke="#000" stroke-width="2.6" stroke-linejoin="miter" pointer-events="none"/></svg>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <button class="tier t1" type="button" onClick="{{ui.pickA1}}" aria-pressed="{{ui.a1on}}">
+        <span class="top"><span class="tprice">$4,000</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Standard</span>
+        <span class="tscope">2 zones / 4 in-ceiling speakers</span>
+        <span class="tdesc">Sonance speakers and two Sonos amplifiers. Independent music and volume in each zone, controlled in the Sonos app.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Platform</span><span class="v">Sonos</span></span>
+          <span class="row"><span class="mono k">Zones</span><span class="v">2</span></span>
+          <span class="row"><span class="mono k">Speakers</span><span class="v">4 in-ceiling</span></span>
+          <span class="row"><span class="mono k">Control</span><span class="v">Sonos app</span></span>
+        </span>
+      </button>
+      <button class="tier t2" type="button" onClick="{{ui.pickA2}}" aria-pressed="{{ui.a2on}}">
+        <span class="top"><span class="tprice">$8,000</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Signature</span>
+        <span class="tscope">4 zones / 8 in-ceiling speakers</span>
+        <span class="tdesc">Sonance speakers on a Control4 system with Episode multi-zone amplification. Control each zone from the Control4 app.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Platform</span><span class="v">Control4</span></span>
+          <span class="row"><span class="mono k">Zones</span><span class="v">4</span></span>
+          <span class="row"><span class="mono k">Speakers</span><span class="v">8 in-ceiling</span></span>
+          <span class="row"><span class="mono k">Control</span><span class="v">Control4 app, by zone</span></span>
+        </span>
+      </button>
+      <button class="tier t3" type="button" onClick="{{ui.pickA3}}" aria-pressed="{{ui.a3on}}">
+        <span class="top"><span class="tprice">$12,000</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Premier</span>
+        <span class="tscope">6 zones / 12 in-ceiling speakers</span>
+        <span class="tdesc">Two more zones than Signature on the same Control4 system. Expanded Sonance speaker system with multiroom amplification.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Platform</span><span class="v">Control4</span></span>
+          <span class="row"><span class="mono k">Zones</span><span class="v">6</span></span>
+          <span class="row"><span class="mono k">Speakers</span><span class="v">12 in-ceiling</span></span>
+          <span class="row"><span class="mono k">Control</span><span class="v">Control4 app, by zone</span></span>
+        </span>
+      </button>
+      <button class="tier t4" type="button" onClick="{{ui.pickA4}}" aria-pressed="{{ui.a4on}}">
+        <span class="top"><span class="tprice">$17,000</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Reference</span>
+        <span class="tscope">8 zones / 16 in-ceiling speakers</span>
+        <span class="tdesc">Our broadest whole-home audio package: living areas, suites, deck and media room, on Control4 with multiroom amplification.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Platform</span><span class="v">Control4</span></span>
+          <span class="row"><span class="mono k">Zones</span><span class="v">8</span></span>
+          <span class="row"><span class="mono k">Speakers</span><span class="v">16 in-ceiling</span></span>
+          <span class="row"><span class="mono k">Control</span><span class="v">Control4 app, by zone</span></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 SURROUND ============ -->
+<section id="surround" class="sec paper surround sel-{{ui.s}}">
+  <div class="wrap">
+    <div class="hdr">
+      <span class="mono"><span class="vl">Surround sound</span></span>
+    </div>
+    <div class="main">
+      <div class="txt">
+        <p class="kick"><i aria-hidden="true"></i><span class="mono">System options - 02</span></p>
+        <h2 class="h1">Surround sound</h2>
+        <p class="cd">Selectable surround sound packages with Control4, hand held remote control, and subwoofer.</p>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 760 470" role="img" aria-label="Media room plan showing speaker channels that activate as the level increases">
+          <rect class="pl-wall" x="3" y="32" width="754" height="414"/>
+          <rect x="3" y="32" width="754" height="414" fill="#E2DED3"/><rect x="10.07" y="38.06" width="739.86" height="401.88" fill="none" stroke="rgba(0,0,0,.30)" stroke-width=".8"/><rect x="0" y="29" width="6" height="6" fill="rgba(0,0,0,.55)"/><rect x="754" y="29" width="6" height="6" fill="rgba(0,0,0,.55)"/><rect x="0" y="443" width="6" height="6" fill="rgba(0,0,0,.55)"/><rect x="754" y="443" width="6" height="6" fill="rgba(0,0,0,.55)"/><path d="M 3 25.94v 6M 50.12 25.94v 6M 97.25 25.94v 6M 144.38 25.94v 6M 191.5 25.94v 6M 238.63 25.94v 6M 285.75 25.94v 6M 332.88 25.94v 6M 380 25.94v 6M 427.13 25.94v 6M 474.25 25.94v 6M 521.38 25.94v 6M 568.5 25.94v 6M 615.62 25.94v 6M 662.75 25.94v 6M 709.88 25.94v 6M 757 25.94v 6" fill="none" stroke="rgba(0,0,0,.30)" stroke-width=".8"/><path d="M 45.41 446V 418M 45.41 418A 28 28 0 0 1 73.41 446" fill="none" stroke="rgba(0,0,0,.30)" stroke-width=".9"/>
+          <rect class="solid" x="226.84" y="46.18" width="306.31" height="22" style="fill:#2B2E2C;opacity:1"/>
+          <text class="pl-lab tm" x="380" y="61.2" style="fill:#fff">DISPLAY</text>
+          <rect class="pl-room" x="284.67" y="181.44" width="54" height="40"/><rect class="pl-room" x="353" y="181.44" width="54" height="40"/><rect class="pl-room" x="421.33" y="181.44" width="54" height="40"/>
+          <rect class="pl-room" x="284.67" y="256.56" width="54" height="40"/><rect class="pl-room" x="353" y="256.56" width="54" height="40"/><rect class="pl-room" x="421.33" y="256.56" width="54" height="40"/>
+          <text class="pl-lab tm" x="380" y="323">LISTENING POSITION</text>
+          <g class="u1 frd"><line class="trace ls dash" x1="380" y1="239" x2="156.16" y2="110.76"/><circle class="spk ls" cx="156.16" cy="102.68" r="11"/><circle class="spk-d lf" cx="156.16" cy="102.68" r="3.5"/><text class="pl-lab lt tm" x="156.16" y="139.03">L</text></g>
+          <g class="u1 frd"><line class="trace ls dash" x1="380" y1="239" x2="380" y2="114.8"/><circle class="spk ls" cx="380" cy="102.68" r="11"/><circle class="spk-d lf" cx="380" cy="102.68" r="3.5"/><text class="pl-lab lt tm" x="380" y="82">C</text></g>
+          <g class="u1 frd"><line class="trace ls dash" x1="380" y1="239" x2="603.84" y2="110.76"/><circle class="spk ls" cx="603.84" cy="102.68" r="11"/><circle class="spk-d lf" cx="603.84" cy="102.68" r="3.5"/><text class="pl-lab lt tm" x="603.84" y="139.03">R</text></g>
+          <g class="u1 srd"><line class="trace ls dash" x1="380" y1="239" x2="40.7" y2="239"/><circle class="spk ls" cx="31.28" cy="239" r="11"/><circle class="spk-d lf" cx="31.28" cy="239" r="3.5"/><text class="pl-lab lt" x="54.84" y="224.86">SL</text></g>
+          <g class="u1 srd"><line class="trace ls dash" x1="380" y1="239" x2="719.3" y2="239"/><circle class="spk ls" cx="728.73" cy="239" r="11"/><circle class="spk-d lf" cx="728.73" cy="239" r="3.5"/><text class="pl-lab lt te" x="705.16" y="224.86">SR</text></g>
+          <g class="u1 ylw"><rect class="pl-room ls sub" x="47.73" y="64.44" width="26" height="26"/><circle class="spk-d lf" cx="60.73" cy="77.44" r="3"/><text class="pl-lab lt" x="45.41" y="114.8">SUB 1</text></g>
+          <g class="u2 srd"><line class="trace ls dash" x1="380" y1="239" x2="156.16" y2="367.24"/><circle class="spk ls" cx="156.16" cy="375.32" r="11"/><circle class="spk-d lf" cx="156.16" cy="375.32" r="3.5"/><text class="pl-lab lt tm" x="156.16" y="403.59">BL</text></g>
+          <g class="u2 srd"><line class="trace ls dash" x1="380" y1="239" x2="603.84" y2="367.24"/><circle class="spk ls" cx="603.84" cy="375.32" r="11"/><circle class="spk-d lf" cx="603.84" cy="375.32" r="3.5"/><text class="pl-lab lt tm" x="603.84" y="403.59">BR</text></g>
+          <g class="u3 ylw"><rect class="pl-room ls sub" x="686.27" y="64.44" width="26" height="26"/><circle class="spk-d lf" cx="699.27" cy="77.44" r="3"/><text class="pl-lab lt te" x="714.59" y="114.8">SUB 2</text></g>
+        <text class="vrefs" x="757" y="463" text-anchor="end">VISUAL REFERENCE ONLY</text>
+        <rect class="rmt" x="374" y="410" width="12" height="22" fill="#000"/><text class="rmt-r" x="380" y="425" style="text-anchor:middle;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:700;fill:#fff">R</text><text class="pl-lab rl rl-h" x="394" y="425">HALO</text><text class="pl-lab rl rl-n" x="394" y="425">NEEO</text><rect class="vframe" x="3" y="32" width="754" height="414" fill="none" stroke="#000" stroke-width="2.6" pointer-events="none"/></svg>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <button class="tier t1" type="button" onClick="{{ui.pickS1}}" aria-pressed="{{ui.s1on}}">
+        <span class="top"><span class="tprice">$7,000</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Standard</span>
+        <span class="tscope">5 in-ceiling speakers / 1 subwoofer (5.1)</span>
+        <span class="tdesc">Five Sonance speakers, one Episode subwoofer, a Denon receiver and Control4 room control, with the HALO handheld remote.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Layout</span><span class="v">5.1 channel</span></span>
+          <span class="row"><span class="mono k">Speakers</span><span class="v">5 in-ceiling</span></span>
+          <span class="row"><span class="mono k">Subwoofers</span><span class="v">1</span></span>
+          <span class="row"><span class="mono k">Control</span><span class="v">HALO handheld remote</span></span>
+        </span>
+      </button>
+      <button class="tier t2" type="button" onClick="{{ui.pickS2}}" aria-pressed="{{ui.s2on}}">
+        <span class="top"><span class="tprice">$10,000</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Signature</span>
+        <span class="tscope">7 in-ceiling speakers / 1 subwoofer (7.1)</span>
+        <span class="tdesc">Seven Sonance speakers, one Episode subwoofer, an upgraded Denon receiver and Control4 control, with the HALO handheld remote.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Layout</span><span class="v">7.1 channel</span></span>
+          <span class="row"><span class="mono k">Speakers</span><span class="v">7 in-ceiling</span></span>
+          <span class="row"><span class="mono k">Subwoofers</span><span class="v">1</span></span>
+          <span class="row"><span class="mono k">Control</span><span class="v">HALO handheld remote</span></span>
+        </span>
+      </button>
+      <button class="tier t3" type="button" onClick="{{ui.pickS3}}" aria-pressed="{{ui.s3on}}">
+        <span class="top"><span class="tprice">$15,000</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Premier</span>
+        <span class="tscope">7 in-ceiling speakers / 2 subwoofers (7.2)</span>
+        <span class="tdesc">Seven Sonance speakers, two Episode subwoofers for fuller bass, a premium Denon receiver and Control4 control with a NEEO remote.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Layout</span><span class="v">7.2 channel</span></span>
+          <span class="row"><span class="mono k">Speakers</span><span class="v">7 in-ceiling</span></span>
+          <span class="row"><span class="mono k">Subwoofers</span><span class="v">2</span></span>
+          <span class="row"><span class="mono k">Control</span><span class="v">NEEO remote</span></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 NETWORK ============ -->
+<section id="network" class="sec paper network sel-{{ui.n}}">
+  <div class="wrap">
+    <div class="hdr">
+      <span class="mono"><span class="vl">Network &amp; Wifi</span></span>
+    </div>
+    <div class="main">
+      <div class="txt">
+        <p class="kick"><i aria-hidden="true"></i><span class="mono">System options - 03</span></p>
+        <h2 class="h1">Network &amp; Wifi</h2>
+        <p class="cd">Selectable network packages to provide wireless coverage and connectivity for the audio, control, and surveillance systems. Internet service provider equipment and service are owner provided.</p>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 760 470" role="img" aria-label="Floor plan showing Wi-Fi access points and wired backbone that grow with the level">
+          <rect class="pl-wall" x="3" y="32" width="754" height="414"/>
+          <rect x="3" y="32" width="754" height="414" fill="#E2DED3"/><rect x="9.32" y="37.97" width="741.36" height="402.06" fill="none" stroke="rgba(0,0,0,.30)" stroke-width=".8"/><rect x="0" y="29" width="6" height="6" fill="rgba(0,0,0,.55)"/><rect x="754" y="29" width="6" height="6" fill="rgba(0,0,0,.55)"/><rect x="0" y="443" width="6" height="6" fill="rgba(0,0,0,.55)"/><rect x="754" y="443" width="6" height="6" fill="rgba(0,0,0,.55)"/><path d="M 3 26.03v 6M 49.34 26.03v 6M 95.67 26.03v 6M 142.01 26.03v 6M 188.34 26.03v 6M 234.68 26.03v 6M 281.01 26.03v 6M 327.35 26.03v 6M 373.68 26.03v 6M 420.02 26.03v 6M 466.35 26.03v 6M 512.69 26.03v 6M 559.02 26.03v 6M 605.36 26.03v 6M 651.69 26.03v 6M 698.03 26.03v 6M 744.36 26.03v 6" fill="none" stroke="rgba(0,0,0,.30)" stroke-width=".8"/><path d="M 43.02 209.14V 181.14M 43.02 181.14A 28 28 0 0 1 71.02 209.14" fill="none" stroke="rgba(0,0,0,.30)" stroke-width=".9"/><path d="M 295.75 209.14V 181.14M 295.75 181.14A 28 28 0 0 1 323.75 209.14" fill="none" stroke="rgba(0,0,0,.30)" stroke-width=".9"/><path d="M 453.72 268.86V 296.86M 453.72 296.86A 28 28 0 0 0 481.72 268.86" fill="none" stroke="rgba(0,0,0,.30)" stroke-width=".9"/>
+          <rect class="pl-room" x="11.42" y="39.96" width="210.61" height="169.18"/>
+          <rect class="pl-room" x="222.04" y="39.96" width="157.96" height="169.18"/>
+          <rect class="pl-room" x="380" y="39.96" width="221.15" height="228.89"/>
+          <rect class="pl-room" x="601.15" y="39.96" width="147.43" height="228.89"/>
+          <rect class="pl-room" x="11.42" y="209.14" width="210.61" height="129.38"/>
+          <rect class="pl-room" x="222.04" y="209.14" width="157.96" height="129.38"/>
+          <rect class="pl-room" x="380" y="268.86" width="221.15" height="169.18"/>
+          <rect class="pl-room" x="601.15" y="268.86" width="147.43" height="169.18"/>
+          <rect class="pl-room" x="222.04" y="338.52" width="157.96" height="99.52"/>
+          <rect class="pl-room" x="11.42" y="338.52" width="210.61" height="99.52" style="stroke:#000;stroke-width:2.6"/>
+          <g class="u1"><path class="trace ls" d="M 116.73 338.52V 149.43"/><path class="trace ls" d="M 222.04 398.23H 490.57V 149.43"/></g>
+          <g class="u3"><path class="trace ls" d="M 301.02 398.23V 258.9"/></g>
+          <g class="u2"><path class="trace ls" d="M 490.57 398.23H 656V 338.52"/></g>
+          <g class="u1"><circle class="cov ls dash" cx="490.57" cy="149.43" r="100"/><circle class="spk ls" cx="490.57" cy="149.43" r="10"/><circle class="spk-d lf" cx="490.57" cy="149.43" r="3.5"/><text class="pl-lab lt tm" x="490.57" y="133.43">WAP 1</text></g>
+          <g class="u1"><circle class="cov ls dash" cx="116.73" cy="149.43" r="100"/><circle class="spk ls" cx="116.73" cy="149.43" r="10"/><circle class="spk-d lf" cx="116.73" cy="149.43" r="3.5"/><text class="pl-lab lt tm" x="116.73" y="133.43">WAP 2</text></g>
+          <g class="u3"><circle class="cov ls dash" cx="301.02" cy="258.9" r="100"/><circle class="spk ls" cx="301.02" cy="258.9" r="10"/><circle class="spk-d lf" cx="301.02" cy="258.9" r="3.5"/><text class="pl-lab lt tm" x="301.02" y="242.90">WAP 3</text></g>
+          <g class="u2"><circle class="cov ls dash" cx="656" cy="338.52" r="100"/><circle class="spk ls" cx="656" cy="338.52" r="10"/><circle class="spk-d lf" cx="656" cy="338.52" r="3.5"/><text class="pl-lab lt tm" x="656" y="322.52">WAP 4</text></g>
+          <rect class="pl-room" x="76" y="380" width="18" height="18"/>
+          <g class="u1"><rect class="pl-room ls" x="76" y="380" width="18" height="18"/><text class="pl-lab lt" x="106" y="393.5">ROUTER</text></g>
+          <g class="u2 swg"><rect class="pl-room ls" x="76" y="406" width="18" height="18"/><text class="pl-lab lt" x="106" y="419.5">SWITCH</text></g>
+          <text class="pl-lab" x="116.73" y="361.5" style="text-anchor:middle">EQUIPMENT RACK</text>
+        <text class="pl-lab rn1" x="116.73" y="81.43" style="text-anchor:middle">MASTER BEDROOM</text>
+          <text class="pl-lab rn1" x="490.57" y="81.43" style="text-anchor:middle">GREAT ROOM</text>
+          <text class="pl-lab rn3" x="301.02" y="190.90" style="text-anchor:middle">KITCHEN</text>
+          <text class="pl-lab rn2" x="656" y="270.52" style="text-anchor:middle">MEDIA ROOM</text>
+          <text class="vrefs" x="757" y="463" text-anchor="end">VISUAL REFERENCE ONLY</text>
+        <rect class="vframe" x="3" y="32" width="754" height="414" fill="none" stroke="#000" stroke-width="2.6" pointer-events="none"/></svg>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <button class="tier t1" type="button" onClick="{{ui.pickN1}}" aria-pressed="{{ui.n1on}}">
+        <span class="top"><span class="tprice">$3,000</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Standard</span>
+        <span class="tscope">1 router / 2 wireless access points</span>
+        <span class="tdesc">A router with two professionally installed wireless access points for essential in-home coverage. Built for everyday streaming and connected devices.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Router</span><span class="v">1</span></span>
+          <span class="row"><span class="mono k">Network switch</span><span class="v">Not included</span></span>
+          <span class="row"><span class="mono k">Wireless access points</span><span class="v">2</span></span>
+          <span class="row"><span class="mono k">Setup</span><span class="v">Installed and set up</span></span>
+        </span>
+      </button>
+      <button class="tier t2" type="button" onClick="{{ui.pickN2}}" aria-pressed="{{ui.n2on}}">
+        <span class="top"><span class="tprice">$6,000</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Signature</span>
+        <span class="tscope">1 router / 1 switch / 3 wireless access points</span>
+        <span class="tdesc">A dedicated router, network switch and three wireless access points for expanded coverage. Supports more wired devices and a growing home.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Router</span><span class="v">1</span></span>
+          <span class="row"><span class="mono k">Network switch</span><span class="v">1</span></span>
+          <span class="row"><span class="mono k">Wireless access points</span><span class="v">3</span></span>
+          <span class="row"><span class="mono k">Setup</span><span class="v">Installed and set up</span></span>
+        </span>
+      </button>
+      <button class="tier t3" type="button" onClick="{{ui.pickN3}}" aria-pressed="{{ui.n3on}}">
+        <span class="top"><span class="tprice">$9,000</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Premier</span>
+        <span class="tscope">1 router / 1 switch / 4 wireless access points</span>
+        <span class="tdesc">Higher-performance router, professional network switching and upgraded wireless access points on one wired backbone. Built for higher device demands.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Router</span><span class="v">1</span></span>
+          <span class="row"><span class="mono k">Network switch</span><span class="v">1</span></span>
+          <span class="row"><span class="mono k">Wireless access points</span><span class="v">4</span></span>
+          <span class="row"><span class="mono k">Setup</span><span class="v">Installed and set up</span></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 CAMERAS ============ -->
+<section id="cameras" class="sec paper cameras sel-{{ui.c}}">
+  <div class="wrap">
+    <div class="hdr">
+      <span class="mono"><span class="vl">Camera system</span></span>
+    </div>
+    <div class="main">
+      <div class="txt">
+        <p class="kick"><i aria-hidden="true"></i><span class="mono">System options - 04</span></p>
+        <h2 class="h1">Camera system</h2>
+        <p class="cd">Selectable camera systems, using existing installed wiring locations, including Control4 Chime doorbell camera integration, recording, and mobile app access.</p>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 760 470" role="img" aria-label="Site plan showing camera locations and fields of view by level">
+          <rect class="pl-wall dash" x="3" y="26" width="754" height="420"/>
+          <defs><pattern id="lawn" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="rgba(0,0,0,.07)" stroke-width="1"/></pattern></defs><rect x="3" y="26" width="754" height="420" fill="#E2DED3"/><rect x="3" y="26" width="754" height="398.81" fill="#D3CEBE"/><rect x="3" y="26" width="754" height="398.81" fill="url(#lawn)"/><rect x="164.57" y="106.92" width="430.86" height="211.93" fill="#F2EFE7"/><rect x="595.43" y="174.35" width="140.03" height="144.5" fill="#F2EFE7"/><rect x="250.74" y="51.94" width="258.51" height="56" fill="#F2EFE7"/><path d="M 625.59 318.84L 707.45 318.84L 720.38 424.81L 612.66 424.81Z" fill="#EAE6DB"/><path d="M 285.2 318.85L 313.2 318.85L 313.2 424.81L 285.2 424.81Z" fill="#EAE6DB"/><path d="M 285.2 318.85L 285.2 424.81M 313.2 318.85L 313.2 424.81" fill="none" stroke="rgba(0,0,0,.30)" stroke-width="1"/><path d="M 625.59 318.84L 612.66 424.81M 707.45 318.84L 720.38 424.81" fill="none" stroke="rgba(0,0,0,.30)" stroke-width="1"/><line x1="3" y1="435.4" x2="757" y2="435.4" stroke="rgba(0,0,0,.28)" stroke-width="1" stroke-dasharray="14 10"/>
+          <rect class="pl-room" x="164.57" y="106.92" width="430.86" height="211.93"/>
+          <rect class="pl-room" x="595.43" y="174.35" width="140.03" height="144.5"/>
+          <rect class="pl-room dash" x="250.74" y="51.94" width="258.51" height="56"/>
+          <text class="pl-lab tm" x="380" y="79.94">DECK</text>
+          <text class="pl-lab tm" x="380" y="216.73">HOME</text>
+          <text class="pl-lab tm" x="665.44" y="251.41">GARAGE</text>
+          <line class="pl-room" x1="3" y1="424.81" x2="757" y2="424.81"/>
+          <g class="cmp"><circle cx="32" cy="396" r="15" fill="none" stroke="#0B0D0C" stroke-width="1.2" opacity=".7"/><path d="M32 382 L36.5 396 L32 393.5 L27.5 396 Z" fill="#0B0D0C"/><path d="M32 410 L36.5 396 L32 398.5 L27.5 396 Z" fill="none" stroke="#0B0D0C" stroke-width="1"/><text class="pl-lab tm" x="32" y="373">N</text></g>
+          <path class="fov" d="M 562.04 321.73L 488.79 402.65L 635.28 402.65Z"/>
+          <path class="fov" d="M 680.52 156.05L 615.89 71.28L 745.15 71.28Z"/>
+          <path class="fov" d="M 380 99.21L 311.06 37.56L 448.94 37.56Z"/>
+          <path class="fov" d="M 155.95 212.88L 67.63 155.08L 67.63 270.68Z"/>
+          <g class="loc"><circle class="locr" cx="595.43" cy="318.85" r="10"/><circle class="locd" cx="595.43" cy="318.85" r="3.5"/></g>
+          <rect class="bell" x="272" y="308.85" width="10" height="20"/>
+          <g class="loc"><text class="pl-lab" x="266" y="315.6" style="text-anchor:end">C4</text></g>
+          <g class="loc"><circle class="locr" cx="680.52" cy="156.05" r="10"/><circle class="locd" cx="680.52" cy="156.05" r="3.5"/></g>
+          <g class="loc"><circle class="locr" cx="380" cy="99.21" r="10"/><circle class="locd" cx="380" cy="99.21" r="3.5"/></g>
+          <g class="loc lm"><circle class="locr" cx="155.95" cy="212.88" r="10"/><circle class="locd" cx="155.95" cy="212.88" r="3.5"/></g>
+          <g class="add"><circle class="locr" cx="586.81" cy="114.62" r="10"/><circle class="locd" cx="586.81" cy="114.62" r="3.5"/></g>
+          <g class="add"><circle class="locr" cx="395" cy="318.85" r="10"/><circle class="locd" cx="395" cy="318.85" r="3.5"/></g>
+          <g class="add"><circle class="locr" cx="173.19" cy="114.62" r="10"/><circle class="locd" cx="173.19" cy="114.62" r="3.5"/></g>
+          <g class="add"><circle class="locr" cx="735.46" cy="290" r="10"/><circle class="locd" cx="735.46" cy="290" r="3.5"/></g>
+        <text class="vrefs" x="757" y="463" text-anchor="end">VISUAL REFERENCE ONLY</text>
+        <rect class="vframe" x="3" y="26" width="754" height="420" fill="none" stroke="#000" stroke-width="2.6" pointer-events="none"/></svg>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <button class="tier t1" type="button" onClick="{{ui.pickC1}}" aria-pressed="{{ui.c1on}}">
+        <span class="top"><span class="tprice">$3,500</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Standard</span>
+        <span class="tscope">4 cameras<br>1 doorbell</span>
+        <span class="tdesc">Four Nest or Ring cameras with mounting hardware, cloud recording and a Control4 Chime video doorbell. Remote viewing in the mobile app.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Recording</span><span class="v">Cloud</span></span>
+          <span class="row"><span class="mono k">Cameras</span><span class="v">4 Nest or Ring</span></span>
+          <span class="row"><span class="mono k">Doorbell</span><span class="v">Control4 Chime</span></span>
+          <span class="row"><span class="mono k">Viewing</span><span class="v">Mobile app</span></span>
+        </span>
+      </button>
+      <button class="tier t2" type="button" onClick="{{ui.pickC2}}" aria-pressed="{{ui.c2on}}">
+        <span class="top"><span class="tprice">$8,500</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Signature</span>
+        <span class="tscope">4 cameras<br>1 doorbell</span>
+        <span class="tdesc">Four Luma IP cameras with mounting hardware, an eight-channel network video recorder with 4 TB drive and a Control4 Chime video doorbell.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Recording</span><span class="v">Local</span></span>
+          <span class="row"><span class="mono k">Cameras</span><span class="v">4 Luma</span></span>
+          <span class="row"><span class="mono k">Doorbell</span><span class="v">Control4 Chime</span></span>
+          <span class="row"><span class="mono k">Viewing</span><span class="v">Mobile app</span></span>
+        </span>
+      </button>
+      <button class="tier t3" type="button" onClick="{{ui.pickC3}}" aria-pressed="{{ui.c3on}}">
+        <span class="top"><span class="tprice">$12,500</span><span class="sw"><span class="mono st-off">Select</span><span class="mono st-on">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#3A6E5B" stroke-width="1.8"/></svg></span></span></span>
+        <span class="tname">Premier</span>
+        <span class="tscope">8 cameras<br>1 doorbell</span>
+        <span class="tdesc">Eight Luma IP cameras with mounting hardware, a dedicated network video recorder and a Control4 Chime video doorbell.</span>
+        <span class="rows">
+          <span class="row"><span class="mono k">Recording</span><span class="v">Local</span></span>
+          <span class="row"><span class="mono k">Cameras</span><span class="v">8 Luma</span></span>
+          <span class="row"><span class="mono k">Doorbell</span><span class="v">Control4 Chime</span></span>
+          <span class="row"><span class="mono k">Viewing</span><span class="v">Mobile app</span></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 SELECTIONS ============ -->
+<section id="selections" class="sec paper dir-{{ui.d}} int-{{ui.t}}">
+  <div class="wrap">
+    <div class="hdr">
+      <span class="mono"><span class="vl">Selections</span></span>
+    </div>
+    <div class="main fmain">
+      <div class="txt">
+        <p class="kick"><i aria-hidden="true"></i><span class="mono">Celebrity Custom Homes</span></p>
+        <h2 class="h1">Final Allowances</h2>
+        <p class="cd">Four system selections and your total allowance. Please review, sign and submit to Celebrity Custom Homes.</p>
+      </div>
+      <div class="fpanel">
+        <div class="fxh mono"><span class="x1">System</span><span class="x2">Description</span><span class="x3">Package</span><span class="x4">Package price</span></div>
+        <a class="dec fx" href="#audio"><span class="dt"><span class="tn">01</span>Home Audio</span><span class="mono dopt">Music throughout selected rooms.</span><span class="mono stt">{{ui.rA.tier}}</span><span class="dt dpr">{{ui.pA}}</span></a>
+        <a class="dec fx" href="#surround"><span class="dt"><span class="tn">02</span>Surround Sound</span><span class="mono dopt">A dedicated media room experience.</span><span class="mono stt">{{ui.rS.tier}}</span><span class="dt dpr">{{ui.pS}}</span></a>
+        <a class="dec fx" href="#network"><span class="dt"><span class="tn">03</span>Network &amp; Wifi</span><span class="mono dopt">Whole-home connectivity.</span><span class="mono stt">{{ui.rN.tier}}</span><span class="dt dpr">{{ui.pN}}</span></a>
+        <a class="dec fx" href="#cameras"><span class="dt"><span class="tn">04</span>Camera System</span><span class="mono dopt">Entry, perimeter and exterior coverage.</span><span class="mono stt">{{ui.rC.tier}}</span><span class="dt dpr">{{ui.pC}}</span></a>
+        <div class="irow itot ftot"><span class="mono">Total</span><span class="iv">{{ui.total}}</span></div>
+        <label class="fld2 fnotes"><span class="mono">Client notes</span><textarea class="ff" rows="4" placeholder="Rooms that matter most, how you plan to use the home, anything we should know."></textarea></label>
+        <div class="frow3 fcn"><label class="fld2"><span class="mono rq">Client name</span><input class="ff" type="text" placeholder="Full name" autocomplete="name" data-req="1" required aria-required="true" oninput="this.classList.remove('bad')"></label><label class="fld2"><span class="mono rq">Phone number</span><input class="ff" type="tel" placeholder="Phone number" autocomplete="tel" data-req="1" required aria-required="true" oninput="this.classList.remove('bad')"></label><label class="fld2"><span class="mono rq">Email</span><input class="ff" type="email" placeholder="Email address" autocomplete="email" data-req="1" required aria-required="true" oninput="this.classList.remove('bad')"></label></div>
+        <div class="frow3 fsig fsd"><label class="fld2"><span class="mono rq">Client signature</span><input class="ff" type="text" placeholder="Type full name to sign" data-req="1" required aria-required="true" oninput="this.classList.remove('bad')"></label><label class="fld2"><span class="mono rq">Date</span><input class="ff" type="date" value="2026-10-14" data-req="1" required aria-required="true" oninput="this.classList.remove('bad')"></label></div>
+        <p class="reqmsg" id="reqmsg" hidden>Please fill in the highlighted fields (client name, phone, email, signature and date) before downloading.</p>
+        <div class="fact"><button class="dlpdf" type="button" onclick="var b=[];document.querySelectorAll('[data-req]').forEach(function(e){var v=e.value.trim(),ok=v!=='';if(ok&&e.type==='email')ok=/^[^@ ]+@[^@ ]+[.][^@ ]+$/.test(v);if(ok&&e.type==='tel')ok=v.replace(/[^0-9]/g,'').length>=10;e.classList.toggle('bad',!ok);if(!ok)b.push(e)});var m=document.getElementById('reqmsg');if(b.length){m.hidden=false;b[0].scrollIntoView({behavior:'smooth',block:'center'});b[0].focus();return false}m.hidden=true;window.print()">Download PDF</button><p class="fnote">Celebrity Custom Homes<br><span class="fgap"></span>303-907-2387<br><span class="fgap"></span>stacey@celebritycustomhomes.com</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap pbw"><div class="pb pbc"><span class="mono">Prepared by:</span><span class="mono mv">Chris Wagner - Denver AV Guy<br><span class="fgap"></span>720-327-7337 | chris@davg.ai</span></div></div>
+  <div class="sw" aria-hidden="true">Pradera</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8800}}'>
+class Component extends DCLogic {
+  pick(k, i) {
+    const st = this.state || {};
+    const cur = st[k] || 0;
+    this.setState({ [k]: cur === i ? 0 : i });
+  }
+  renderVals() {
+    const st = this.state || {};
+    const a = st.a || 0, s = st.s || 0, c = st.c || 0, n = st.n || 0, d = st.d || 0;
+    const TA = ['', 'Standard', 'Signature', 'Premier', 'Reference'];
+    const T  = ['', 'Standard', 'Signature', 'Premier'];
+    const A  = ['', '2 zones / 4 in-ceiling speakers / Sonos', '4 zones / 8 in-ceiling speakers / Control4', '6 zones / 12 in-ceiling speakers / Control4', '8 zones / 16 in-ceiling speakers / Control4'];
+    const S  = ['', '5 in-ceiling speakers / 1 subwoofer (5.1)', '7 in-ceiling speakers / 1 subwoofer (7.1)', '7 in-ceiling speakers / 2 subwoofers (7.2)'];
+    const C  = ['', '4 Nest or Ring cameras / Control4 Chime doorbell', '4 Luma IP domes / recorder / Control4 Chime doorbell', '8 Luma IP domes / recorder / Control4 Chime doorbell'];
+    const N  = ['', '1 router / 2 wireless access points', '1 router / 1 switch / 3 wireless access points', '1 router / 1 switch / 4 wireless access points'];
+    const row = (v, TT, X) => v ? { tier: TT[v], scope: X[v] } : { tier: '', scope: '' };
+    const rA = row(a, TA, A), rS = row(s, T, S), rC = row(c, T, C), rN = row(n, T, N);
+    const done = (a ? 1 : 0) + (s ? 1 : 0) + (c ? 1 : 0) + (n ? 1 : 0);
+    const PA = [0, 4000, 8000, 12000, 17000], PS = [0, 7000, 10000, 15000], PC = [0, 3500, 8500, 12500], PN = [0, 3000, 6000, 9000];
+    const usd = v => '$' + v.toLocaleString('en-US');
+    const total = PA[a] + PS[s] + PC[c] + PN[n];
+    const t = st.t || 0;
+    const on = '#1A8F6E', off = 'rgba(11,13,12,.16)';
+    return {
+      ui: {
+        a: a, s: s, c: c, n: n, d: d, done: done,
+        aOn: a ? 1 : 0, sOn: s ? 1 : 0, cOn: c ? 1 : 0, nOn: n ? 1 : 0,
+        cA: a ? TA[a] : '', cS: s ? T[s] : '', cC: c ? T[c] : '', cN: n ? T[n] : '',
+        rA: rA, rS: rS, rC: rC, rN: rN,
+        a1on: a === 1, a2on: a === 2, a3on: a === 3, a4on: a === 4,
+        s1on: s === 1, s2on: s === 2, s3on: s === 3,
+        c1on: c === 1, c2on: c === 2, c3on: c === 3,
+        n1on: n === 1, n2on: n === 2, n3on: n === 3,
+        d1on: d === 1, d2on: d === 2,
+        pickA1: () => this.pick('a', 1), pickA2: () => this.pick('a', 2), pickA3: () => this.pick('a', 3), pickA4: () => this.pick('a', 4),
+        pickS1: () => this.pick('s', 1), pickS2: () => this.pick('s', 2), pickS3: () => this.pick('s', 3),
+        pickC1: () => this.pick('c', 1), pickC2: () => this.pick('c', 2), pickC3: () => this.pick('c', 3),
+        pickN1: () => this.pick('n', 1), pickN2: () => this.pick('n', 2), pickN3: () => this.pick('n', 3),
+        pickD1: () => this.pick('d', 1), pickD2: () => this.pick('d', 2),
+        p1: a ? on : off, p2: s ? on : off, p3: c ? on : off, p4: n ? on : off,
+        t: t, ton: t === 1, toggleT: () => this.pick('t', 1),
+        pA: a ? usd(PA[a]) : '', pS: s ? usd(PS[s]) : '', pC: c ? usd(PC[c]) : '', pN: n ? usd(PN[n]) : '',
+        total: done ? usd(total) : '', quote: ''
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
