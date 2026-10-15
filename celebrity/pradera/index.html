@@ -1140,6 +1140,20 @@ html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color
 .chdr .logo{height:54px!important}.chdr .clogo{height:50px!important}
 }
 @media (max-width:640px){.chdr .logo,.chdr .clogo{height:auto!important;max-height:34px!important}}
+/* Download PDF: one-page letter summary, independent of width media queries */
+@media print{
+@page{size:letter portrait;margin:.35in}
+#selections .dec.fx:hover,.br:hover{background:transparent!important}
+#selections .main,#selections .fmain{padding-top:0!important;gap:8px!important}
+#selections .h1{font-size:26px!important}
+#selections .fmain .txt p,#selections .cd{font-size:15px!important;margin-top:8px!important}
+#selections .dec.fx{padding:8px 0!important;row-gap:2px!important}
+#selections .fpanel{padding:0 18px 12px!important}
+#selections .frow3{padding:6px 0 8px!important}
+#selections .fnotes textarea{min-height:44px!important;height:44px!important}
+#selections .fsig{margin-top:6px!important}
+.dlpdf{display:none!important}
+}
 </style>
 </helmet>
 
