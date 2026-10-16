@@ -25,4 +25,11 @@ IMG_7851.jpeg is absent from the synced project directory, the referenced conver
 - Reduced-motion fallback and keyboard tier navigation checked.
 - Source comparison confirms unchanged package scopes, descriptions, specifications, tiers, prices, selection component, PDF validation/print script and support.js.
 
-At 390×844 and 430×932, the hero and each category fit within a viewport. The final form and some sections on shorter/narrower or landscape screens intentionally extend vertically to preserve legibility and access. A fully filled form cannot be made readable in every phone viewport without hiding information or introducing extra steps. No section content is trapped or clipped.
+Following the spacing feedback below, category sections may extend beyond one mobile viewport so the selector, details and drawing each have comfortable separation. The final form and sections on short/narrow or landscape screens also extend vertically to preserve legibility and access. A fully filled form cannot be made readable in every phone viewport without hiding information or introducing extra steps. No section content is trapped or clipped.
+
+
+## Spacing and surface revision after screenshot feedback
+
+The selector-to-detail gap is now 32 px on mobile and 40–64 px on larger screens. Details and plan have a 28 px vertical gap on mobile and a 40–80 px horizontal gap on larger screens. Detail-card padding is increased, and the mobile plan is larger. Standard uses Cream 03 in the chooser and white in the details; diagram surfaces use quiet gray-green architectural fills. Paper page, Forest/Ink tiers and off-white Audio Reference remain. Colored equipment markers, package data and behavior are unchanged. All overrides are screen-only.
+
+Rechecked every tier and selected total at 375×667, 390×844, 768×1024, 1100×700, 1440×900 and 1920×1080: 78 tier checks passed, measured gaps matched the specification, and no horizontal overflow occurred.

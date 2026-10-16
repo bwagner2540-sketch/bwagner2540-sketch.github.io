@@ -191,3 +191,27 @@
  #selections .fform{margin-top:18px}
  #selections .pbw{margin-top:14px!important}
 }
+/* Separate the chooser, package details and technical drawing into clear layers. */
+@media screen{
+ .sec.vw .vhead{padding-bottom:32px!important}
+ .sec.vw .vbody{margin-top:clamp(40px,5svh,64px);column-gap:clamp(40px,5vw,80px);row-gap:32px;align-items:start}
+ .vtab.vt1{background:var(--pr-cream-03)}
+ .sec.vw.sel-1 .vdet{background:#FFFFFF;border-color:rgba(9,11,10,.22)}
+ .vdet .p1{--bg:#FFFFFF}
+ .sec.vw .vdet .vp{padding:28px 30px}
+ .sec.vw .vviz{background:#E2E7E3;padding:20px;align-self:start}
+ .sec.vw .vviz svg{max-height:390px}
+ /* Change only architectural ground fills; preserve all active-state colors. */
+ .vviz [fill="#E2DED3"]{fill:#D7DDD8}
+ .vviz [fill="#F2EFE7"]{fill:#EEF1EE}
+ .vviz [fill="#D3CEBE"]{fill:#CAD4CC}
+ .vviz [fill="#EAE6DB"]{fill:#E3E8E3}
+}
+@media screen and (max-width:760px){
+ .sec.vw .vhead{padding-bottom:24px!important}
+ .sec.vw .vbody{margin-top:32px;gap:28px}
+ .sec.vw .vdet .vp{padding:22px}
+ .sec.vw .vviz{padding:16px}
+ .sec.vw .vviz svg{max-height:190px}
+ .sec.vw .vr{padding:8px 0}
+}
