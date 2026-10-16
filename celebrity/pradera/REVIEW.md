@@ -30,6 +30,6 @@ Following the spacing feedback below, category sections may extend beyond one mo
 
 ## Spacing and surface revision after screenshot feedback
 
-The selector-to-detail gap is now 32 px on mobile and 40–64 px on larger screens. Details and plan have a 28 px vertical gap on mobile and a 40–80 px horizontal gap on larger screens. Detail-card padding is increased, and the mobile plan is larger. Standard uses Cream 03 in the chooser and white in the details; diagram surfaces use quiet gray-green architectural fills. Paper page, Forest/Ink tiers and off-white Audio Reference remain. Colored equipment markers, package data and behavior are unchanged. All overrides are screen-only.
+The selector-to-detail gap is now 32 px on mobile and 40–64 px on larger screens. Details and plan have a 28 px vertical gap on mobile and a 40–80 px horizontal gap on larger screens. Detail-card padding is increased, and the mobile plan is larger. After clarification, Standard retains its original paper tones in both chooser and details. Color separation is concentrated in the diagrams: a Forest surround and light sage architectural fills. Paper page, Forest/Ink tiers and off-white Audio Reference remain. Colored equipment markers, package data and behavior are unchanged. All overrides are screen-only.
 
 Rechecked every tier and selected total at 375×667, 390×844, 768×1024, 1100×700, 1440×900 and 1920×1080: 78 tier checks passed, measured gaps matched the specification, and no horizontal overflow occurred.
