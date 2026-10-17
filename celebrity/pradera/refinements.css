@@ -217,3 +217,356 @@
 /* Final hero: one-line desktop title, responsive wrapping without forced breaks. */
 @media screen and (min-width:1200px){.sec.cover .hero-scene .ptitle .h1{font-size:clamp(42px,3.6vw,60px)!important;max-width:1000px}}
 @media screen and (max-width:1199px){.sec.cover .hero-scene .ptitle .h1{max-width:680px}}
+
+
+/* --------------------------------------------------------------------------
+   Celebrity / Pradera — RESIDENCE-matched cover, 17 October 2026
+   Desktop: a single viewport including two equal cream bands.
+   Component-local only: leave package tiers, allowances, print and PDF intact.
+   -------------------------------------------------------------------------- */
+@media screen {
+  .sec.paper.cover {
+    --cover-band: clamp(84px, 10svh, 116px);
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-top: 0 !important;
+    overflow: hidden !important;
+    background: var(--pr-paper);
+  }
+  .sec.paper.cover > .wrap {
+    display: flex !important;
+    flex-direction: column;
+    flex: 1 1 auto;
+    height: 100% !important;
+    min-height: 0;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .sec.paper.cover .chdr {
+    box-sizing: border-box;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex: 0 0 var(--cover-band);
+    width: 100%;
+    height: var(--cover-band) !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 clamp(24px, 4.5vw, 88px) !important;
+    background: var(--pr-paper);
+    border-bottom: 1px solid var(--pr-line);
+  }
+  .sec.paper.cover .chdr .logo {
+    width: auto !important;
+    height: min(58px, calc(var(--cover-band) - 30px)) !important;
+    max-width: 210px;
+    object-fit: contain;
+  }
+  .sec.paper.cover .cw {
+    display: grid !important;
+    grid-template-rows: minmax(0, 1fr) var(--cover-band);
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .sec.paper.cover .hero-scene {
+    --pr-hero-photo: url('./assets/pradera-sunset.jpg');
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    height: 100% !important;
+    min-height: 0 !important;
+    width: 100%;
+    margin: 0 !important;
+    padding: clamp(28px, 4.5vw, 90px) !important;
+    background-color: var(--pr-forest);
+    background-image:
+      linear-gradient(90deg,
+        rgba(24, 59, 49, .96) 0%,
+        rgba(24, 59, 49, .82) 30%,
+        rgba(24, 59, 49, .20) 62%,
+        rgba(24, 59, 49, 0) 100%),
+      var(--pr-hero-photo);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .sec.paper.cover .hero-scene .ptitle {
+    z-index: 1;
+    position: relative;
+    box-sizing: border-box;
+    flex: 0 1 720px;
+    width: min(720px, 52%);
+    max-width: 720px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translateY(-1.1svh);
+  }
+  .sec.paper.cover .hero-scene .ptitle .kick {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin: 0 0 clamp(22px, 3.1svh, 36px) !important;
+  }
+  .sec.paper.cover .hero-scene .ptitle .kick i {
+    display: block !important;
+    flex: 0 0 9px !important;
+    width: 9px;
+    height: 9px;
+    border: 1px solid #28775C;
+    border-radius: 50%;
+    background: transparent !important;
+  }
+  .sec.paper.cover .hero-scene .ptitle .kick .mono {
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-weight: 400 !important;
+    font-size: clamp(9px, .72vw, 12px) !important;
+    letter-spacing: .12em !important;
+    line-height: 1.4;
+    color: rgba(241, 240, 235, .78) !important;
+    text-transform: uppercase !important;
+  }
+  .sec.paper.cover .hero-scene .ptitle .h1 {
+    font-family: 'Schibsted Grotesk', sans-serif !important;
+    font-size: clamp(45px, 4.35vw, 80px) !important;
+    font-weight: 300 !important;
+    line-height: 1.025 !important;
+    letter-spacing: -.04em !important;
+    text-transform: none !important;
+    text-wrap: balance;
+    max-width: 720px !important;
+    margin: 0 0 clamp(20px, 3.5svh, 37px) !important;
+    color: var(--pr-light) !important;
+  }
+  .sec.paper.cover .hero-scene .ptitle .cvh2 {
+    font-family: 'Instrument Sans', sans-serif !important;
+    font-size: clamp(15px, 1.12vw, 18px) !important;
+    font-weight: 400 !important;
+    line-height: 1.56 !important;
+    letter-spacing: -.01em !important;
+    text-transform: none !important;
+    text-wrap: pretty;
+    max-width: 405px !important;
+    margin: 0 !important;
+    color: rgba(241, 240, 235, .82) !important;
+  }
+  .sec.paper.cover .hero-scene .spatial {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    left: -.055em !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: -.17em !important;
+    width: max-content;
+    max-width: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Schibsted Grotesk', sans-serif !important;
+    font-weight: 300 !important;
+    font-size: clamp(12rem, 16vw, 17.25rem) !important;
+    line-height: .78 !important;
+    letter-spacing: -.045em !important;
+    text-transform: uppercase !important;
+    white-space: nowrap;
+    color: rgba(241, 240, 235, .12) !important;
+    opacity: 1 !important;
+    pointer-events: none;
+    user-select: none;
+  }
+  .sec.paper.cover .hero {
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    height: var(--cover-band) !important;
+    min-height: 0 !important;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-top: 1px solid var(--pr-line) !important;
+    background: var(--pr-paper) !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+  .sec.paper.cover .hero .wrap,
+  .sec.paper.cover .hero .main.cover {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .sec.paper.cover .hero .decs.cv4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    grid-template-rows: 1fr !important;
+    gap: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    background: var(--pr-paper) !important;
+    box-shadow: none !important;
+  }
+  .sec.paper.cover .hero .decs.cv4 .dec {
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: clamp(4px, .75svh, 10px) !important;
+    min-width: 0;
+    min-height: 0 !important;
+    height: 100%;
+    padding: 10px clamp(16px, 3.1vw, 58px) !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-right: 1px solid var(--pr-line) !important;
+    background: var(--pr-paper) !important;
+    color: var(--pr-ink) !important;
+    text-align: left !important;
+  }
+  .sec.paper.cover .hero .decs.cv4 .dec:last-child {border-right: 0 !important}
+  .sec.paper.cover .hero .decs.cv4 .dec:is(:hover, :focus-visible) {
+    background: var(--pr-cream-01) !important;
+  }
+  .sec.paper.cover .hero .decs.cv4 .dec .tn,
+  .sec.paper.cover .hero .decs.cv4 .dec .dopt,
+  .sec.paper.cover .hero .decs.cv4 .dec .stt {display: none !important}
+  .sec.paper.cover .hero .decs.cv4 .dec .dt:not(.dpr) {
+    display: block !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: clamp(10px, .82vw, 14px) !important;
+    font-weight: 400 !important;
+    line-height: 1.3 !important;
+    letter-spacing: .08em !important;
+    text-transform: uppercase !important;
+    color: var(--pr-forest) !important;
+    white-space: normal !important;
+  }
+  .sec.paper.cover .hero .decs.cv4 .dec .dpr {
+    display: block !important;
+    flex: 0 0 auto;
+    align-self: flex-start !important;
+    font: 500 clamp(16px, 1.48vw, 25px)/1.2 'Instrument Sans', sans-serif !important;
+    letter-spacing: -.01em !important;
+    color: var(--pr-ink) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap;
+  }
+}
+@media screen and (max-width:760px) {
+  .sec.paper.cover {
+    --cover-band: 68px;
+    min-height: 100svh !important;
+    height: 100svh !important;
+  }
+  .sec.paper.cover .chdr {padding: 0 23px !important}
+  .sec.paper.cover .chdr .logo {
+    height: 43px !important;
+    width: auto !important;
+    max-width: 156px !important;
+  }
+  .sec.paper.cover .cw {
+    grid-template-rows: minmax(0, 1fr) 160px !important;
+  }
+  .sec.paper.cover .hero-scene {
+    min-height: 0 !important;
+    height: 100% !important;
+    padding: 28px 23px !important;
+    background-position: 58% center !important;
+    background-image:
+      linear-gradient(90deg,
+        rgba(24, 59, 49, .96) 0%,
+        rgba(24, 59, 49, .80) 48%,
+        rgba(24, 59, 49, .18) 100%),
+      var(--pr-hero-photo);
+  }
+  .sec.paper.cover .hero-scene .ptitle {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 410px !important;
+    transform: translateY(-2.5svh);
+  }
+  .sec.paper.cover .hero-scene .ptitle .kick {
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+  }
+  .sec.paper.cover .hero-scene .ptitle .kick .mono {
+    font-size: clamp(7.5px, 2vw, 10px) !important;
+    letter-spacing: .065em !important;
+  }
+  .sec.paper.cover .hero-scene .ptitle .h1 {
+    font-size: clamp(33px, 8.5vw, 51px) !important;
+    line-height: 1.07 !important;
+    max-width: 400px !important;
+    margin-bottom: 17px !important;
+  }
+  .sec.paper.cover .hero-scene .ptitle .cvh2 {
+    font-size: 14px !important;
+    max-width: 325px !important;
+    line-height: 1.5 !important;
+  }
+  .sec.paper.cover .hero-scene .spatial {
+    left: -.055em !important;
+    right: auto !important;
+    bottom: -.1em !important;
+    font-size: clamp(8.5rem, 24vw, 13rem) !important;
+    line-height: .78 !important;
+    color: rgba(241, 240, 235, .12) !important;
+  }
+  .sec.paper.cover .hero {height: 160px !important}
+  .sec.paper.cover .hero .decs.cv4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .sec.paper.cover .hero .decs.cv4 .dec {
+    display: flex !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    height: 100%;
+    min-height: 0 !important;
+    padding: 8px 13px !important;
+    border: 0 !important;
+    border-right: 1px solid var(--pr-line) !important;
+    border-bottom: 1px solid var(--pr-line) !important;
+  }
+  .sec.paper.cover .hero .decs.cv4 .dec:nth-child(odd) {border-right:1px solid var(--pr-line) !important}
+  .sec.paper.cover .hero .decs.cv4 .dec:nth-child(even) {border-right:0 !important}
+  .sec.paper.cover .hero .decs.cv4 .dec:nth-last-child(-n+2) {border-bottom:0 !important}
+  .sec.paper.cover .hero .decs.cv4 .dec .dt:not(.dpr) {
+    font-size: clamp(8.5px, 2.35vw, 11px) !important;
+    line-height: 1.25 !important;
+  }
+  .sec.paper.cover .hero .decs.cv4 .dec .dpr {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    align-self: flex-start !important;
+    font-size: clamp(14px, 3.9vw, 18px) !important;
+    white-space: nowrap !important;
+  }
+}
+@media screen and (max-width:760px) and (max-height:630px) {
+  /* Preserve usable content when the phone is short or landscape. */
+  .sec.paper.cover {height:auto!important;min-height:100svh!important;overflow:visible!important}
+  .sec.paper.cover .cw {grid-template-rows:minmax(310px, 1fr) 160px!important}
+}
