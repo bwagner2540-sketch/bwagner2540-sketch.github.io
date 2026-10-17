@@ -20,7 +20,7 @@
  .sec.cover .chdr .logo,.sec.cover .chdr .clogo{position:static!important;transform:none!important;width:auto!important;height:46px!important;object-fit:contain}
  .sec.cover .chdr .clogo{height:36px!important;max-width:42%}
  .sec.cover .cw{display:block!important;margin:0!important;padding:0!important}
- .hero-scene{position:relative;isolation:isolate;overflow:hidden;min-height:280px;height:clamp(280px,43svh,460px);padding:clamp(24px,3vw,44px);background-color:var(--pr-forest);background-image:linear-gradient(90deg,rgba(9,11,10,.58),rgba(9,11,10,.06)),var(--pr-hero-photo,none);background-size:cover;background-position:center;color:var(--pr-light)}
+ .hero-scene{--pr-hero-photo:url('./assets/pradera-sunset.jpg');position:relative;isolation:isolate;overflow:hidden;min-height:280px;height:clamp(280px,43svh,460px);padding:clamp(24px,3vw,44px);background-color:var(--pr-forest);background-image:linear-gradient(90deg,rgba(9,11,10,.58),rgba(9,11,10,.06)),var(--pr-hero-photo,none);background-size:cover;background-position:center;color:var(--pr-light)}
  .sec.cover .hero-scene .ptitle{position:relative;z-index:1;padding:0!important}
  .sec.cover .hero-scene .ptitle .h1{font-size:clamp(32px,2rem + 2vw,66px)!important;max-width:720px;line-height:1.02!important}
  .sec.cover .hero-scene .ptitle .kick .mono{color:var(--pr-light)!important}
@@ -213,3 +213,7 @@
  .sec.vw .vviz svg{max-height:190px}
  .sec.vw .vr{padding:8px 0}
 }
+
+/* Final hero: one-line desktop title, responsive wrapping without forced breaks. */
+@media screen and (min-width:1200px){.sec.cover .hero-scene .ptitle .h1{font-size:clamp(42px,3.6vw,60px)!important;max-width:1000px}}
+@media screen and (max-width:1199px){.sec.cover .hero-scene .ptitle .h1{max-width:680px}}

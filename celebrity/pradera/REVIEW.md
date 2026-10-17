@@ -12,9 +12,9 @@ Implemented on PR #4; not merged or deployed.
 - Hero heading, eyebrow and bottom-right PRADERA use actual HTML and the specified Schibsted Grotesk / Instrument Sans / IBM Plex Mono roles.
 - Added Next/Review links, tab/panel relationships, arrow/Home/End keyboard navigation and visible focus styling.
 
-## Pending asset — do not deploy as the final hero
+## Sunset image asset — added
 
-IMG_7851.jpeg is absent from the synced project directory, the referenced conversation's returned attachments, and the local filename search. The hero currently uses a forest background. Attach the original photo to complete its crop and contrast QA. Set `--pr-hero-photo: url('./assets/pradera-sunset.webp')` on `.hero-scene` after adding the approved asset; no generated replacement photograph has been substituted.
+The sunset source was recovered from the conversation upload `IMG_7851.jpeg`. The upload was a screenshot, so `assets/pradera-sunset.jpg` crops out its navigation/footer and applies a forest scrim to conceal baked-in legacy text, retaining the sunset house itself. The hero now loads this standalone image asset via `--pr-hero-photo` with all headings rendered as HTML. Visually review image crop at final production dimensions.
 
 ## Verification
 
