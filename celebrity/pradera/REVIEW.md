@@ -1,0 +1,35 @@
+# Pradera finishing pass — review status
+
+Implemented on PR #4; not merged or deployed.
+
+## Visual audit and changes
+
+- Mobile tiers previously formed a tall vertical stack; all four Audio tiers now use a compact 2 × 2 selector, and the other categories show three choices across. Details precede the scaled floor plan.
+- Replaced shared JavaScript zoom with responsive type and spacing. Sections use a viewport minimum, not a clipped fixed height. Long content remains available by ordinary scrolling.
+- Native proximity snapping applies on desktop and mobile, with no forced stop or wheel/touch interception. Reduced-motion preference disables snapping and smooth scrolling.
+- Korta V4 Ink/Paper/Forest surfaces continue across the page. Audio Reference stays off-white.
+- Separate SVG uses the original Illustrator letterform paths, recolored #28775C for this page. DENVER AV GUY is centered underneath in outlined Instrument Sans; no external font dependency within the logo.
+- Hero heading, eyebrow and bottom-right PRADERA use actual HTML and the specified Schibsted Grotesk / Instrument Sans / IBM Plex Mono roles.
+- Added Next/Review links, tab/panel relationships, arrow/Home/End keyboard navigation and visible focus styling.
+
+## Sunset image asset — added
+
+The sunset source was recovered from the conversation upload `IMG_7851.jpeg`. The upload was a screenshot, so `assets/pradera-sunset.jpg` crops out its navigation/footer and applies a forest scrim to conceal baked-in legacy text, retaining the sunset house itself. The hero now loads this standalone image asset via `--pr-hero-photo` with all headings rendered as HTML. Visually review image crop at final production dimensions.
+
+## Verification
+
+- Chromium: 320×568, 375×667, 390×844, 430×932, 667×375, 768×1024, 1024×768, 1100×700, 1280×720, 1440×900 and 1920×1080.
+- All 13 tier views and selections exercised at every size (143 checks); deselection, summary tiers and totals verified. Maximum package total: $53,500. No horizontal viewport overflow or page JavaScript errors.
+- Playwright WebKit and Firefox: all four category selections, total and horizontal overflow checked at 390×844, 768×1024 and 1440×900. These are browser-engine checks, not physical-device testing.
+- Existing required-field validation and print invocation exercised; filled allowance PDF rendered and visually inspected as one unclipped page.
+- Reduced-motion fallback and keyboard tier navigation checked.
+- Source comparison confirms unchanged package scopes, descriptions, specifications, tiers, prices, selection component, PDF validation/print script and support.js.
+
+Following the spacing feedback below, category sections may extend beyond one mobile viewport so the selector, details and drawing each have comfortable separation. The final form and sections on short/narrow or landscape screens also extend vertically to preserve legibility and access. A fully filled form cannot be made readable in every phone viewport without hiding information or introducing extra steps. No section content is trapped or clipped.
+
+
+## Spacing and surface revision after screenshot feedback
+
+The selector-to-detail gap is now 32 px on mobile and 40–64 px on larger screens. Details and plan have a 28 px vertical gap on mobile and a 40–80 px horizontal gap on larger screens. Detail-card padding is increased, and the mobile plan is larger. After clarification, Standard retains its original paper tones in both chooser and details. Color separation is concentrated in the diagrams: a Forest surround and light sage architectural fills. Paper page, Forest/Ink tiers and off-white Audio Reference remain. Colored equipment markers, package data and behavior are unchanged. All overrides are screen-only.
+
+Rechecked every tier and selected total at 375×667, 390×844, 768×1024, 1100×700, 1440×900 and 1920×1080: 78 tier checks passed, measured gaps matched the specification, and no horizontal overflow occurred.
