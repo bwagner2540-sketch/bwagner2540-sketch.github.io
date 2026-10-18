@@ -270,8 +270,11 @@
     object-fit: contain;
   }
   .sec.paper.cover .cw {
-    display: grid !important;
-    grid-template-rows: minmax(0, 1fr) var(--cover-band);
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
     flex: 1 1 auto;
     height: auto;
     min-height: 0;
@@ -282,13 +285,15 @@
   }
   .sec.paper.cover .hero-scene {
     --pr-hero-photo: url('./assets/pradera-sunset.jpg');
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
+    flex: 1 1 0% !important;
     align-items: center;
     box-sizing: border-box;
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    height: 100% !important;
+    height: auto !important;
     min-height: 0 !important;
     width: 100%;
     margin: 0 !important;
@@ -390,7 +395,7 @@
   }
   .sec.paper.cover .hero {
     box-sizing: border-box;
-    flex: 1 1 auto;
+    flex: 0 0 var(--cover-band) !important;
     height: var(--cover-band) !important;
     min-height: 0 !important;
     width: 100%;
@@ -484,7 +489,8 @@
     max-width: 156px !important;
   }
   .sec.paper.cover .cw {
-    grid-template-rows: minmax(0, 1fr) 160px !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
   .sec.paper.cover .hero-scene {
     min-height: 0 !important;
@@ -531,7 +537,7 @@
     line-height: .78 !important;
     color: rgba(241, 240, 235, .12) !important;
   }
-  .sec.paper.cover .hero {height: 160px !important}
+  .sec.paper.cover .hero {height: 160px !important;flex: 0 0 160px !important;}
   .sec.paper.cover .hero .decs.cv4 {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
@@ -568,5 +574,6 @@
 @media screen and (max-width:760px) and (max-height:630px) {
   /* Preserve usable content when the phone is short or landscape. */
   .sec.paper.cover {height:auto!important;min-height:100svh!important;overflow:visible!important}
-  .sec.paper.cover .cw {grid-template-rows:minmax(310px, 1fr) 160px!important}
+  .sec.paper.cover .cw {display:flex!important;flex-direction:column!important}
+  .sec.paper.cover .hero-scene {flex: 1 0 310px!important;min-height:310px!important}
 }
