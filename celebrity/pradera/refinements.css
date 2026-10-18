@@ -265,3 +265,20 @@
  .pr-cover-scene {flex-basis:350px;min-height:350px}
 }
 @media print {#pradera-cover {display:none}}
+
+
+/* Pradera per-tier individual architectural studies: 13 independent SVG sheets.
+   The chosen plan is the only one displayed; package tabs, scopes, data and print remain untouched. */
+@media screen {
+ .sec.vw .vviz {min-width:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+ .sec.vw .vviz .tier-plan {display:none;width:100%;height:auto;max-height:390px;aspect-ratio:760/470;object-fit:contain}
+ .sec.vw.sel-1 .vviz .tier-plan-1,
+ .sec.vw.sel-2 .vviz .tier-plan-2,
+ .sec.vw.sel-3 .vviz .tier-plan-3,
+ .sec.vw.sel-4 .vviz .tier-plan-4 {display:block}
+}
+@media screen and (max-width:760px) {
+ .sec.vw .vviz .tier-plan {max-height:none;aspect-ratio:760/470}
+ .sec.vw .vviz {padding:10px}
+}
+@media print { .sec.vw .vviz .tier-plan {display:none!important} }
