@@ -1401,7 +1401,7 @@ body,.paper,.sec.paper{background:var(--pr-paper);color:var(--pr-ink)}
 @media print{body,.paper,.sec.paper{background:#fff!important;color:#090B0A}#selections .fcard{background:#E2DDCE!important}}
 
 </style>
-<link rel="stylesheet" href="./refinements.css?v=pradera-plan-v9-13-tiers">
+<link rel="stylesheet" href="./refinements.css?v=pradera-aligned-panels-20261018">
 </helmet>
 
 <div id="top">
@@ -1746,7 +1746,37 @@ class Component extends DCLogic {
 <script src="./refinements.js?v=830f2d10"></script>
 <dialog class="study-modal" id="study-modal" aria-label="Expanded floor-plan diagram"><button class="study-modal-close" type="button" data-close-study>Close ×</button><div class="study-modal-stage"><img class="study-modal-base" alt="Architectural floor plan"><img class="study-modal-overlay" alt="Selected package floor-plan equipment key and devices"></div></dialog>
 <script id="study-zoom-controller">
-(function(){var modal=document.getElementById('study-modal');if(!modal)return;var base=modal.querySelector('.study-modal-base');var overlay=modal.querySelector('.study-modal-overlay');document.querySelectorAll('[data-expand-study]').forEach(function(button){button.addEventListener('click',function(){var stage=button.closest('.study-stage');var active=stage&&Array.from(stage.querySelectorAll('.study-tier')).find(function(img){return getComputedStyle(img).display!=='none'});if(!active)return;base.src=stage.querySelector('.study-base').src;overlay.src=active.src;overlay.alt=active.alt;modal.showModal()})});modal.querySelector('[data-close-study]').addEventListener('click',function(){modal.close()});modal.addEventListener('click',function(event){if(event.target===modal)modal.close()})})();
+(function(){
+  // The selection app renders asynchronously; delegate clicks to include its buttons.
+  document.addEventListener('click',function(event){
+    var button=event.target.closest&&event.target.closest('[data-expand-study]');
+    var modal=document.getElementById('study-modal');
+    if(!modal)return;
+    if(button){
+      var stage=button.closest('.study-stage');
+      var active=stage&&Array.from(stage.querySelectorAll('.study-tier')).find(function(img){return getComputedStyle(img).display!=='none'});
+      if(!active)return;
+      modal.querySelector('.study-modal-base').src=stage.querySelector('.study-base').src;
+      var overlay=modal.querySelector('.study-modal-overlay');
+      overlay.src=active.src;overlay.alt=active.alt;
+      if(!modal.open)modal.showModal();
+    }else if(event.target===modal||(event.target.closest&&event.target.closest('[data-close-study]'))){modal.close()}
+  });
+  function markLongSections(){
+    document.querySelectorAll('.sec.paper').forEach(function(section){
+      section.classList.toggle('pr-long-section',section.scrollHeight>window.innerHeight+2);
+    });
+  }
+  var resize=new ResizeObserver(markLongSections);
+  var observed=new WeakSet();
+  function watchSections(){
+    document.querySelectorAll('.sec.paper').forEach(function(section){if(!observed.has(section)){observed.add(section);resize.observe(section)}});
+    markLongSections();
+  }
+  new MutationObserver(watchSections).observe(document.getElementById('top')||document.body,{childList:true,subtree:true});
+  window.addEventListener('resize',markLongSections);
+  watchSections();
+})();
 </script>
 </body>
 </html>

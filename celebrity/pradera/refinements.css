@@ -5,7 +5,7 @@
 .vtp,.vpr,.tprice{font-family:'Instrument Sans',sans-serif;font-weight:500}
 @media screen{
  html{scroll-snap-type:y proximity;scroll-behavior:smooth}
- .sec.paper{min-height:100vh;min-height:100svh;height:auto;overflow:visible;scroll-snap-align:start;scroll-snap-stop:normal;padding:clamp(28px,5vh,54px) clamp(24px,5vw,88px) 28px!important;border-top:1px solid var(--pr-line)}
+ .sec.paper{min-height:100vh;min-height:100svh;height:auto;overflow:visible;scroll-snap-align:start;scroll-snap-stop:always;padding:clamp(28px,5vh,54px) clamp(24px,5vw,88px) 28px!important;border-top:1px solid var(--pr-line)}
  .sec.paper>.wrap{zoom:1;max-width:1360px!important;width:100%!important;margin:0 auto!important;padding:0!important}
  .sec.paper .hdr{display:none}
  .sec.paper .vhead,#selections .fmain .txt{width:100%!important;max-width:none!important;margin:0!important;padding:0 0 24px!important}
@@ -285,9 +285,9 @@
 
 /* Pradera 13 approved architectural floor studies: composited on native section paper. */
 @media screen {
- .sec.vw .vbody {grid-template-columns:minmax(0,.34fr) minmax(0,.66fr);column-gap:clamp(28px,4vw,56px);align-items:center}
- .sec.vw .study-visual {background:transparent!important;box-shadow:none!important;border:0!important;padding:0!important;min-width:0;align-self:center!important;width:100%}
- .study-stage {aspect-ratio:3/2;position:relative;background:transparent!important;border:0!important;overflow:visible;isolation:isolate}
+ .sec.vw .vbody {grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(32px,4vw,64px);align-items:stretch}
+ .sec.vw .study-visual {display:block;background:transparent!important;box-shadow:none!important;border:0!important;padding:0!important;min-width:0;align-self:stretch!important;width:100%}
+ .study-stage {width:100%;aspect-ratio:3/2;position:relative;background:transparent!important;border:0!important;overflow:visible;isolation:isolate}
  .study-stage .study-base,.study-stage .study-tier {position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain!important;max-height:none!important;pointer-events:none}
  .study-stage .study-base {z-index:1}
  .study-stage .study-tier {z-index:2;display:none}
@@ -303,12 +303,14 @@
  .study-modal-overlay {z-index:2}
 }
 @media screen and (max-width:900px) {
- .sec.vw .vbody {grid-template-columns:1fr;gap:36px;margin-top:36px}
+ .sec.vw .vbody {grid-template-columns:1fr;gap:36px;margin-top:48px}
  .sec.vw .study-visual {max-width:880px;margin:0 auto}
 }
 @media screen and (max-width:760px) {
- .sec.vw .vbody {margin-top:26px;gap:30px}
+ .sec.vw .vbody {margin-top:48px;gap:30px}
  .study-expand {bottom:-34px;font-size:10px}
  .study-modal-stage {min-width:680px}
 }
 @media print {.study-expand,.study-modal{display:none!important}}
+
+@media screen { .sec.paper.pr-long-section {scroll-snap-stop:normal} }
