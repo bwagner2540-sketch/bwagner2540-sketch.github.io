@@ -1,45 +1,19 @@
-/* Pradera finishing pass. Screen layout is independent of the original print layout.
-   The approved sunset asset will be applied with --pr-hero-photo on .hero-scene. */
+/* Package and allowance screen refinements. The cover component is defined below. */
 .h1,.client,.vh,.vtn{font-family:'Schibsted Grotesk',sans-serif;font-weight:400}
 .cd,.vd,.cvh2{font-family:'Instrument Sans',sans-serif;font-weight:400}
-.mono,.sec.cover .mono:not(.cvd),#selections .mono{font-family:'IBM Plex Mono',monospace;font-weight:400}
+.mono,#selections .mono{font-family:'IBM Plex Mono',monospace;font-weight:400}
 .vtp,.vpr,.tprice{font-family:'Instrument Sans',sans-serif;font-weight:500}
 @media screen{
  html{scroll-snap-type:y proximity;scroll-behavior:smooth}
  .sec.paper{min-height:100vh;min-height:100svh;height:auto;overflow:visible;scroll-snap-align:start;scroll-snap-stop:normal;padding:clamp(28px,5vh,54px) clamp(24px,5vw,88px) 28px!important;border-top:1px solid var(--pr-line)}
  .sec.paper>.wrap{zoom:1;max-width:1360px!important;width:100%!important;margin:0 auto!important;padding:0!important}
  .sec.paper .hdr{display:none}
- .sec.paper .vhead,.sec.cover .ptitle,#selections .fmain .txt{width:100%!important;max-width:none!important;margin:0!important;padding:0 0 24px!important}
- .sec.paper .vhead .kick,.sec.cover .ptitle .kick,#selections .fmain .txt .kick{margin:0 0 12px!important}
- .sec.paper .vhead .h1,.sec.cover .ptitle .h1,#selections .fmain .txt .h1{font-size:clamp(28px,2rem + 1vw,44px)!important;line-height:1.05!important;font-weight:400;margin:0 0 12px!important;letter-spacing:-.035em}
- .sec.paper .vhead .cd,.sec.cover .ptitle .cd,#selections .fmain .txt .cd{font-size:15px!important;line-height:1.5!important;max-width:620px!important;margin:0!important;text-wrap:pretty;text-transform:none;letter-spacing:0}
+ .sec.paper .vhead,#selections .fmain .txt{width:100%!important;max-width:none!important;margin:0!important;padding:0 0 24px!important}
+ .sec.paper .vhead .kick,#selections .fmain .txt .kick{margin:0 0 12px!important}
+ .sec.paper .vhead .h1,#selections .fmain .txt .h1{font-size:clamp(28px,2rem + 1vw,44px)!important;line-height:1.05!important;font-weight:400;margin:0 0 12px!important;letter-spacing:-.035em}
+ .sec.paper .vhead .cd,#selections .fmain .txt .cd{font-size:15px!important;line-height:1.5!important;max-width:620px!important;margin:0!important;text-wrap:pretty;text-transform:none;letter-spacing:0}
  .kick .mono{font-size:10px;letter-spacing:.12em}
- .sec.cover{padding-top:18px!important}
- .sec.cover .chdr{height:66px!important;padding:0 0 16px!important;display:flex!important;justify-content:space-between!important;align-items:center!important}
- .sec.cover .chdr::after{display:none}
- .sec.cover .chdr .logo,.sec.cover .chdr .clogo{position:static!important;transform:none!important;width:auto!important;height:46px!important;object-fit:contain}
- .sec.cover .chdr .clogo{height:36px!important;max-width:42%}
- .sec.cover .cw{display:block!important;margin:0!important;padding:0!important}
- .hero-scene{--pr-hero-photo:url('./assets/pradera-sunset.jpg');position:relative;isolation:isolate;overflow:hidden;min-height:280px;height:clamp(280px,43svh,460px);padding:clamp(24px,3vw,44px);background-color:var(--pr-forest);background-image:linear-gradient(90deg,rgba(9,11,10,.58),rgba(9,11,10,.06)),var(--pr-hero-photo,none);background-size:cover;background-position:center;color:var(--pr-light)}
- .sec.cover .hero-scene .ptitle{position:relative;z-index:1;padding:0!important}
- .sec.cover .hero-scene .ptitle .h1{font-size:clamp(32px,2rem + 2vw,66px)!important;max-width:720px;line-height:1.02!important}
- .sec.cover .hero-scene .ptitle .kick .mono{color:var(--pr-light)!important}
- .hero-scene .kick i{background:var(--pr-light)}
- .sec.cover .hero-scene .ptitle .cd{color:var(--pr-light);max-width:390px!important;font-size:15px!important}
- .spatial{position:absolute;right:20px;bottom:12px;font:300 clamp(48px,9vw,144px)/.85 'Schibsted Grotesk',sans-serif;text-transform:uppercase;letter-spacing:-.055em;color:rgba(241,240,235,.66);pointer-events:none}
- .sec.cover .hero{margin:20px 0 0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;overflow:visible!important}
- .sec.cover .hero .wrap,.sec.cover .hero .main.cover{margin:0!important;padding:0!important;max-width:none!important;display:block!important}
- .sec.cover .hero .decs.cv4{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;grid-template-rows:auto!important;gap:12px!important;height:auto!important;width:100%!important;max-width:none!important;margin:0!important;box-shadow:none!important;background:none!important}
- .sec.cover .hero .decs.cv4 .fxh{display:none!important}
- .sec.cover .hero .decs.cv4 .dec{display:flex!important;flex-direction:column;align-items:flex-start!important;justify-content:flex-start!important;gap:10px!important;min-width:0;min-height:170px!important;padding:18px!important;border:1px solid var(--pr-line)!important;background:var(--pr-cream-02)!important}
- .sec.cover .hero .decs.cv4 .dec .dt:not(.dpr){font-size:20px!important;white-space:normal!important;padding:0!important}
- .sec.cover .hero .decs.cv4 .dec .dt .tn{display:block!important;font-size:10px!important;margin:0 0 12px!important}
- .sec.cover .hero .decs.cv4 .dec .dopt{font:400 13px/1.4 'Instrument Sans',sans-serif!important;text-align:left!important;color:var(--pr-muted)!important}
- .sec.cover .hero .decs.cv4 .dec .stt{font-size:10px!important;min-width:0;order:4;text-align:left!important}
- .sec.cover .hero .decs.cv4 .dec .stt:empty{display:none}
- .sec.cover .hero .decs.cv4 .dec .stt::before{display:none!important}
- .sec.cover .hero .decs.cv4 .dec .dpr{display:block!important;font:500 17px/1.25 'Instrument Sans',sans-serif!important;white-space:nowrap;color:var(--pr-ink);text-align:left!important;margin-top:auto!important}
- .sec.cover>.sw,#selections>.sw{display:none!important}
+#selections>.sw{display:none!important}
  .vtab{padding:13px 16px;min-height:72px;gap:6px}
  .vtr{flex-wrap:wrap;gap:4px 12px}
  .vtn{font-size:18px}.vtp{font-size:16px}.vts{font-size:12px;font-family:'Instrument Sans',sans-serif}
@@ -74,8 +48,6 @@
 }
 @media screen and (max-width:1099px){
  .sec.paper{padding:28px 32px!important}
- .sec.cover .hero .decs.cv4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
- .sec.cover .hero .decs.cv4 .dec{min-height:135px!important}
  .vbody{gap:24px}.vw .vdet .vp{padding:20px}
  #selections .fcard{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:20px}
  #selections .fcard .frow3{display:contents!important}
@@ -86,10 +58,6 @@
 }
 @media screen and (max-width:760px){
  .sec.paper{padding:24px!important}
- .sec.cover .hero-scene{height:300px}
- .sec.cover .chdr{height:60px!important}
- .sec.cover .chdr .logo{height:42px!important}
- .sec.cover .chdr .clogo{height:30px!important}
  .sec.paper .vhead .h1,#selections .fmain .txt .h1{font-size:30px!important}
  .sec.paper .vhead .cd,#selections .fmain .txt .cd{font-size:14px!important}
  .vtabs,.surround .vtabs,.network .vtabs,.cameras .vtabs{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -119,24 +87,9 @@
 }
 @media screen and (max-width:480px){
  .sec.paper{padding:22px 20px!important}
- .sec.cover{padding-top:10px!important}
- .hero-scene{padding:22px}
- .sec.cover .hero-scene{height:270px;min-height:270px}
- .sec.cover .hero-scene .ptitle .h1{font-size:32px!important}
- .hero-scene .kick{gap:8px}.hero-scene .kick i{flex-basis:16px}
- .hero-scene .kick .mono{font-size:8px;letter-spacing:.06em}
- .sec.cover .hero-scene .ptitle .cd{font-size:13px!important;max-width:260px!important}
- .spatial{right:14px;bottom:14px;font-size:52px}
- .sec.cover .hero .decs.cv4{gap:0!important;grid-template-columns:1fr!important}
- .sec.cover .hero .decs.cv4 .dec{display:grid!important;grid-template-columns:1fr auto!important;gap:5px 12px!important;min-height:0!important;padding:12px 0!important;border:0!important;border-bottom:1px solid var(--pr-line)!important;background:none!important}
- .sec.cover .hero .decs.cv4 .dec .dt:not(.dpr){font-size:17px!important}
- .sec.cover .hero .decs.cv4 .dec .dt .tn{display:inline-block!important;margin:0 8px 0 0!important;width:auto!important;font-size:9px!important}
- .sec.cover .hero .decs.cv4 .dec .dopt{grid-column:1/-1;font-size:12px!important}
- .sec.cover .hero .decs.cv4 .dec .dpr{grid-column:2;grid-row:1;font-size:12px!important;margin:0!important;align-self:center}
- .sec.cover .hero .decs.cv4 .dec .stt{grid-column:1/-1}
 }
 @media screen and (prefers-reduced-motion:reduce){html{scroll-behavior:auto;scroll-snap-type:none}.vtab,.tier,.spk,.spk-d{transition:none}}
-@media print{.hero-scene{display:none}html{scroll-snap-type:none}}
+@media print{html{scroll-snap-type:none}}
 @media screen and (max-width:760px){
  .sec.paper .vhead{padding-bottom:18px!important}
  .vviz svg{max-height:140px}
@@ -214,366 +167,100 @@
  .sec.vw .vr{padding:8px 0}
 }
 
-/* Final hero: one-line desktop title, responsive wrapping without forced breaks. */
-@media screen and (min-width:1200px){.sec.cover .hero-scene .ptitle .h1{font-size:clamp(42px,3.6vw,60px)!important;max-width:1000px}}
-@media screen and (max-width:1199px){.sec.cover .hero-scene .ptitle .h1{max-width:680px}}
 
-
-/* --------------------------------------------------------------------------
-   Celebrity / Pradera — RESIDENCE-matched cover, 17 October 2026
-   Desktop: a single viewport including two equal cream bands.
-   Component-local only: leave package tiers, allowances, print and PDF intact.
-   -------------------------------------------------------------------------- */
+/* Pradera cover: the single screen-layout source of truth.
+   Dedicated component classes isolate it from the legacy print/ledger cascade. */
 @media screen {
-  .sec.paper.cover {
-    --cover-band: clamp(84px, 10svh, 116px);
-    box-sizing: border-box;
-    display: flex !important;
-    flex-direction: column;
-    height: 100svh !important;
-    min-height: 100svh !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border-top: 0 !important;
-    overflow: hidden !important;
-    background: var(--pr-paper);
-  }
-  .sec.paper.cover > .wrap {
-    display: flex !important;
-    flex-direction: column;
-    flex: 1 1 auto;
-    height: 100% !important;
-    min-height: 0;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .sec.paper.cover .chdr {
-    box-sizing: border-box;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    flex: 0 0 var(--cover-band);
-    width: 100%;
-    height: var(--cover-band) !important;
-    min-height: 0 !important;
-    margin: 0 !important;
-    padding: 0 clamp(24px, 4.5vw, 88px) !important;
-    background: var(--pr-paper);
-    border-bottom: 1px solid var(--pr-line);
-  }
-  .sec.paper.cover .chdr .logo {
-    width: auto !important;
-    height: min(58px, calc(var(--cover-band) - 30px)) !important;
-    max-width: 210px;
-    object-fit: contain;
-  }
-  .sec.paper.cover .cw {
-    display: flex !important;
-    flex-direction: column !important;
-    flex-wrap: nowrap !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    flex: 1 1 auto;
-    height: auto;
-    min-height: 0;
-    width: 100%;
-    max-width: none;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .sec.paper.cover .hero-scene {
-    --pr-hero-photo: url('./assets/pradera-sunset.jpg');
-    display: flex !important;
-    flex-direction: row !important;
-    flex: 1 1 0% !important;
-    align-items: center;
-    box-sizing: border-box;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    height: auto !important;
-    min-height: 0 !important;
-    width: 100%;
-    margin: 0 !important;
-    padding: clamp(28px, 4.5vw, 90px) !important;
-    background-color: var(--pr-forest);
-    background-image:
-      linear-gradient(90deg,
-        rgba(24, 59, 49, .96) 0%,
-        rgba(24, 59, 49, .82) 30%,
-        rgba(24, 59, 49, .20) 62%,
-        rgba(24, 59, 49, 0) 100%),
-      var(--pr-hero-photo);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-  .sec.paper.cover .hero-scene .ptitle {
-    z-index: 1;
-    position: relative;
-    box-sizing: border-box;
-    flex: 0 1 720px;
-    width: min(720px, 52%);
-    max-width: 720px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    transform: translateY(-1.1svh);
-  }
-  .sec.paper.cover .hero-scene .ptitle .kick {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    margin: 0 0 clamp(22px, 3.1svh, 36px) !important;
-  }
-  .sec.paper.cover .hero-scene .ptitle .kick i {
-    display: block !important;
-    flex: 0 0 9px !important;
-    width: 9px;
-    height: 9px;
-    border: 1px solid #28775C;
-    border-radius: 50%;
-    background: transparent !important;
-  }
-  .sec.paper.cover .hero-scene .ptitle .kick .mono {
-    font-family: 'IBM Plex Mono', monospace !important;
-    font-weight: 400 !important;
-    font-size: clamp(9px, .72vw, 12px) !important;
-    letter-spacing: .12em !important;
-    line-height: 1.4;
-    color: rgba(241, 240, 235, .78) !important;
-    text-transform: uppercase !important;
-  }
-  .sec.paper.cover .hero-scene .ptitle .h1 {
-    font-family: 'Schibsted Grotesk', sans-serif !important;
-    font-size: clamp(45px, 4.35vw, 80px) !important;
-    font-weight: 300 !important;
-    line-height: 1.025 !important;
-    letter-spacing: -.04em !important;
-    text-transform: none !important;
-    text-wrap: balance;
-    max-width: 720px !important;
-    margin: 0 0 clamp(20px, 3.5svh, 37px) !important;
-    color: var(--pr-light) !important;
-  }
-  .sec.paper.cover .hero-scene .ptitle .cvh2 {
-    font-family: 'Instrument Sans', sans-serif !important;
-    font-size: clamp(15px, 1.12vw, 18px) !important;
-    font-weight: 400 !important;
-    line-height: 1.56 !important;
-    letter-spacing: -.01em !important;
-    text-transform: none !important;
-    text-wrap: pretty;
-    max-width: 405px !important;
-    margin: 0 !important;
-    color: rgba(241, 240, 235, .82) !important;
-  }
-  .sec.paper.cover .hero-scene .spatial {
-    display: block;
-    position: absolute;
-    z-index: 0;
-    left: -.055em !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: -.17em !important;
-    width: max-content;
-    max-width: none;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-family: 'Schibsted Grotesk', sans-serif !important;
-    font-weight: 300 !important;
-    font-size: clamp(12rem, 16vw, 17.25rem) !important;
-    line-height: .78 !important;
-    letter-spacing: -.045em !important;
-    text-transform: uppercase !important;
-    white-space: nowrap;
-    color: rgba(241, 240, 235, .12) !important;
-    opacity: 1 !important;
-    pointer-events: none;
-    user-select: none;
-  }
-  .sec.paper.cover .hero {
-    box-sizing: border-box;
-    flex: 0 0 var(--cover-band) !important;
-    height: var(--cover-band) !important;
-    min-height: 0 !important;
-    width: 100%;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    border-top: 1px solid var(--pr-line) !important;
-    background: var(--pr-paper) !important;
-    overflow: visible !important;
-    box-shadow: none !important;
-  }
-  .sec.paper.cover .hero .wrap,
-  .sec.paper.cover .hero .main.cover {
-    box-sizing: border-box;
-    height: 100%;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .sec.paper.cover .hero .decs.cv4 {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    grid-template-rows: 1fr !important;
-    gap: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    background: var(--pr-paper) !important;
-    box-shadow: none !important;
-  }
-  .sec.paper.cover .hero .decs.cv4 .dec {
-    box-sizing: border-box;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    gap: clamp(4px, .75svh, 10px) !important;
-    min-width: 0;
-    min-height: 0 !important;
-    height: 100%;
-    padding: 10px clamp(16px, 3.1vw, 58px) !important;
-    margin: 0 !important;
-    border: 0 !important;
-    border-right: 1px solid var(--pr-line) !important;
-    background: var(--pr-paper) !important;
-    color: var(--pr-ink) !important;
-    text-align: left !important;
-  }
-  .sec.paper.cover .hero .decs.cv4 .dec:last-child {border-right: 0 !important}
-  .sec.paper.cover .hero .decs.cv4 .dec:is(:hover, :focus-visible) {
-    background: var(--pr-cream-01) !important;
-  }
-  .sec.paper.cover .hero .decs.cv4 .dec .tn,
-  .sec.paper.cover .hero .decs.cv4 .dec .dopt,
-  .sec.paper.cover .hero .decs.cv4 .dec .stt {display: none !important}
-  .sec.paper.cover .hero .decs.cv4 .dec .dt:not(.dpr) {
-    display: block !important;
-    font-family: 'IBM Plex Mono', monospace !important;
-    font-size: clamp(10px, .82vw, 14px) !important;
-    font-weight: 400 !important;
-    line-height: 1.3 !important;
-    letter-spacing: .08em !important;
-    text-transform: uppercase !important;
-    color: var(--pr-forest) !important;
-    white-space: normal !important;
-  }
-  .sec.paper.cover .hero .decs.cv4 .dec .dpr {
-    display: block !important;
-    flex: 0 0 auto;
-    align-self: flex-start !important;
-    font: 500 clamp(16px, 1.48vw, 25px)/1.2 'Instrument Sans', sans-serif !important;
-    letter-spacing: -.01em !important;
-    color: var(--pr-ink) !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    white-space: nowrap;
-  }
+ #pradera-cover {
+  --cover-band:clamp(84px,11svh,112px);
+  --cover-inset:clamp(24px,4.5vw,88px);
+  display:flex!important;flex-direction:column;
+  height:100svh;min-height:100svh;
+  padding:0!important;margin:0;border:0!important;overflow:hidden;
+  background:#EDE9E0;
+ }
+ #pradera-cover .pr-cover-nav {
+  display:flex;align-items:center;flex:0 0 var(--cover-band);
+  padding:0 var(--cover-inset);border-bottom:1px solid rgba(11,13,12,.16);
+ }
+ .pr-cover-nav img {display:block;width:176px;height:auto;max-height:54px;object-fit:contain}
+ .pr-cover-scene {
+  position:relative;isolation:isolate;overflow:hidden;flex:1 1 auto;min-height:0;
+  padding:clamp(48px,12svh,128px) var(--cover-inset) 0;
+  background-color:#183B31;
+  background-image:linear-gradient(90deg,rgba(9,31,25,.93) 0%,rgba(9,31,25,.76) 22%,rgba(9,31,25,.28) 48%,rgba(9,31,25,0) 76%),url('./assets/pradera-sunset.jpg');
+  background-size:cover;background-position:center;
+ }
+ .pr-cover-copy {position:relative;z-index:2;width:min(100%,600px)}
+ .pr-cover-eyebrow {
+  display:flex;align-items:center;gap:12px;margin:0 0 28px;
+  font:400 .6875rem/1.4 'IBM Plex Mono',monospace;
+  letter-spacing:.12em;text-transform:uppercase;color:#A7AAA5;
+ }
+ .pr-cover-eyebrow i {width:8px;height:8px;flex:none;border:1px solid #1A8F6E;border-radius:50%}
+ .pr-cover-title {
+  max-width:10em;margin:0;
+  font:300 clamp(2.5rem,1.5rem + 2.4vw,4.5rem)/1.04 'Cormorant Garamond',Georgia,serif;
+  letter-spacing:-.025em;text-transform:none;text-wrap:balance;color:#F1F0EB;
+ }
+ .pr-cover-description {
+  max-width:360px;margin:24px 0 0;
+  font:400 1.125rem/1.5 'Instrument Sans',sans-serif;
+  letter-spacing:-.01em;text-wrap:pretty;color:#A7AAA5;
+ }
+ .pr-cover-word {
+  position:absolute;z-index:0;left:-.055em;bottom:-.17em;
+  font:300 clamp(12rem,16vw,17.25rem)/.78 'Schibsted Grotesk',sans-serif;
+  letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap;
+  color:rgba(241,240,235,.12);-webkit-text-fill-color:currentColor;
+  pointer-events:none;user-select:none;
+ }
+ .pr-cover-strip {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));flex:0 0 var(--cover-band);border-top:1px solid rgba(11,13,12,.16)}
+ .pr-cover-category {
+  display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;
+  align-content:center;align-items:center;justify-items:center;text-align:center;gap:8px;
+  min-width:0;padding:12px clamp(16px,2.6vw,48px);position:relative;
+  color:#183B31;background:transparent;
+ }
+ .pr-cover-category + .pr-cover-category::before {content:'';position:absolute;left:0;top:20%;height:60%;border-left:1px solid rgba(11,13,12,.16)}
+ .pr-cover-icon {display:none}
+ .pr-cover-label {font:400 clamp(1.125rem,.875rem + .4vw,1.5rem)/1.2 'Schibsted Grotesk',sans-serif;letter-spacing:0;text-transform:none}
+ .pr-cover-price {font:500 clamp(1rem,.65rem + .65vw,1.5rem)/1.2 'Instrument Sans',sans-serif;letter-spacing:-.025em;white-space:nowrap;color:#090B0A;font-variant-numeric:lining-nums tabular-nums}
+ .pr-cover-category:hover {background:#E2DDCE}
+ .pr-cover-category:focus-visible {outline:2px solid #1A8F6E;outline-offset:-4px}
+}
+@media screen and (min-width:761px) and (max-width:1099px) {
+ .pr-cover-category {grid-template-columns:1fr;gap:8px;padding:16px 24px}
+ .pr-cover-icon {display:none}
+ .pr-cover-title {font-size:clamp(2.5rem,5vw,3.5rem)}
 }
 @media screen and (max-width:760px) {
-  .sec.paper.cover {
-    --cover-band: 68px;
-    min-height: 100svh !important;
-    height: 100svh !important;
-  }
-  .sec.paper.cover .chdr {padding: 0 23px !important}
-  .sec.paper.cover .chdr .logo {
-    height: 43px !important;
-    width: auto !important;
-    max-width: 156px !important;
-  }
-  .sec.paper.cover .cw {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .sec.paper.cover .hero-scene {
-    min-height: 0 !important;
-    height: 100% !important;
-    padding: 28px 23px !important;
-    background-position: 58% center !important;
-    background-image:
-      linear-gradient(90deg,
-        rgba(24, 59, 49, .96) 0%,
-        rgba(24, 59, 49, .80) 48%,
-        rgba(24, 59, 49, .18) 100%),
-      var(--pr-hero-photo);
-  }
-  .sec.paper.cover .hero-scene .ptitle {
-    flex: 0 1 auto;
-    width: 100%;
-    max-width: 410px !important;
-    transform: translateY(-2.5svh);
-  }
-  .sec.paper.cover .hero-scene .ptitle .kick {
-    gap: 8px !important;
-    margin-bottom: 18px !important;
-  }
-  .sec.paper.cover .hero-scene .ptitle .kick .mono {
-    font-size: clamp(7.5px, 2vw, 10px) !important;
-    letter-spacing: .065em !important;
-  }
-  .sec.paper.cover .hero-scene .ptitle .h1 {
-    font-size: clamp(33px, 8.5vw, 51px) !important;
-    line-height: 1.07 !important;
-    max-width: 400px !important;
-    margin-bottom: 17px !important;
-  }
-  .sec.paper.cover .hero-scene .ptitle .cvh2 {
-    font-size: 14px !important;
-    max-width: 325px !important;
-    line-height: 1.5 !important;
-  }
-  .sec.paper.cover .hero-scene .spatial {
-    left: -.055em !important;
-    right: auto !important;
-    bottom: -.1em !important;
-    font-size: clamp(8.5rem, 24vw, 13rem) !important;
-    line-height: .78 !important;
-    color: rgba(241, 240, 235, .12) !important;
-  }
-  .sec.paper.cover .hero {height: 160px !important;flex: 0 0 160px !important;}
-  .sec.paper.cover .hero .decs.cv4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
-  }
-  .sec.paper.cover .hero .decs.cv4 .dec {
-    display: flex !important;
-    grid-column: auto !important;
-    grid-row: auto !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    gap: 5px !important;
-    height: 100%;
-    min-height: 0 !important;
-    padding: 8px 13px !important;
-    border: 0 !important;
-    border-right: 1px solid var(--pr-line) !important;
-    border-bottom: 1px solid var(--pr-line) !important;
-  }
-  .sec.paper.cover .hero .decs.cv4 .dec:nth-child(odd) {border-right:1px solid var(--pr-line) !important}
-  .sec.paper.cover .hero .decs.cv4 .dec:nth-child(even) {border-right:0 !important}
-  .sec.paper.cover .hero .decs.cv4 .dec:nth-last-child(-n+2) {border-bottom:0 !important}
-  .sec.paper.cover .hero .decs.cv4 .dec .dt:not(.dpr) {
-    font-size: clamp(8.5px, 2.35vw, 11px) !important;
-    line-height: 1.25 !important;
-  }
-  .sec.paper.cover .hero .decs.cv4 .dec .dpr {
-    grid-column: auto !important;
-    grid-row: auto !important;
-    align-self: flex-start !important;
-    font-size: clamp(14px, 3.9vw, 18px) !important;
-    white-space: nowrap !important;
-  }
+ #pradera-cover {--cover-band:68px;--cover-inset:24px}
+ .pr-cover-nav img {width:142px;max-height:44px}
+ .pr-cover-scene {padding-top:clamp(40px,9svh,72px);background-position:60% center;background-image:linear-gradient(90deg,rgba(9,31,25,.92),rgba(9,31,25,.58) 58%,rgba(9,31,25,.16)),url('./assets/pradera-sunset.jpg')}
+ .pr-cover-copy {max-width:410px}
+ .pr-cover-eyebrow {font-size:.5625rem;letter-spacing:.065em;gap:8px;margin-bottom:24px}
+ .pr-cover-title {font-size:clamp(2rem,1.1rem + 4.5vw,3rem);max-width:10em;line-height:1.06}
+ .pr-cover-description {font-size:.9375rem;max-width:290px;margin-top:20px}
+ .pr-cover-word {font-size:clamp(6.5rem,29vw,10rem);letter-spacing:-.055em;bottom:-.1em}
+ .pr-cover-strip {flex-basis:156px;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,1fr)}
+ .pr-cover-category {grid-template-columns:1fr;gap:7px;padding:12px 20px}
+ .pr-cover-icon {display:none}
+ .pr-cover-label {font-size:1.125rem;letter-spacing:0}
+ .pr-cover-price {font-size:1rem}
+ .pr-cover-category + .pr-cover-category::before {top:0;height:100%}
+ .pr-cover-category:nth-child(3)::before {display:none}
+ .pr-cover-category:nth-child(n+3) {border-top:1px solid rgba(11,13,12,.16)}
 }
-@media screen and (max-width:760px) and (max-height:630px) {
-  /* Preserve usable content when the phone is short or landscape. */
-  .sec.paper.cover {height:auto!important;min-height:100svh!important;overflow:visible!important}
-  .sec.paper.cover .cw {display:flex!important;flex-direction:column!important}
-  .sec.paper.cover .hero-scene {flex: 1 0 310px!important;min-height:310px!important}
+@media screen and (max-height:650px) {
+ .pr-cover-scene {padding-top:32px}
+ .pr-cover-eyebrow {margin-bottom:16px}
+ .pr-cover-title {font-size:2.5rem}
+ .pr-cover-description {font-size:1rem;margin-top:16px}
 }
+@media screen and (max-height:540px) {
+ /* Allow natural scrolling when the available height cannot hold readable copy. */
+ #pradera-cover {height:auto;overflow:visible}
+ .pr-cover-scene {flex-basis:350px;min-height:350px}
+}
+@media print {#pradera-cover {display:none}}

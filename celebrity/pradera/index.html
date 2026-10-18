@@ -10,7 +10,8 @@
 <body>
 <x-dc>
 <helmet>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/fonts/display.css?v=20261018">
+<link rel="stylesheet" href="./fonts.css?v=20261018">
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#EDE9E0;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -20,7 +21,7 @@ a{color:inherit;text-decoration:none}
 .sec{position:relative;overflow:hidden}
 .wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 64px}
 .mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;line-height:1.35;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
-.h1{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:44px;line-height:1;letter-spacing:-.02em;text-transform:uppercase;margin:0}
+.h1{font-family:'Schibsted Grotesk',sans-serif;font-weight:400;font-size:44px;line-height:1;letter-spacing:-.02em;text-transform:uppercase;margin:0}
 .h1.xl{font-size:72px;letter-spacing:-.025em}
 .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#3A6E5B;margin-right:10px;vertical-align:middle}
 .eb{color:var(--fg2);margin-bottom:36px}
@@ -29,7 +30,7 @@ a{color:inherit;text-decoration:none}
 .hdr{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:28px 0 24px;border-bottom:1px solid var(--line)}
 .hdr{justify-content:flex-end}
 .hdr .mono{color:var(--fg2)}
-.cd{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:21px;line-height:1.3;letter-spacing:-.02em;color:#51544F;margin:22px 0 0;max-width:440px}
+.cd{font-family:'Schibsted Grotesk',sans-serif;font-weight:400;font-size:21px;line-height:1.3;letter-spacing:-.02em;color:#51544F;margin:22px 0 0;max-width:440px}
 .main{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;padding:64px 0 56px}
 .txt{flex:1 1 360px;max-width:480px}
 .art{flex:2 1 520px;min-width:0;background:transparent;border-radius:2px;padding:28px;--fg:#000000;--fg3:rgba(0,0,0,.42);--line:rgba(0,0,0,.30)}
@@ -40,7 +41,7 @@ a{color:inherit;text-decoration:none}
 .btn.g:hover{background:#447A66}
 
 /* cover */
-.dt{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:32px;letter-spacing:-.02em;line-height:1.05}
+.dt{font-family:'Schibsted Grotesk',sans-serif;font-size:32px;letter-spacing:-.02em;line-height:1.05}
 
 /* baseline table */
 .bar{display:block;height:2px;background:var(--line);margin-top:0}
@@ -51,7 +52,7 @@ a{color:inherit;text-decoration:none}
 .bi{flex:1 1 220px;min-width:0}
 .bn{font-size:17px;font-weight:500}
 .bf{flex:0 0 150px;color:var(--fg2)}
-.bq{flex:0 0 48px;text-align:right;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:32px;letter-spacing:-.03em;line-height:1}
+.bq{flex:0 0 48px;text-align:right;font-family:'Schibsted Grotesk',sans-serif;font-weight:400;font-size:32px;letter-spacing:-.03em;line-height:1}
 .bb{flex:0 0 130px}
 .bt{background:#F7F4ED;border:1px solid rgba(11,13,12,.55);border-radius:2px;padding:6px 32px 10px;box-shadow:0 1px 0 rgba(11,13,12,.5),0 30px 42px -30px rgba(11,13,12,.45)}
 .bth{padding:20px 0 14px;color:#0B0D0C;border-bottom:2px solid #0B0D0C}
@@ -77,7 +78,7 @@ a{color:inherit;text-decoration:none}
 .tiers{counter-reset:tn}
 .tier{counter-increment:tn;background-color:#3A6E5B;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.17) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#4C8772 0%,#3A6E5B 36%,#2C5646 72%,#203F35 100%);box-shadow:0 1px 0 rgba(11,13,12,.6),0 30px 42px -28px rgba(11,13,12,.5)}
 .tier:hover{filter:brightness(1.07);outline:3px solid #090B0A;outline-offset:0}
-.tier::before{content:counter(tn,decimal-leading-zero);position:absolute;right:22px;bottom:4px;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;font-size:150px;line-height:1;letter-spacing:-.05em;color:rgba(241,240,235,.07);pointer-events:none}
+.tier::before{content:counter(tn,decimal-leading-zero);position:absolute;right:22px;bottom:4px;font-family:'Schibsted Grotesk',sans-serif;font-weight:300;font-size:150px;line-height:1;letter-spacing:-.05em;color:rgba(241,240,235,.07);pointer-events:none}
 .tier::after{border-color:rgba(241,240,235,.24)}
 .tier>span{position:relative;z-index:1}
 .tier .tname{font-weight:300;font-size:50px;letter-spacing:-.035em;padding-bottom:22px;color:#FFFFFF}
@@ -92,7 +93,7 @@ a{color:inherit;text-decoration:none}
 .st-on{display:none}
 .box{width:22px;height:22px;border:1px solid var(--fg3);border-radius:2px;display:inline-flex;align-items:center;justify-content:center;background:transparent}
 .tick{opacity:0}
-.tname{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:44px;letter-spacing:-.025em;line-height:1.02;margin-top:30px;display:block}
+.tname{font-family:'Schibsted Grotesk',sans-serif;font-weight:400;font-size:44px;letter-spacing:-.025em;line-height:1.02;margin-top:30px;display:block}
 .tscope{font-size:17px;line-height:1.35;margin-top:12px;display:block}
 .tdesc{font-size:14px;line-height:1.5;color:var(--fg2);margin-top:10px;display:block;min-height:64px}
 .rows{display:block;margin-top:24px;border-top:1px solid var(--line)}
@@ -146,7 +147,7 @@ a{color:inherit;text-decoration:none}
 .sr:last-child{border-bottom:1px solid var(--line)}
 .sr:hover{background:var(--raise)}
 .sr .mono{flex:0 0 220px;color:var(--fg3)}
-.sr-t{flex:0 0 190px;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:32px;letter-spacing:-.025em;line-height:1.05}
+.sr-t{flex:0 0 190px;font-family:'Schibsted Grotesk',sans-serif;font-size:32px;letter-spacing:-.025em;line-height:1.05}
 .sr-s{flex:1 1 260px;font-size:15px;line-height:1.4;color:var(--fg2)}
 .progress{display:flex;gap:6px;margin-top:36px;max-width:340px}
 .progress i{flex:1;height:3px;display:block}
@@ -203,7 +204,7 @@ a{color:inherit;text-decoration:none}
 .clogo{height:50px;width:auto;display:block}
 .hero{container-type:inline-size;position:relative;overflow:hidden;--fg:#F1F0EB;--fg2:#E6E9E2;--fg3:#DDE3DA;--line:rgba(241,240,235,.30);--line2:rgba(241,240,235,.18);--raise:rgba(241,240,235,.08);color:#F1F0EB;background-color:#3A6E5B;background-image:radial-gradient(120% 65% at 0% 0%,rgba(255,255,255,.17) 0%,rgba(255,255,255,0) 58%),linear-gradient(165deg,#4C8772 0%,#3A6E5B 36%,#2C5646 72%,#203F35 100%)}
 .hero .dot{background:#F1F0EB}
-.client{padding:68px 0 48px;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:44px;line-height:1.1;letter-spacing:-.02em;border-bottom:1px solid var(--line)}
+.client{padding:68px 0 48px;font-family:'Schibsted Grotesk',sans-serif;font-weight:400;font-size:44px;line-height:1.1;letter-spacing:-.02em;border-bottom:1px solid var(--line)}
 .client .cl{color:var(--fg3);font-weight:300;margin-right:.25em}
 .main.cover{padding:52px 0 44px;align-items:flex-start}
 .hero .h1.xl{font-size:52px;letter-spacing:-.03em}
@@ -216,13 +217,13 @@ a{color:inherit;text-decoration:none}
 .dec{display:flex;align-items:baseline;gap:24px;padding:20px 0;border-top:1px solid var(--line)}
 .dec:last-child{border-bottom:1px solid var(--line)}
 .dec:hover{background:var(--raise)}
-.dt{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:26px;letter-spacing:-.02em;line-height:1.1;flex:1 1 auto}
+.dt{font-family:'Schibsted Grotesk',sans-serif;font-size:26px;letter-spacing:-.02em;line-height:1.1;flex:1 1 auto}
 .dopt{color:var(--fg2);text-align:right}
 .stt{color:var(--fg2);text-align:right;min-width:92px}
 .stt.on-1{color:#F1F0EB}
 .stt.on-1::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#F1F0EB;margin-right:10px;vertical-align:middle}
 .hero .foot{padding:0 0 30px}
-.hero .sw{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:.1em 0 0 4cqw;white-space:nowrap;color:rgba(241,240,235,.14);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%);pointer-events:none;user-select:none}
+.hero .sw{font-family:'Schibsted Grotesk',sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:.1em 0 0 4cqw;white-space:nowrap;color:rgba(241,240,235,.14);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%);pointer-events:none;user-select:none}
 .bt{background:#EBE7DC;border:1px solid rgba(11,13,12,.16);box-shadow:none}
 .br:hover{background:rgba(44,86,70,.07)}
 .bq{color:#0B0D0C}
@@ -277,7 +278,7 @@ textarea.ff{resize:vertical}
 .fh .c2,.fsel .c2{flex:0 0 200px}
 .fh .c3,.fsel .c3{flex:1 1 260px}
 .fsel .c1{color:#0B0D0C}
-.fsel .c2{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:22px;letter-spacing:-.02em}
+.fsel .c2{font-family:'Schibsted Grotesk',sans-serif;font-size:22px;letter-spacing:-.02em}
 .fopts{padding-bottom:12px}
 .fnotes{margin-top:20px}
 .fpanel .ack{margin-top:18px}
@@ -288,7 +289,7 @@ textarea.ff{resize:vertical}
 .intbox{display:none;width:100%;max-width:420px;border:1px solid rgba(11,13,12,.3);border-radius:2px;padding:6px 20px 14px;background:#F4F1EA}
 .int-1 .intbox{display:block}
 .irow{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--line2)}
-.irow .iv{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:20px;letter-spacing:-.01em}
+.irow .iv{font-family:'Schibsted Grotesk',sans-serif;font-size:20px;letter-spacing:-.01em}
 .itot{border-bottom:0;border-top:2px solid #0B0D0C;margin-top:4px}
 .itot .iv{font-size:30px}
 @media print{.inttog{display:none}}
@@ -320,9 +321,9 @@ textarea.ff{resize:vertical}
 .sec.paper:not(.cover) .hdr{padding-top:22px;padding-bottom:18px}
 .sec.paper:not(.cover) .main{padding-top:68px}
 .top{justify-content:space-between;align-items:center}
-.tprice{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:30px;letter-spacing:-.03em;line-height:1;color:#F1F0EB}
+.tprice{font-family:'Schibsted Grotesk',sans-serif;font-weight:400;font-size:30px;letter-spacing:-.03em;line-height:1;color:#F1F0EB}
 .fh .c4,.fsel .c4{flex:0 0 150px;text-align:right}
-.fsel .c4{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:22px;letter-spacing:-.02em;min-height:46px}
+.fsel .c4{font-family:'Schibsted Grotesk',sans-serif;font-size:22px;letter-spacing:-.02em;min-height:46px}
 .ftot{margin-top:6px;padding:16px 0 4px;border-top:2px solid #0B0D0C;border-bottom:0}
 .ftot .iv{font-size:34px}
 .hero{--fg:#0B0D0C;--fg2:#51544F;--fg3:#51544F;--line:rgba(11,13,12,.20);--line2:rgba(11,13,12,.10);--raise:rgba(11,13,12,.05);color:#0B0D0C;background-color:#EBE7DC;background-image:none}
@@ -334,7 +335,7 @@ textarea.ff{resize:vertical}
 .bt{position:relative;border:1px solid #090B0A;box-shadow:0 1px 0 rgba(11,13,12,.6),0 30px 42px -28px rgba(11,13,12,.5)}
 .bt::after{content:"";position:absolute;left:10px;right:10px;top:10px;bottom:10px;border:1px solid rgba(11,13,12,.18);pointer-events:none}
 .cw{container-type:inline-size}
-.cw .sw{display:block;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:.14em 0 0 4cqw;white-space:nowrap;color:rgba(11,13,12,.09);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%);pointer-events:none;user-select:none}
+.cw .sw{display:block;font-family:'Schibsted Grotesk',sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:.14em 0 0 4cqw;white-space:nowrap;color:rgba(11,13,12,.09);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%);pointer-events:none;user-select:none}
 body{background:#F2EFE7}
 .paper,.sec.paper{background:#F2EFE7;--raise:#EBE7DC}
 .hero{background-color:#E5E0D2}
@@ -351,7 +352,7 @@ body{background:#F2EFE7}
 .bt{background:#E2DDCE;border:1px solid rgba(11,13,12,.16);box-shadow:none}
 .bt::after{display:none}
 .fpanel{background:#E2DDCE;border:1px solid rgba(11,13,12,.16)}
-.sec.cover>.sw{display:block;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:0 0 0 4cqw;margin:0;white-space:nowrap;color:rgba(24,56,49,.14);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%);pointer-events:none;user-select:none;overflow:visible}
+.sec.cover>.sw{display:block;font-family:'Schibsted Grotesk',sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:0 0 0 4cqw;margin:0;white-space:nowrap;color:rgba(24,56,49,.14);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%);pointer-events:none;user-select:none;overflow:visible}
 .cw .hero{margin:28px 40px 0}
 .cw{padding-bottom:36px}
 .sec.paper:not(.cover)>.wrap{padding-bottom:88px}
@@ -369,7 +370,7 @@ body{background:#F2EFE7}
 }
 #selections{container-type:inline-size}
 #selections>.wrap{padding-bottom:40px}
-.sec.cover>.sw,#selections>.sw{display:block;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:0 0 0 4cqw;margin:0;white-space:nowrap;color:rgba(24,56,49,.12);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%),linear-gradient(180deg,#000 30%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 55%,transparent 100%),linear-gradient(180deg,#000 30%,transparent 100%);mask-composite:intersect;pointer-events:none;user-select:none}
+.sec.cover>.sw,#selections>.sw{display:block;font-family:'Schibsted Grotesk',sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:-.04em;font-size:clamp(72px,17cqw,300px);line-height:.72;padding:0 0 0 4cqw;margin:0;white-space:nowrap;color:rgba(24,56,49,.12);-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%),linear-gradient(180deg,#000 30%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 55%,transparent 100%),linear-gradient(180deg,#000 30%,transparent 100%);mask-composite:intersect;pointer-events:none;user-select:none}
 .bb{display:none}
 .bq{font-size:22px;font-weight:500;letter-spacing:-.01em;flex:0 0 44px}
 .br{padding:15px 0}
@@ -453,7 +454,7 @@ body{background:#F2EFE7}
 .cfoot .mono{color:var(--fg3)}
 .cfoot b{font-weight:400;font-size:16px;line-height:1.4}
 .hero .meta .mono{color:var(--fg3)}
-.hero .meta b{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:25px;line-height:1.1;letter-spacing:-.02em}
+.hero .meta b{font-family:'Schibsted Grotesk',sans-serif;font-weight:400;font-size:25px;line-height:1.1;letter-spacing:-.02em}
 .cfoot{gap:12px 64px;padding:20px 0 26px}
 @media (min-width:1000px) and (max-width:1299px){
 .cw{padding-bottom:22px}
@@ -509,11 +510,11 @@ body{background:#F2EFE7}
 @media (min-width:1100px){.cmeta{padding-top:28px}}
 .hero .main.cover{padding-top:0}
 .hero .main.cover .decs{margin-top:22px}
-.h1,.client{font-family:'Schibsted Grotesk',system-ui,sans-serif}
+.h1,.client{font-family:'Schibsted Grotesk',sans-serif}
 .h1{letter-spacing:-.01em}
 .client{letter-spacing:-.01em}
 .chdr{padding-left:40px;padding-right:40px}
-.dec .dt{font-family:'Schibsted Grotesk',system-ui,sans-serif;letter-spacing:-.01em}
+.dec .dt{font-family:'Schibsted Grotesk',sans-serif;letter-spacing:-.01em}
 .hero h2.cvd{font-family:'Instrument Sans',system-ui,sans-serif}
 .sec.paper:not(.cover) .hdr .vl{display:none}
 .sec.paper:not(.cover) .hdr{display:none}
@@ -540,7 +541,7 @@ body{background:#F2EFE7}
 .tier::before{right:24px;bottom:-10px;font-size:170px;line-height:1;color:transparent;background:linear-gradient(180deg,rgba(241,240,235,0) 8%,rgba(241,240,235,.30) 100%);-webkit-background-clip:text;background-clip:text;z-index:0}
 .tier::before{display:none}
 .tier .top{justify-content:space-between}
-.tier .top::before{content:counter(tn,decimal-leading-zero);font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:300;font-size:30px;line-height:1;letter-spacing:-.02em;color:rgba(241,240,235,.6)}
+.tier .top::before{content:counter(tn,decimal-leading-zero);font-family:'Schibsted Grotesk',sans-serif;font-weight:300;font-size:30px;line-height:1;letter-spacing:-.02em;color:rgba(241,240,235,.6)}
 .tier{outline:2px solid #090B0A;outline-offset:0}
 .tier .tname{font-weight:400}
 .tier .tprice{font-weight:500}
@@ -864,7 +865,7 @@ html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color
 }
 #baseline .lvt{text-align:center!important}
 .cvh2{margin:0 0 44px;max-width:none}
-.cvh2{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:400;font-size:21px;line-height:1.3;letter-spacing:-.02em}
+.cvh2{font-family:'Schibsted Grotesk',sans-serif;font-weight:400;font-size:21px;line-height:1.3;letter-spacing:-.02em}
 /* Cover: the four rows exactly match the client stack (label top to email box bottom); the saved space goes above the table */
 @media (min-width:1340px){
 .hero .main.cover .decs{margin-top:-7px;height:239.7px;display:grid;grid-template-rows:repeat(4,1fr)}
@@ -931,7 +932,7 @@ html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color
 .hero .main.cover .decs{margin-left:auto;margin-right:auto;flex:0 0 calc(100% - 24.279 * 21px);width:calc(100% - 24.279 * 21px)}
 }
 .fact .fnote{font-size:14px}
-#selections .ftot .iv{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:25px;font-weight:600;letter-spacing:-.01em}
+#selections .ftot .iv{font-family:'Schibsted Grotesk',sans-serif;font-size:25px;font-weight:600;letter-spacing:-.01em}
 /* Cover H2 wraps at the end of the S in "Options" */
 .cvh2{max-width:394.8px}
 /* Final Allowances: Description replaces Scope; System stack starts on the last "s" of the H1; Description and Level left aligned; row lines start at the System stack */
@@ -1169,9 +1170,9 @@ html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color
 .vtab:hover{filter:brightness(.96)}
 .vtab:focus-visible{outline:3px solid currentColor;outline-offset:-5px}
 .vtr{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.vtn{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em;line-height:1.15}
-.vtp{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:600;font-size:19px;white-space:nowrap}
-.vts{font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:14px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vtn{font-family:'Schibsted Grotesk',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em;line-height:1.15}
+.vtp{font-family:'Schibsted Grotesk',sans-serif;font-weight:600;font-size:19px;white-space:nowrap}
+.vts{font-family:'Schibsted Grotesk',sans-serif;font-size:14px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* tier colors, two tone only: one background + one font color per tier */
 .vt1{background:#ECE7D8;color:#0B0D0C}
 .vt2{background:#2C5646;color:#FFFFFF}
@@ -1195,14 +1196,14 @@ html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color
 .vdet .p3{--ft:#FFFFFF;--ft2:rgba(255,255,255,.86);--fl:rgba(255,255,255,.28);--fa:#FFFFFF;--bg:#0B0D0C}
 .vdet .p4{--ft:#2C5646;--ft2:rgba(44,86,70,.88);--fl:rgba(44,86,70,.30);--fa:#2C5646;--bg:#FBFAF7}
 .vk{margin:0 0 8px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fa)}
-.vh{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0 0 12px;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:600;font-size:32px;letter-spacing:-.015em;line-height:1.1;color:var(--ft)}
+.vh{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0 0 12px;font-family:'Schibsted Grotesk',sans-serif;font-weight:600;font-size:32px;letter-spacing:-.015em;line-height:1.1;color:var(--ft)}
 .vpr{color:var(--fa)}
 .vd{margin:0 0 16px;font-size:16px;line-height:1.55;color:var(--ft2)}
 .vrows{border-bottom:1px solid var(--fl)}
 .vr{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:9px 0;border-top:1px solid var(--fl)}
 .vr .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ft2);flex:0 0 auto}
 .vr .v{font-size:15.5px;color:var(--ft);text-align:right}
-.vsel{appearance:none;-webkit-appearance:none;margin:auto 0 0;border:1px solid transparent;background:#2C5646;color:#FFFFFF;font:inherit;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 18px;width:100%;box-sizing:border-box;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-weight:600;font-size:15px;letter-spacing:.07em;text-transform:uppercase}
+.vsel{appearance:none;-webkit-appearance:none;margin:auto 0 0;border:1px solid transparent;background:#2C5646;color:#FFFFFF;font:inherit;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 18px;width:100%;box-sizing:border-box;font-family:'Schibsted Grotesk',sans-serif;font-weight:600;font-size:15px;letter-spacing:.07em;text-transform:uppercase}
 .vdet .vrows+.vsel{margin-top:20px}
 .vsel:hover{filter:brightness(.93)}
 .vsel:focus-visible{outline:3px solid #0B0D0C;outline-offset:2px}
@@ -1401,49 +1402,46 @@ body,.paper,.sec.paper{background:var(--pr-paper);color:var(--pr-ink)}
 @media print{body,.paper,.sec.paper{background:#fff!important;color:#090B0A}#selections .fcard{background:#E2DDCE!important}}
 
 </style>
-<link rel="stylesheet" href="./refinements.css?v=d161878">
+<link rel="stylesheet" href="./refinements.css?v=pradera-editorial-20261018">
 </helmet>
 
 <div id="top">
 
 <!-- ============ 01 COVER ============ -->
-<section class="sec paper cover">
-  <div class="wrap">
-    <div class="chdr">
-      <img class="logo" src="./assets/davg-logo.svg" alt="DAVG Denver AV Guy">
-      
+<section id="pradera-cover" class="sec paper cover" aria-labelledby="pradera-title">
+  <header class="pr-cover-nav">
+    <img src="./assets/davg-logo.svg" alt="DAVG Denver AV Guy" width="176" height="54">
+  </header>
+  <div class="pr-cover-scene">
+    <div class="pr-cover-copy">
+      <p class="pr-cover-eyebrow"><i aria-hidden="true"></i>Celebrity Custom Homes / Pradera</p>
+      <h1 id="pradera-title" class="pr-cover-title">Home Technology Selections</h1>
+      <p class="pr-cover-description">Choose your selection for each of the four low voltage systems.</p>
     </div>
-  <div class="cw">
-  <div class="hero-scene"><div class="ptitle"><p class="kick"><i aria-hidden="true"></i><span class="mono">Celebrity Custom Homes / Pradera</span></p><h1 class="h1">Home Technology Selections</h1><h2 class="cd cvh2">Choose your selection for each of the four low voltage systems.</h2></div><span class="spatial" aria-hidden="true">Pradera</span></div>
-  <div class="hero">
-    <div class="wrap">
-      
-      <div class="main cover">
-        <div class="decs cv4">
-          <div class="fxh mono"><span class="x1">System</span><span class="x2">Description</span><span class="x3">Package</span><span class="x4">Price range</span></div>
-          <a class="dec" href="#audio">
-            <span class="dt"><span class="tn">01</span>Home Audio</span><span class="mono dopt">Music throughout selected rooms.</span>
-            <span class="mono stt on-{{ui.aOn}}">{{ui.cA}}</span><span class="dt dpr">$4,000 – $17,000</span>
-          </a>
-          <a class="dec" href="#surround">
-            <span class="dt"><span class="tn">02</span>Surround Sound</span><span class="mono dopt">A dedicated media room experience.</span>
-            <span class="mono stt on-{{ui.sOn}}">{{ui.cS}}</span><span class="dt dpr">$7,000 – $15,000</span>
-          </a>
-          <a class="dec" href="#network">
-            <span class="dt"><span class="tn">03</span>Network &amp; Wifi</span><span class="mono dopt">Whole-home connectivity.</span>
-            <span class="mono stt on-{{ui.nOn}}">{{ui.cN}}</span><span class="dt dpr">$3,000 – $9,000</span>
-          </a>
-          <a class="dec" href="#cameras">
-            <span class="dt"><span class="tn">04</span>Camera System</span><span class="mono dopt">Entry, perimeter and exterior coverage.</span>
-            <span class="mono stt on-{{ui.cOn}}">{{ui.cC}}</span><span class="dt dpr">$3,500 – $12,500</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    <span class="pr-cover-word" aria-hidden="true">Pradera</span>
   </div>
-  </div>
-  </div>
-  <div class="sw" aria-hidden="true">Pradera</div>
+  <nav class="pr-cover-strip" aria-label="Home technology packages">
+    <a class="pr-cover-category" href="#audio">
+      <svg class="pr-cover-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="26" height="19"/><path d="M12 28h8M16 23v5"/></svg>
+      <span class="pr-cover-label">Home Audio</span>
+      <span class="pr-cover-price">$4,000 – $17,000</span>
+    </a>
+    <a class="pr-cover-category" href="#surround">
+      <svg class="pr-cover-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12v8M16 8a12 12 0 0 1 0 16M21 4a18 18 0 0 1 0 24M5 9v14"/></svg>
+      <span class="pr-cover-label">Surround Sound</span>
+      <span class="pr-cover-price">$7,000 – $15,000</span>
+    </a>
+    <a class="pr-cover-category" href="#network">
+      <svg class="pr-cover-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11a20 20 0 0 1 26 0M7 17a14 14 0 0 1 18 0M12 22a7 7 0 0 1 8 0"/><circle cx="16" cy="28" r="1"/></svg>
+      <span class="pr-cover-label">Network &amp; Wi-Fi</span>
+      <span class="pr-cover-price">$3,000 – $9,000</span>
+    </a>
+    <a class="pr-cover-category" href="#cameras">
+      <svg class="pr-cover-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 23-6 3 11-17 5-9-5zM12 20l-2 8H5v-9M25 16l3 4"/></svg>
+      <span class="pr-cover-label">Camera System</span>
+      <span class="pr-cover-price">$3,500 – $12,500</span>
+    </a>
+  </nav>
 </section>
 
 <!-- ============ 03 AUDIO ============ -->
