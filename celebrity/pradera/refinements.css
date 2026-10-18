@@ -147,9 +147,9 @@
 /* Separate the chooser, package details and technical drawing into clear layers. */
 @media screen{
  .sec.vw .vhead{padding-bottom:32px!important}
- .sec.vw .vbody{margin-top:clamp(64px,9svh,96px);column-gap:clamp(40px,5vw,80px);row-gap:32px;align-items:start}
+ .sec.vw .vbody{margin-top:clamp(64px,9svh,96px);column-gap:clamp(40px,5vw,80px);row-gap:32px;align-items:stretch}
  .sec.vw .vdet .vp{padding:28px 30px}
- .sec.vw .vviz{background:var(--pr-forest);padding:20px;align-self:start}
+ .sec.vw .vviz{background:var(--pr-forest);padding:20px;align-self:stretch}
  .sec.vw .vviz .vrefs{fill:var(--pr-light)}
  .sec.vw .vviz svg{max-height:390px}
  /* Change only architectural ground fills; preserve all active-state colors. */
