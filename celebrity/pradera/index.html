@@ -1401,7 +1401,7 @@ body,.paper,.sec.paper{background:var(--pr-paper);color:var(--pr-ink)}
 @media print{body,.paper,.sec.paper{background:#fff!important;color:#090B0A}#selections .fcard{background:#E2DDCE!important}}
 
 </style>
-<link rel="stylesheet" href="./refinements.css?v=95944c6a">
+<link rel="stylesheet" href="./refinements.css?v=pradera-plan-v9-13-tiers">
 </helmet>
 
 <div id="top">
@@ -1467,12 +1467,16 @@ body,.paper,.sec.paper{background:var(--pr-paper);color:var(--pr-ink)}
         <div class="vp p3" role="tabpanel" id="audio-panel-3" aria-labelledby="audio-tab-3"><p class="vk mono">6 zones / 12 in-ceiling speakers</p><h3 class="vh"><span>Premier</span><span class="vpr">$12,000</span></h3><p class="vd">Two more zones than Signature on the same Control4 system. Expanded Sonance speaker system with multiroom amplification.</p><div class="vrows"><div class="vr"><span class="mono k">Platform</span><span class="v">Control4</span></div><div class="vr"><span class="mono k">Zones</span><span class="v">6</span></div><div class="vr"><span class="mono k">Speakers</span><span class="v">12 in-ceiling</span></div><div class="vr"><span class="mono k">Control</span><span class="v">Control4 app, by zone</span></div></div><button class="vsel" type="button" onClick="{{ui.pickA3}}" aria-pressed="{{ui.a3on}}"><span class="so">Select this package</span><span class="sn">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="14" height="14" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#1B3D31" stroke-width="2"/></svg></span></button></div>
         <div class="vp p4" role="tabpanel" id="audio-panel-4" aria-labelledby="audio-tab-4"><p class="vk mono">8 zones / 16 in-ceiling speakers</p><h3 class="vh"><span>Reference</span><span class="vpr">$17,000</span></h3><p class="vd">Our broadest whole-home audio package: living areas, suites, deck and media room, on Control4 with multiroom amplification.</p><div class="vrows"><div class="vr"><span class="mono k">Platform</span><span class="v">Control4</span></div><div class="vr"><span class="mono k">Zones</span><span class="v">8</span></div><div class="vr"><span class="mono k">Speakers</span><span class="v">16 in-ceiling</span></div><div class="vr"><span class="mono k">Control</span><span class="v">Control4 app, by zone</span></div></div><button class="vsel" type="button" onClick="{{ui.pickA4}}" aria-pressed="{{ui.a4on}}"><span class="so">Select this package</span><span class="sn">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="14" height="14" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#1B3D31" stroke-width="2"/></svg></span></button></div>
       </div>
-      <div class="vviz" aria-label="audio selected package architectural plan">
-        <img class="tier-plan tier-plan-1" src="./assets/plans/audio-standard.svg" alt="AUDIO — STANDARD: 2 audio zones and 4 ceiling speakers. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-        <img class="tier-plan tier-plan-2" src="./assets/plans/audio-signature.svg" alt="AUDIO — SIGNATURE: 4 audio zones and 8 ceiling speakers. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-        <img class="tier-plan tier-plan-3" src="./assets/plans/audio-premier.svg" alt="AUDIO — PREMIER: 6 audio zones and 12 ceiling speakers. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-        <img class="tier-plan tier-plan-4" src="./assets/plans/audio-reference.svg" alt="AUDIO — REFERENCE: 8 audio zones and 16 ceiling speakers. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-      </div>
+      <div class="vviz study-visual" aria-label="audio selected package architectural floor plan">
+  <div class="study-stage" role="group" aria-label="audio floor-plan study">
+    <img class="study-base" src="./assets/plans/ranch-base.png" alt="Architectural floor plan with actual Great Room, Kitchen, Primary Bedroom, Media Room, Garage, and mechanical room" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-1" src="./assets/plans/audio-standard.svg" alt="audio standard equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-2" src="./assets/plans/audio-signature.svg" alt="audio signature equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-3" src="./assets/plans/audio-premier.svg" alt="audio premier equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-4" src="./assets/plans/audio-reference.svg" alt="audio reference equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <button class="study-expand" type="button" aria-label="Enlarge audio floor layout" data-expand-study>Enlarge floor layout ↗</button>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -1499,11 +1503,15 @@ body,.paper,.sec.paper{background:var(--pr-paper);color:var(--pr-ink)}
         <div class="vp p2" role="tabpanel" id="surround-panel-2" aria-labelledby="surround-tab-2"><p class="vk mono">7 in-ceiling speakers / 1 subwoofer (7.1)</p><h3 class="vh"><span>Signature</span><span class="vpr">$10,000</span></h3><p class="vd">Seven Sonance speakers, one Episode subwoofer, an upgraded Denon receiver and Control4 control, with the HALO handheld remote.</p><div class="vrows"><div class="vr"><span class="mono k">Layout</span><span class="v">7.1 channel</span></div><div class="vr"><span class="mono k">Speakers</span><span class="v">7 in-ceiling</span></div><div class="vr"><span class="mono k">Subwoofers</span><span class="v">1</span></div><div class="vr"><span class="mono k">Control</span><span class="v">HALO handheld remote</span></div></div><button class="vsel" type="button" onClick="{{ui.pickS2}}" aria-pressed="{{ui.s2on}}"><span class="so">Select this package</span><span class="sn">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="14" height="14" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#1B3D31" stroke-width="2"/></svg></span></button></div>
         <div class="vp p3" role="tabpanel" id="surround-panel-3" aria-labelledby="surround-tab-3"><p class="vk mono">7 in-ceiling speakers / 2 subwoofers (7.2)</p><h3 class="vh"><span>Premier</span><span class="vpr">$15,000</span></h3><p class="vd">Seven Sonance speakers, two Episode subwoofers for fuller bass, a premium Denon receiver and Control4 control with a Control4 HALO remote.</p><div class="vrows"><div class="vr"><span class="mono k">Layout</span><span class="v">7.2 channel</span></div><div class="vr"><span class="mono k">Speakers</span><span class="v">7 in-ceiling</span></div><div class="vr"><span class="mono k">Subwoofers</span><span class="v">2</span></div><div class="vr"><span class="mono k">Control</span><span class="v">Control4 HALO remote</span></div></div><button class="vsel" type="button" onClick="{{ui.pickS3}}" aria-pressed="{{ui.s3on}}"><span class="so">Select this package</span><span class="sn">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="14" height="14" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#1B3D31" stroke-width="2"/></svg></span></button></div>
       </div>
-      <div class="vviz" aria-label="surround selected package architectural plan">
-        <img class="tier-plan tier-plan-1" src="./assets/plans/surround-standard.svg" alt="SURROUND — STANDARD: 5.1 media room with five speakers and one subwoofer. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-        <img class="tier-plan tier-plan-2" src="./assets/plans/surround-signature.svg" alt="SURROUND — SIGNATURE: 7.1 media room with seven speakers and one subwoofer. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-        <img class="tier-plan tier-plan-3" src="./assets/plans/surround-premier.svg" alt="SURROUND — PREMIER: 7.2 media room with seven speakers and two subwoofers. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-      </div>
+      <div class="vviz study-visual" aria-label="surround selected package architectural floor plan">
+  <div class="study-stage" role="group" aria-label="surround floor-plan study">
+    <img class="study-base" src="./assets/plans/ranch-base.png" alt="Architectural floor plan with actual Great Room, Kitchen, Primary Bedroom, Media Room, Garage, and mechanical room" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-1" src="./assets/plans/surround-standard.svg" alt="surround standard equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-2" src="./assets/plans/surround-signature.svg" alt="surround signature equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-3" src="./assets/plans/surround-premier.svg" alt="surround premier equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <button class="study-expand" type="button" aria-label="Enlarge surround floor layout" data-expand-study>Enlarge floor layout ↗</button>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -1530,11 +1538,15 @@ body,.paper,.sec.paper{background:var(--pr-paper);color:var(--pr-ink)}
         <div class="vp p2" role="tabpanel" id="network-panel-2" aria-labelledby="network-tab-2"><p class="vk mono">1 router / 1 switch / 3 wireless access points</p><h3 class="vh"><span>Signature</span><span class="vpr">$6,000</span></h3><p class="vd">A dedicated router, network switch and three wireless access points for expanded coverage. Supports more wired devices and a growing home.</p><div class="vrows"><div class="vr"><span class="mono k">Router</span><span class="v">1</span></div><div class="vr"><span class="mono k">Network switch</span><span class="v">1</span></div><div class="vr"><span class="mono k">Wireless access points</span><span class="v">3</span></div><div class="vr"><span class="mono k">Setup</span><span class="v">Installed and set up</span></div></div><button class="vsel" type="button" onClick="{{ui.pickN2}}" aria-pressed="{{ui.n2on}}"><span class="so">Select this package</span><span class="sn">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="14" height="14" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#1B3D31" stroke-width="2"/></svg></span></button></div>
         <div class="vp p3" role="tabpanel" id="network-panel-3" aria-labelledby="network-tab-3"><p class="vk mono">1 router / 1 switch / 4 wireless access points</p><h3 class="vh"><span>Premier</span><span class="vpr">$9,000</span></h3><p class="vd">Higher-performance router, professional network switching and upgraded wireless access points on one wired backbone. Built for higher device demands.</p><div class="vrows"><div class="vr"><span class="mono k">Router</span><span class="v">1</span></div><div class="vr"><span class="mono k">Network switch</span><span class="v">1</span></div><div class="vr"><span class="mono k">Wireless access points</span><span class="v">4</span></div><div class="vr"><span class="mono k">Setup</span><span class="v">Installed and set up</span></div></div><button class="vsel" type="button" onClick="{{ui.pickN3}}" aria-pressed="{{ui.n3on}}"><span class="so">Select this package</span><span class="sn">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="14" height="14" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#1B3D31" stroke-width="2"/></svg></span></button></div>
       </div>
-      <div class="vviz" aria-label="network selected package architectural plan">
-        <img class="tier-plan tier-plan-1" src="./assets/plans/network-standard.svg" alt="NETWORK — STANDARD: Two wireless access points, router, and conceptual coverage. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-        <img class="tier-plan tier-plan-2" src="./assets/plans/network-signature.svg" alt="NETWORK — SIGNATURE: Three wireless access points, router, switch, and conceptual coverage. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-        <img class="tier-plan tier-plan-3" src="./assets/plans/network-premier.svg" alt="NETWORK — PREMIER: Four wireless access points, router, switch, and conceptual coverage. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-      </div>
+      <div class="vviz study-visual" aria-label="network selected package architectural floor plan">
+  <div class="study-stage" role="group" aria-label="network floor-plan study">
+    <img class="study-base" src="./assets/plans/ranch-base.png" alt="Architectural floor plan with actual Great Room, Kitchen, Primary Bedroom, Media Room, Garage, and mechanical room" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-1" src="./assets/plans/network-standard.svg" alt="network standard equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-2" src="./assets/plans/network-signature.svg" alt="network signature equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-3" src="./assets/plans/network-premier.svg" alt="network premier equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <button class="study-expand" type="button" aria-label="Enlarge network floor layout" data-expand-study>Enlarge floor layout ↗</button>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -1561,11 +1573,15 @@ body,.paper,.sec.paper{background:var(--pr-paper);color:var(--pr-ink)}
         <div class="vp p2" role="tabpanel" id="cameras-panel-2" aria-labelledby="cameras-tab-2"><p class="vk mono">4 cameras / 1 doorbell</p><h3 class="vh"><span>Signature</span><span class="vpr">$8,500</span></h3><p class="vd">Four Luma IP cameras with mounting hardware, an eight-channel network video recorder with 4 TB drive and a Control4 Chime video doorbell.</p><div class="vrows"><div class="vr"><span class="mono k">Recording</span><span class="v">Local</span></div><div class="vr"><span class="mono k">Cameras</span><span class="v">4 Luma</span></div><div class="vr"><span class="mono k">Doorbell</span><span class="v">Control4 Chime</span></div><div class="vr"><span class="mono k">Viewing</span><span class="v">Mobile app</span></div></div><button class="vsel" type="button" onClick="{{ui.pickC2}}" aria-pressed="{{ui.c2on}}"><span class="so">Select this package</span><span class="sn">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="14" height="14" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#1B3D31" stroke-width="2"/></svg></span></button></div>
         <div class="vp p3" role="tabpanel" id="cameras-panel-3" aria-labelledby="cameras-tab-3"><p class="vk mono">8 cameras / 1 doorbell</p><h3 class="vh"><span>Premier</span><span class="vpr">$12,500</span></h3><p class="vd">Eight Luma IP cameras with mounting hardware, a dedicated network video recorder and a Control4 Chime video doorbell.</p><div class="vrows"><div class="vr"><span class="mono k">Recording</span><span class="v">Local</span></div><div class="vr"><span class="mono k">Cameras</span><span class="v">8 Luma</span></div><div class="vr"><span class="mono k">Doorbell</span><span class="v">Control4 Chime</span></div><div class="vr"><span class="mono k">Viewing</span><span class="v">Mobile app</span></div></div><button class="vsel" type="button" onClick="{{ui.pickC3}}" aria-pressed="{{ui.c3on}}"><span class="so">Select this package</span><span class="sn">Selected</span><span class="box"><svg class="tick" viewBox="0 0 12 12" width="14" height="14" aria-hidden="true"><path d="M2.4 6.3l2.5 2.5 4.7-5.1" fill="none" stroke="#1B3D31" stroke-width="2"/></svg></span></button></div>
       </div>
-      <div class="vviz" aria-label="cameras selected package architectural plan">
-        <img class="tier-plan tier-plan-1" src="./assets/plans/cameras-standard.svg" alt="CAMERAS — STANDARD: Four Nest or Ring cameras, video doorbell, and cloud recording. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-        <img class="tier-plan tier-plan-2" src="./assets/plans/cameras-signature.svg" alt="CAMERAS — SIGNATURE: Four Luma IP cameras, Control4 Chime doorbell, and local NVR. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-        <img class="tier-plan tier-plan-3" src="./assets/plans/cameras-premier.svg" alt="CAMERAS — PREMIER: Eight Luma IP cameras, Control4 Chime doorbell, and local NVR. Illustrative plan; not to scale." width="760" height="470" decoding="async">
-      </div>
+      <div class="vviz study-visual" aria-label="cameras selected package architectural floor plan">
+  <div class="study-stage" role="group" aria-label="cameras floor-plan study">
+    <img class="study-base" src="./assets/plans/ranch-base.png" alt="Architectural floor plan with actual Great Room, Kitchen, Primary Bedroom, Media Room, Garage, and mechanical room" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-1" src="./assets/plans/cameras-standard.svg" alt="cameras standard equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-2" src="./assets/plans/cameras-signature.svg" alt="cameras signature equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <img class="study-tier study-tier-3" src="./assets/plans/cameras-premier.svg" alt="cameras premier equipment positions, product key, and rack details" decoding="async" loading="lazy">
+    <button class="study-expand" type="button" aria-label="Enlarge cameras floor layout" data-expand-study>Enlarge floor layout ↗</button>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -1728,5 +1744,9 @@ class Component extends DCLogic {
 })();
 </script>
 <script src="./refinements.js?v=830f2d10"></script>
+<dialog class="study-modal" id="study-modal" aria-label="Expanded floor-plan diagram"><button class="study-modal-close" type="button" data-close-study>Close ×</button><div class="study-modal-stage"><img class="study-modal-base" alt="Architectural floor plan"><img class="study-modal-overlay" alt="Selected package floor-plan equipment key and devices"></div></dialog>
+<script id="study-zoom-controller">
+(function(){var modal=document.getElementById('study-modal');if(!modal)return;var base=modal.querySelector('.study-modal-base');var overlay=modal.querySelector('.study-modal-overlay');document.querySelectorAll('[data-expand-study]').forEach(function(button){button.addEventListener('click',function(){var stage=button.closest('.study-stage');var active=stage&&Array.from(stage.querySelectorAll('.study-tier')).find(function(img){return getComputedStyle(img).display!=='none'});if(!active)return;base.src=stage.querySelector('.study-base').src;overlay.src=active.src;overlay.alt=active.alt;modal.showModal()})});modal.querySelector('[data-close-study]').addEventListener('click',function(){modal.close()});modal.addEventListener('click',function(event){if(event.target===modal)modal.close()})})();
+</script>
 </body>
 </html>
