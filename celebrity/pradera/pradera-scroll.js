@@ -52,14 +52,14 @@
     animating = true;
 
     var started = performance.now();
-    var duration = mobile ? 600 : 680;
+    var duration = mobile ? 580 : 480;
 
     function finish() {
       window.scrollTo(0, y);
       root.style.scrollSnapType = snap;
       root.style.scrollBehavior = behavior;
       animating = false;
-      ignoreUntil = performance.now() + (mobile ? 90 : 110);
+      ignoreUntil = performance.now() + (mobile ? 65 : 25);
       accumulated = 0;
       animation = 0;
     }
@@ -200,10 +200,10 @@
     if (animating || time < ignoreUntil) {
       return;
     }
-    if (time - lastWheel > 190 || accumulated * delta < 0) accumulated = 0;
+    if (time - lastWheel > 220 || accumulated * delta < 0) accumulated = 0;
     lastWheel = time;
     accumulated += delta;
-    if (Math.abs(accumulated) < 28) return;
+    if (Math.abs(accumulated) < 3) return;
     var direction = accumulated > 0 ? 1 : -1;
     accumulated = 0;
     var current = items[index];

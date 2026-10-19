@@ -1401,7 +1401,46 @@ body,.paper,.sec.paper{background:var(--pr-paper);color:var(--pr-ink)}
 @media print{body,.paper,.sec.paper{background:#fff!important;color:#090B0A}#selections .fcard{background:#E2DDCE!important}}
 
 </style>
-<link rel="stylesheet" href="./refinements.css?v=pradera-mobile-lock-20261019">
+<link rel="stylesheet" href="./refinements.css?v=pradera-notes-writing-area-20261019b">
+<style id="pradera-notes-writing-area-20261019">
+@media screen and (min-width:1001px){
+  #top section.sec.vw .vbody>.pr-detail-column{
+    display:flex!important;flex-direction:column!important;align-self:start!important;
+    width:100%!important;min-width:0!important;gap:0!important;overflow:visible!important;
+  }
+  #top section.sec.vw .vbody>.pr-detail-column>.vdet{
+    position:relative!important;display:block!important;float:none!important;
+    box-sizing:border-box!important;width:100%!important;flex:0 0 auto!important;
+    margin:0!important;padding:0!important;overflow:visible!important;
+  }
+  #top section.sec.vw .vbody>.pr-detail-column>.pr-design-notes{
+    display:block!important;position:relative!important;inset:auto!important;
+    float:none!important;clear:both!important;align-self:stretch!important;
+    box-sizing:border-box!important;width:100%!important;max-width:100%!important;
+    flex:0 0 auto!important;transform:none!important;
+    margin:clamp(20px,2.6svh,28px) 0 0!important;padding:0!important;
+  }
+  #top section.sec.vw .vbody>.pr-detail-column>.pr-design-notes>.pr-design-notes-field{
+    display:block!important;position:relative!important;inset:auto!important;
+    box-sizing:border-box!important;width:100%!important;max-width:100%!important;
+    min-height:clamp(190px,28svh,265px)!important;
+    margin:0!important;padding:21px 23px!important;border-radius:0!important;
+    border:1px solid rgba(9,11,10,.20)!important;
+    background:#F2EFE7!important;color:#090B0A!important;
+    font:400 15px/1.55 'Instrument Sans',sans-serif!important;
+    resize:none!important;overflow-y:hidden!important;white-space:pre-wrap!important;
+  }
+  #top section.sec.vw .vbody>.pr-detail-column>.pr-design-notes>.pr-design-notes-field::placeholder{
+    color:#51544F!important;opacity:1!important;
+  }
+  #top section.sec.vw .pr-design-notes-field:focus-visible{
+    outline:2px solid #183B31!important;outline-offset:2px!important;
+  }
+}
+@media screen and (max-width:1000px){
+  #top section.sec.vw .pr-design-notes{display:none!important}
+}
+</style>
 </helmet>
 
 <div id="top">
@@ -1786,10 +1825,18 @@ class Component extends DCLogic {
   const cats=['audio','surround','network','cameras'];
   const notes=Object.create(null);
   cats.forEach(cat=>{try{notes[cat]=sessionStorage.getItem('pradera:design-notes:'+cat)||''}catch(e){notes[cat]=''}});
+  function sizeNote(input){
+    if(!input || !input.isConnected)return;
+    // Expand instead of hiding typed text behind an internal scrollbar.
+    const floor=Math.min(265,Math.max(190,Math.round(window.innerHeight*.28)));
+    input.style.setProperty('height','auto','important');
+    input.style.setProperty('height',Math.max(floor,input.scrollHeight+6)+'px','important');
+  }
   function restore(){
     cats.forEach(cat=>{
       const input=document.getElementById(cat+'-design-notes');
       if(input && document.activeElement!==input && input.value!==notes[cat])input.value=notes[cat];
+      if(input && getComputedStyle(input).display!=='none')sizeNote(input);
     });
   }
   document.addEventListener('input',function(event){
@@ -1798,6 +1845,7 @@ class Component extends DCLogic {
     const cat=node.closest('[data-notes-category]')?.dataset.notesCategory;
     if(!cats.includes(cat))return;
     notes[cat]=node.value;
+    sizeNote(node);
     try{sessionStorage.setItem('pradera:design-notes:'+cat,node.value)}catch(e){}
   },true);
   let queued=false;
@@ -1808,8 +1856,9 @@ class Component extends DCLogic {
   });
   observer.observe(document.getElementById('top')||document.body,{subtree:true,childList:true});
   restore();
+  window.addEventListener('resize',restore,{passive:true});
 })();
 </script>
-<script src="./pradera-scroll.js?v=pradera-mobile-lock-20261019" defer></script>
+<script src="./pradera-scroll.js?v=pradera-notes-writing-area-20261019b" defer></script>
 </body>
 </html>
