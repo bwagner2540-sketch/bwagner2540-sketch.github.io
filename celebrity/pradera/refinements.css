@@ -660,3 +660,69 @@
  html:root{scroll-snap-type:y mandatory!important;scroll-behavior:auto!important;overscroll-behavior-y:auto!important}
  #top > section.sec.paper{scroll-snap-align:start!important;scroll-snap-stop:always!important}
 }
+
+/* Show every captured category design note in Final Allowances and in Save as PDF. */
+@media screen{
+ #selections .pr-final-design-notes{
+  box-sizing:border-box;display:block;width:100%;max-width:100%;
+  margin:20px 0 0;padding:20px 24px;
+  border:1px solid rgba(9,11,10,.17);background:#F2EFE7;
+  color:#090B0A;
+ }
+ #selections .pr-final-design-notes[hidden]{display:none!important}
+ #selections .pr-final-notes-title{margin:0 0 16px;font:500 16px/1.35 'Schibsted Grotesk',sans-serif}
+ #selections .pr-final-notes-entry{display:block;margin:0 0 14px}
+ #selections .pr-final-notes-entry:last-child{margin-bottom:0}
+ #selections .pr-final-notes-label{
+  margin:0 0 4px;font:600 11px/1.35 'IBM Plex Mono',monospace;
+  text-transform:uppercase;letter-spacing:.06em;
+ }
+ #selections .pr-final-notes-text{
+  font:400 14px/1.55 'Instrument Sans',sans-serif;
+  margin:0;white-space:pre-wrap;overflow-wrap:anywhere;
+ }
+ #selections .pr-print-client-notes{display:none!important}
+}
+@media screen and (max-width:760px){
+ #selections .pr-final-design-notes{padding:16px;margin:14px 0 0}
+ #selections .pr-final-notes-text{font-size:13px}
+}
+@media print{
+ /* Print full notes and allow additional PDF pages rather than truncating text. */
+ #selections,#selections .wrap,#selections .main,#selections .fmain,
+ #selections .fpanel,#selections .fform,#selections .fcard{
+  height:auto!important;max-height:none!important;overflow:visible!important;
+  break-inside:auto!important;page-break-inside:auto!important;
+ }
+ #selections > .wrap{zoom:1!important;transform:none!important}
+ #selections .fnotes textarea{display:none!important}
+ #selections .fnotes .pr-print-client-notes{
+  display:block!important;white-space:pre-wrap;overflow-wrap:anywhere;
+  padding:6px 0;min-height:14px;
+  color:#090B0A;font:400 10.5pt/1.4 'Instrument Sans',Arial,sans-serif!important;
+ }
+ #selections .pr-final-design-notes{display:block!important;
+  box-sizing:border-box;width:100%!important;max-width:none!important;
+  margin:16px 0 4px!important;padding:12px 0 0!important;
+  border:0!important;border-top:1px solid rgba(9,11,10,.28)!important;
+  background:transparent!important;color:#090B0A!important;
+  break-inside:auto!important;page-break-inside:auto!important;
+ }
+ #selections .pr-final-design-notes[hidden]{display:none!important}
+ #selections .pr-final-notes-title{
+  margin:0 0 9px!important;font:600 11pt/1.25 'Schibsted Grotesk',Arial,sans-serif!important;
+  break-after:avoid!important;page-break-after:avoid!important;
+ }
+ #selections .pr-final-notes-entry{
+  margin:0 0 10px!important;break-inside:auto!important;page-break-inside:auto!important;
+ }
+ #selections .pr-final-notes-label{
+  margin:0 0 3px!important;font:600 10pt/1.3 'IBM Plex Mono',monospace!important;
+  letter-spacing:.03em!important;text-transform:uppercase;
+  break-after:avoid!important;page-break-after:avoid!important;
+ }
+ #selections .pr-final-notes-text{
+  margin:0!important;font:400 10.5pt/1.4 'Instrument Sans',Arial,sans-serif!important;
+  white-space:pre-wrap!important;overflow-wrap:anywhere!important;
+ }
+}

@@ -1,0 +1,31 @@
+name: Pradera Design Notes PDF QA
+on:
+  push:
+    branches: [pradera/include-all-design-notes-in-pdf-20261019]
+  workflow_dispatch:
+jobs:
+  pdf-export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium and PDF text verifier
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y -qq poppler-utils
+      - name: Export PDF and verify all four notes plus client notes
+        run: |
+          python3 -m http.server 8741 --directory . >/tmp/pradera-server.log 2>&1 &
+          sleep 2
+          node tests/pradera-notes-pdf-qa.mjs
+      - name: Upload PDF and screenshot proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pradera-notes-pdf-qa
+          path: qa-results/
+          if-no-files-found: ignore
