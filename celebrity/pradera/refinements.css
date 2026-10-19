@@ -399,3 +399,40 @@
   /* Leave package selections, allowance ledger and PDF/print presentation intact. */
   .study-stage svg.study-tier,.study-modal-stage svg {display:none!important}
 }
+
+/* Restore original section-to-section stopping on desktop AND touch devices.
+   This is interaction-only: no redesign, overflow clipping or PDF changes. */
+@media screen {
+  html:root {
+    scroll-snap-type:y mandatory;
+    scroll-behavior:smooth;
+    scroll-padding-top:0;
+  }
+  #top > section.sec.paper {
+    width:100%;
+    min-height:100svh;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+  }
+  /* A taller section must still scroll all the way through its contents. */
+  #top > section.sec.paper.pr-long-section {
+    scroll-snap-stop:always;
+    overflow:visible;
+  }
+}
+@media screen and (max-width:1000px) {
+  #top > section.sec.paper {
+    min-height:100svh;
+    height:auto;
+    overflow:visible;
+  }
+}
+@media screen and (prefers-reduced-motion:reduce) {
+  html:root {
+    scroll-snap-type:none!important;
+    scroll-behavior:auto!important;
+  }
+}
+@media print {
+  html:root {scroll-snap-type:none!important;scroll-behavior:auto!important}
+}
