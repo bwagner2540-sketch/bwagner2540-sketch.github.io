@@ -476,3 +476,15 @@
   .sec.vw .vdet .vp .vrows td {font-size:11px;padding-block:6px}
   .sec.vw .vdet .vp .vrows thead th {font-size:9px}
 }
+
+/* One-gesture mobile category stops: custom touch controller owns momentum. */
+@media screen {
+  html:root.pr-touch-managed {
+    scroll-snap-type:none!important;
+    scroll-behavior:auto!important;
+    overscroll-behavior-y:contain;
+  }
+}
+@media screen and (prefers-reduced-motion:reduce) {
+  html:root.pr-touch-managed {scroll-snap-type:none!important}
+}
