@@ -634,3 +634,23 @@
 @media screen and (max-width:760px){
  #selections .fcard>.pr-mobile-prepared {grid-column:1!important;grid-row:auto!important}
 }
+
+/* Prepared-by exists exactly once: section footer, never within Client Notes form. */
+@media screen and (max-width:1000px){
+  #selections > .wrap.pbw {
+    display:block!important;position:relative!important;
+    left:auto!important;right:auto!important;bottom:auto!important;
+    z-index:auto!important;box-sizing:border-box!important;
+    clear:both!important;flex:0 0 auto!important;
+    width:100%!important;max-width:100%!important;
+    margin:clamp(26px,4svh,44px) 0 0!important;padding:18px 0 24px!important;
+    pointer-events:none;
+  }
+  #selections > .wrap.pbw .pbc{
+    display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+    gap:7px!important;margin:0!important;padding:14px 0 0!important;
+    width:100%!important;max-width:100%!important;
+    overflow-wrap:anywhere!important;white-space:normal!important;
+  }
+  #selections .fcard .pr-mobile-prepared{display:none!important}
+}

@@ -1,7 +1,7 @@
 name: Pradera visual and interaction QA
 on:
   push:
-    branches: [pradera/surround-spacing-notes-20261019, pradera/notes-writing-area-20261019]
+    branches: [pradera/surround-spacing-notes-20261019, pradera/notes-writing-area-20261019, pradera/remove-duplicate-prepared-by-20261019]
   workflow_dispatch:
 jobs:
   test:
