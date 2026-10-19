@@ -1401,7 +1401,7 @@ body,.paper,.sec.paper{background:var(--pr-paper);color:var(--pr-ink)}
 @media print{body,.paper,.sec.paper{background:#fff!important;color:#090B0A}#selections .fcard{background:#E2DDCE!important}}
 
 </style>
-<link rel="stylesheet" href="./refinements.css?v=pradera-native-desktop-20261019a">
+<link rel="stylesheet" href="./refinements.css?v=pradera-design-notes-pdf-20261019a">
 <style id="pradera-notes-writing-area-20261019">
 @media screen and (min-width:1001px){
   #top section.sec.vw .vbody>.pr-detail-column{
@@ -1646,12 +1646,13 @@ body,.paper,.sec.paper{background:var(--pr-paper);color:var(--pr-ink)}
         <a class="dec fx" href="#cameras"><span class="dt"><span class="tn">04</span>Camera System</span><span class="mono dopt">Entry, perimeter and exterior coverage.</span><span class="mono stt">{{ui.rC.tier}}</span><span class="dt dpr">{{ui.pC}}</span></a>
         <div class="irow itot ftot"><span class="mono">Total</span><span class="iv">{{ui.total}}</span></div>
         <div class="fform"><div class="fcard">
-        <label class="fld2 fnotes"><span class="mono">Client notes</span><textarea class="ff" rows="4" placeholder="Rooms that matter most, how you plan to use the home, anything we should know."></textarea></label>
+        <label class="fld2 fnotes"><span class="mono">Client notes</span><textarea class="ff" rows="4" placeholder="Rooms that matter most, how you plan to use the home, anything we should know."></textarea><div class="pr-print-client-notes" aria-hidden="true"></div></label>
         <div class="frow3 fcn"><label class="fld2"><span class="mono rq">Client name</span><input class="ff" type="text" placeholder="Full name" autocomplete="name" data-req="1" required aria-required="true"></label><label class="fld2"><span class="mono rq">Phone number</span><input class="ff" type="tel" placeholder="Phone number" autocomplete="tel" data-req="1" required aria-required="true"></label><label class="fld2"><span class="mono rq">Email</span><input class="ff" type="email" placeholder="Email address" autocomplete="email" data-req="1" required aria-required="true"></label></div>
         <div class="frow3 fsig fsd"><label class="fld2"><span class="mono rq">Date</span><input class="ff" type="date" data-req="1" required aria-required="true"></label></div>
         <p class="reqmsg" id="reqmsg" hidden>Please fill in the highlighted fields (client name, phone, email and date) before downloading.</p>
         <div class="fact"><button class="dlpdf" type="button">Download PDF</button><p class="fnote">Celebrity Custom Homes<br><span class="fgap"></span>303-907-2387<br><span class="fgap"></span>stacey@celebritycustomhomes.com</p></div>
       </div></div>
+        <section class="pr-final-design-notes" id="pr-final-design-notes" aria-label="Design notes by system" hidden></section>
       </div>
     </div>
   </div>
@@ -1821,36 +1822,87 @@ class Component extends DCLogic {
 </script>
 <script id="pr-design-notes-persistence">
 (function(){
+  'use strict';
   const cats=['audio','surround','network','cameras'];
+  const names={audio:'Home Audio',surround:'Surround Sound',network:'Network & Wi-Fi',cameras:'Camera System'};
   const notes=Object.create(null);
   cats.forEach(cat=>{try{notes[cat]=sessionStorage.getItem('pradera:design-notes:'+cat)||''}catch(e){notes[cat]=''}});
+  let clientNotes='';
+  try{clientNotes=sessionStorage.getItem('pradera:client-notes')||''}catch(e){}
+  let lastHost=null,lastPayload=null;
   function sizeNote(input){
-    if(!input || !input.isConnected)return;
-    // Expand instead of hiding typed text behind an internal scrollbar.
+    if(!input||!input.isConnected||getComputedStyle(input).display==='none')return;
     const floor=Math.min(265,Math.max(190,Math.round(window.innerHeight*.28)));
     input.style.setProperty('height','auto','important');
     input.style.setProperty('height',Math.max(floor,input.scrollHeight+6)+'px','important');
+  }
+  function syncFinalNotes(){
+    const host=document.getElementById('pr-final-design-notes');
+    if(!host)return;
+    const clientField=document.querySelector('#selections .fnotes textarea');
+    if(clientField){
+      if(document.activeElement!==clientField && !clientField.value && clientNotes)clientField.value=clientNotes;
+      if(clientField.value!==clientNotes)clientNotes=clientField.value;
+    }
+    const mirror=document.querySelector('#selections .pr-print-client-notes');
+    if(mirror&&mirror.textContent!==clientNotes)mirror.textContent=clientNotes;
+    const items=cats.map(cat=>{
+      const textarea=document.getElementById(cat+'-design-notes');
+      return {cat,value:(textarea?textarea.value:notes[cat]||'').trim()};
+    }).filter(x=>x.value);
+    const payload=JSON.stringify(items);
+    if(host===lastHost && payload===lastPayload)return;
+    lastHost=host;lastPayload=payload;
+    const nodes=[];
+    if(items.length){
+      const heading=document.createElement('h3');
+      heading.className='pr-final-notes-title';heading.textContent='Design Notes by System';
+      nodes.push(heading);
+      items.forEach(item=>{
+        const row=document.createElement('div');
+        row.className='pr-final-notes-entry';
+        row.setAttribute('data-notes-system',item.cat);
+        const label=document.createElement('h4');
+        label.className='pr-final-notes-label';label.textContent=names[item.cat];
+        const text=document.createElement('p');
+        text.className='pr-final-notes-text';text.textContent=item.value;
+        row.append(label,text);nodes.push(row);
+      });
+    }
+    host.replaceChildren(...nodes);
+    host.hidden=items.length===0;
   }
   function restore(){
     cats.forEach(cat=>{
       const input=document.getElementById(cat+'-design-notes');
       if(input && document.activeElement!==input && input.value!==notes[cat])input.value=notes[cat];
-      if(input && getComputedStyle(input).display!=='none')sizeNote(input);
+      if(input)sizeNote(input);
     });
+    syncFinalNotes();
   }
   document.addEventListener('input',function(event){
-    const node=event.target;
-    if(!node||!node.classList||!node.classList.contains('pr-design-notes-field'))return;
-    const cat=node.closest('[data-notes-category]')?.dataset.notesCategory;
-    if(!cats.includes(cat))return;
-    notes[cat]=node.value;
-    sizeNote(node);
-    try{sessionStorage.setItem('pradera:design-notes:'+cat,node.value)}catch(e){}
+    const el=event.target;
+    if(!el||!el.matches)return;
+    if(el.matches('.pr-design-notes-field')){
+      const cat=el.closest('[data-notes-category]')?.dataset.notesCategory;
+      if(!cats.includes(cat))return;
+      notes[cat]=el.value;sizeNote(el);
+      try{sessionStorage.setItem('pradera:design-notes:'+cat,el.value)}catch(e){}
+      syncFinalNotes();
+    }else if(el.matches('#selections .fnotes textarea')){
+      clientNotes=el.value;
+      try{sessionStorage.setItem('pradera:client-notes',el.value)}catch(e){}
+      syncFinalNotes();
+    }
+  },true);
+  // Browser "Save as PDF" and the site's "Download PDF" use the same print DOM.
+  window.addEventListener('beforeprint',syncFinalNotes);
+  document.addEventListener('click',function(e){
+    if(e.target.closest&&e.target.closest('.dlpdf'))syncFinalNotes();
   },true);
   let queued=false;
   const observer=new MutationObserver(function(){
-    if(queued)return;
-    queued=true;
+    if(queued)return;queued=true;
     requestAnimationFrame(function(){queued=false;restore()});
   });
   observer.observe(document.getElementById('top')||document.body,{subtree:true,childList:true});
