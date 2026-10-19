@@ -314,3 +314,88 @@
 @media print {.study-expand,.study-modal{display:none!important}}
 
 @media screen { .sec.paper.pr-long-section {scroll-snap-stop:normal} }
+
+/* Approved Pradera archival floor-study reconciliation — screen only.
+   Keep underlying plan geometry, package interactions, and print unchanged. */
+@media screen {
+  /* Remove the later decorative eyebrow marks; retain the approved typography. */
+  .pr-cover-eyebrow i,.sec.vw .kick>i {display:none!important}
+  .pr-cover-eyebrow {gap:0!important}
+
+  /* The chooser, compact specification, and drawing share one section. */
+  .sec.vw .vhead {max-width:none!important;padding:0 0 12px!important}
+  .sec.vw .vhead .kick {margin:0 0 8px!important}
+  .sec.vw .vhead .h1 {margin:0!important}
+  .sec.vw .vtabs {margin:0!important}
+  .sec.vw .vtab {padding:12px 16px!important;min-height:59px!important;justify-content:center}
+  .sec.vw .vtr {gap:12px;align-items:baseline}
+  .sec.vw .vbody {
+    display:grid!important;grid-template-columns:minmax(280px,.75fr) minmax(0,1.55fr)!important;
+    gap:clamp(18px,2.6vw,36px)!important;margin-top:16px!important;align-items:start!important;
+  }
+  .sec.vw .vdet {align-self:start!important;min-width:0}
+  .sec.vw .vdet .vp {padding:18px 21px 19px!important}
+  .sec.vw .vk {display:none!important}
+  .sec.vw .vh {margin:0 0 9px!important;font-size:26px!important}
+  .sec.vw .vd {font-size:14px!important;line-height:1.42!important;margin:0 0 12px!important}
+  .sec.vw .vr {padding:9px 0!important;align-items:baseline}
+  .sec.vw .vr .k {font-size:10px!important}
+  .sec.vw .vr .v {font-size:13px!important}
+  .sec.vw .vdet .vrows+.vsel {margin-top:14px!important}
+  .sec.vw .vsel {min-height:44px;padding:10px 14px!important}
+  .sec.vw .study-visual {
+    min-width:0!important;width:100%!important;max-width:none!important;
+    margin:0!important;align-self:start!important;order:0!important;
+  }
+  .sec.vw .study-stage {width:100%!important;aspect-ratio:3/2!important}
+  /* The approved raster drawing has its own perimeter/wall/fixture hierarchy.
+     Reduce its overall black density without redrawing or overlaying false walls. */
+  .study-stage .study-base,.study-modal-stage .study-modal-base {
+    opacity:.77;filter:contrast(.86);image-rendering:auto;
+  }
+  .study-stage svg.study-tier {
+    display:none;shape-rendering:geometricPrecision;overflow:visible;
+  }
+  .sec.vw.sel-1 .study-stage svg.study-tier-1,
+  .sec.vw.sel-2 .study-stage svg.study-tier-2,
+  .sec.vw.sel-3 .study-stage svg.study-tier-3,
+  .sec.vw.sel-4 .study-stage svg.study-tier-4 {display:block}
+  .study-modal-stage svg.study-modal-overlay {
+    position:absolute;inset:0;width:100%;height:100%;display:block;
+    shape-rendering:geometricPrecision;
+  }
+  .study-expand {bottom:-26px}
+}
+@media screen and (max-width:1000px) {
+  .sec.vw .vbody {
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:14px!important;margin-top:14px!important;
+  }
+  .sec.vw .vdet {order:0!important}
+  .sec.vw .study-visual {order:1!important;max-width:880px!important}
+  .sec.vw .study-stage {max-width:880px}
+}
+@media screen and (max-width:760px) {
+  .sec.vw .vhead {padding-bottom:10px!important}
+  .sec.vw .vhead .kick {margin-bottom:6px!important}
+  .sec.vw .vhead .h1 {font-size:30px!important}
+  .sec.vw .vtab {padding:9px 11px!important;min-height:52px!important}
+  .sec.vw .vtr {gap:3px;align-items:flex-start}
+  .sec.vw .vtn {font-size:15px!important}
+  .sec.vw .vtp {font-size:14px!important}
+  .sec.vw .vbody {margin-top:12px!important;gap:12px!important}
+  .sec.vw .vdet .vp {padding:14px 16px!important}
+  .sec.vw .vh {font-size:23px!important;margin-bottom:7px!important}
+  .sec.vw .vd {font-size:13px!important;line-height:1.37!important;margin-bottom:8px!important}
+  .sec.vw .vr {padding:6px 0!important}
+  .sec.vw .vr .k {font-size:9px!important}
+  .sec.vw .vr .v {font-size:12px!important}
+  .sec.vw .vdet .vrows+.vsel {margin-top:9px!important}
+  .sec.vw .vsel {min-height:40px;padding:8px 12px!important}
+  .sec.vw .study-visual,.sec.vw .study-stage {width:100%!important;max-width:none!important}
+  .sec.vw .study-expand {bottom:-25px}
+}
+@media print {
+  /* Leave package selections, allowance ledger and PDF/print presentation intact. */
+  .study-stage svg.study-tier,.study-modal-stage svg {display:none!important}
+}
