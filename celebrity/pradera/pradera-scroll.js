@@ -182,45 +182,46 @@
     gesture = null;
   }, {passive:true});
 
-  // Existing desktop interaction: one wheel gesture advances at most one category.
-  window.addEventListener('wheel', function (event) {
+  // One physical desktop wheel/trackpad gesture moves at most one adjacent section.
+  // Its inertial tail is suppressed until there has been a quiet interval.
+  var wheelGestureBusy = false;
+  var wheelQuietTimer = 0;
+  function nearestSection(items) {
+    var y = window.scrollY, nearest = 0, distance = Infinity;
+    items.forEach(function(item, i) {
+      var gap = Math.abs(topOf(item)-y);
+      if (gap < distance) { nearest=i; distance=gap; }
+    });
+    return nearest;
+  }
+  window.addEventListener('wheel', function(event) {
     if (reduceMotion.matches || !desktopPointer.matches || window.innerWidth < 1001) return;
     if (event.ctrlKey || event.metaKey || event.shiftKey ||
         Math.abs(event.deltaX) > Math.abs(event.deltaY) || skipGesture(event.target)) return;
-    var items = sections();
-    if (items.length < 2) return;
-    var index = desktopSection(items);
-
-    var delta = event.deltaY * (event.deltaMode === 1 ? 16 :
-      event.deltaMode === 2 ? window.innerHeight : 1);
-    if (Math.abs(delta) < 1) return;
+    var delta = event.deltaY * (event.deltaMode===1 ? 16 :
+      event.deltaMode===2 ? window.innerHeight : 1);
+    if (Math.abs(delta)<1) return;
     event.preventDefault();
-
-    var time = performance.now();
-    if (animating || time < ignoreUntil) {
-      return;
-    }
-    if (time - lastWheel > 220 || accumulated * delta < 0) accumulated = 0;
-    lastWheel = time;
-    accumulated += delta;
-    if (Math.abs(accumulated) < 3) return;
-    var direction = accumulated > 0 ? 1 : -1;
-    accumulated = 0;
-    var current = items[index];
-    var top = topOf(current);
-    var bottom = Math.max(top, top + current.offsetHeight - window.innerHeight);
-    var destination = window.scrollY;
-    if (direction > 0) {
-      if (destination < bottom - 8) destination = bottom;
-      else if (index < items.length - 1) destination = topOf(items[index + 1]);
-    } else {
-      if (destination > top + 8) destination = top;
-      else if (index > 0) destination = topOf(items[index - 1]);
-    }
-    if (Math.abs(destination - window.scrollY) > 2) animateTo(destination, false);
+    if (wheelQuietTimer) clearTimeout(wheelQuietTimer);
+    wheelQuietTimer = setTimeout(function() {
+      wheelGestureBusy=false; wheelQuietTimer=0;
+    }, 380);
+    if (wheelGestureBusy || animating) return;
+    var items=sections();
+    if (items.length<2) return;
+    wheelGestureBusy=true;
+    var currentIndex=nearestSection(items), direction=delta>0?1:-1;
+    var current=items[currentIndex], top=topOf(current);
+    var bottom=Math.max(top,top+current.offsetHeight-window.innerHeight);
+    var y=window.scrollY;
+    var dest = direction>0
+      ? (y<bottom-8 ? bottom : currentIndex<items.length-1 ? topOf(items[currentIndex+1]) : bottom)
+      : (y>top+8 ? top : currentIndex>0 ? topOf(items[currentIndex-1]) : top);
+    animateTo(dest,false);
   }, {passive:false});
 
   window.addEventListener('pagehide', function () {
+    if (wheelQuietTimer) clearTimeout(wheelQuietTimer);
     if (animation) cancelAnimationFrame(animation);
     root.style.scrollSnapType = '';
     root.style.scrollBehavior = '';
