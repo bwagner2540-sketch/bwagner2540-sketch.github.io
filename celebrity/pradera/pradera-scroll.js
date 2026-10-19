@@ -153,13 +153,14 @@
     var top = topOf(item);
     var bottom = Math.max(top, top + item.offsetHeight - window.innerHeight);
     var origin = swipe.origin;
-    var step = Math.max(160, window.innerHeight * .78);
     var destination;
 
+    // Land only on fixed, exact architectural section boundaries:
+    // full section top, or its bottom when mobile content exceeds the viewport.
+    // Avoid arbitrary 78vh partial scrolling that feels like a missed catch.
     if (delta > 0) {
-      // Walk the visible remainder of an oversized section before leaving it.
       if (origin < bottom - 8) {
-        destination = Math.min(bottom, origin + step);
+        destination = bottom;
       } else if (i < items.length - 1) {
         destination = topOf(items[i + 1]);
       } else {
@@ -167,7 +168,7 @@
       }
     } else {
       if (origin > top + 8) {
-        destination = Math.max(top, origin - step);
+        destination = top;
       } else if (i > 0) {
         destination = topOf(items[i - 1]);
       } else {
@@ -203,7 +204,7 @@
     if (time - lastWheel > 190 || accumulated * delta < 0) accumulated = 0;
     lastWheel = time;
     accumulated += delta;
-    if (Math.abs(accumulated) < 40) return;
+    if (Math.abs(accumulated) < 28) return;
     var next = Math.max(0, Math.min(items.length - 1,
       index + (accumulated > 0 ? 1 : -1)));
     accumulated = 0;
