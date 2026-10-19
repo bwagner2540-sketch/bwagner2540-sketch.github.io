@@ -546,3 +546,35 @@
  .sec.vw .vdet .vp.p4{background:var(--pr-reference)}
  .sec.vw .vdet .vp{width:100%;box-sizing:border-box}
 }
+
+/* Final Allowances: the mobile fields, Celebrity contact and Prepared by must not share grid cells. */
+@media screen and (max-width:760px) {
+  #selections .fcard {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-auto-rows:auto!important;
+    grid-auto-flow:row!important;
+    gap:14px!important;
+    padding:18px!important;
+    width:100%!important;
+    height:auto!important;
+  }
+  #selections .fcard .frow3 {display:contents!important}
+  #selections .fcard .fld2,
+  #selections .fcard .fnotes,
+  #selections .fcard .reqmsg,
+  #selections .fcard .fact {
+    grid-column:1!important;
+    grid-row:auto!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+    margin:0!important;
+  }
+  #selections .fcard .fact {padding:12px 0 2px!important;align-items:flex-start!important}
+  #selections .fcard .fact .fnote {max-width:100%!important;overflow-wrap:anywhere!important}
+  #selections .fcard .ff {box-sizing:border-box!important;max-width:100%!important;width:100%!important}
+  #selections .pbw {display:block!important;clear:both!important;margin:22px 0 0!important}
+  #selections .pbw .pbc {padding:16px 0 4px!important}
+}
