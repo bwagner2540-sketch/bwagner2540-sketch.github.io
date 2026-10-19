@@ -445,3 +445,16 @@
     margin-inline:auto!important;
   }
 }
+
+/* One-gesture mobile category stops. Managed touch scroll and native CSS
+   snap must never compete; desktop snap, reduced motion and print stay intact. */
+@media screen {
+  html:root.pr-touch-managed {
+    scroll-snap-type:none!important;
+    scroll-behavior:auto!important;
+    overscroll-behavior-y:contain;
+  }
+}
+@media screen and (prefers-reduced-motion:reduce) {
+  html:root.pr-touch-managed {scroll-snap-type:none!important}
+}
