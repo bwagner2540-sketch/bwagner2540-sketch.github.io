@@ -52,22 +52,20 @@
     animating = true;
 
     var started = performance.now();
-    var duration = mobile
-      ? Math.min(760, Math.max(510, 470 + Math.abs(delta) * .18))
-      : Math.min(820, Math.max(620, 630 + Math.abs(delta) * .13));
+    var duration = mobile ? 600 : 680;
 
     function finish() {
       window.scrollTo(0, y);
       root.style.scrollSnapType = snap;
       root.style.scrollBehavior = behavior;
       animating = false;
-      ignoreUntil = performance.now() + (mobile ? 170 : 210);
+      ignoreUntil = performance.now() + (mobile ? 90 : 110);
       accumulated = 0;
       animation = 0;
     }
     function frame(time) {
       var t = Math.min(1, (time - started) / duration);
-      var eased = 1 - Math.pow(1 - t, 3);
+      var eased = t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
       window.scrollTo(0, start + delta * eased);
       if (t < 1 && !reduceMotion.matches) {
         animation = requestAnimationFrame(frame);
@@ -200,7 +198,6 @@
 
     var time = performance.now();
     if (animating || time < ignoreUntil) {
-      ignoreUntil = Math.max(ignoreUntil, time + 155);
       return;
     }
     if (time - lastWheel > 190 || accumulated * delta < 0) accumulated = 0;
