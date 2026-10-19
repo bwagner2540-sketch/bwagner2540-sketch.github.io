@@ -445,3 +445,34 @@
     margin-inline:auto!important;
   }
 }
+
+/* Pradera study equipment details: one aligned item / quantity / type table. */
+@media screen {
+  .sec.vw .vdet .vp .vrows {
+    width:100%;border-collapse:collapse;table-layout:fixed;
+    border-bottom:1px solid var(--fl);color:var(--ft);
+  }
+  .sec.vw .vdet .vp .vrows th,
+  .sec.vw .vdet .vp .vrows td {
+    padding:8px 6px 8px 0;text-align:left;vertical-align:top;
+    border-top:1px solid var(--fl);font:400 12px/1.35 'Instrument Sans',sans-serif;
+    overflow-wrap:break-word;
+  }
+  .sec.vw .vdet .vp .vrows thead th {
+    padding:0 6px 7px 0;border-top:0;color:var(--ft2);
+    font:400 10px/1.3 'IBM Plex Mono',monospace;
+    letter-spacing:.055em;text-transform:uppercase;
+  }
+  .sec.vw .vdet .vp .vrows tbody th {font-weight:500;color:var(--ft)}
+  .sec.vw .vdet .vp .vrows th:nth-child(1) {width:42%}
+  .sec.vw .vdet .vp .vrows th:nth-child(2),
+  .sec.vw .vdet .vp .vrows td:nth-child(2) {width:12%;text-align:center}
+  .sec.vw .vdet .vp .vrows th:nth-child(3),
+  .sec.vw .vdet .vp .vrows td:nth-child(3) {width:46%;padding-left:10px}
+  .sec.vw .vdet .vp .vrows td:nth-child(3) {color:var(--ft2)}
+}
+@media screen and (max-width:760px) {
+  .sec.vw .vdet .vp .vrows th,
+  .sec.vw .vdet .vp .vrows td {font-size:11px;padding-block:6px}
+  .sec.vw .vdet .vp .vrows thead th {font-size:9px}
+}
