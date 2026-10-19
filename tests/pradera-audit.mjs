@@ -56,8 +56,16 @@ for (const [name,width,height,mobile] of sizes){
   if(['desktop-1440','phone-390'].includes(name)){
     await page.locator('#surround').scrollIntoViewIfNeeded();
     await page.screenshot({path:'qa-results/'+name+'-surround.png'});
+    if(name==='desktop-1440'){
+      const surroundPreview=await page.locator('#surround').screenshot({type:'jpeg',quality:56});
+      console.log('PRADERA_SURROUND_PREVIEW_JPEG='+surroundPreview.toString('base64'));
+    }
     await page.locator('#network').scrollIntoViewIfNeeded();
     await page.screenshot({path:'qa-results/'+name+'-network.png'});
+    if(name==='desktop-1440'){
+      const networkPreview=await page.locator('#network').screenshot({type:'jpeg',quality:56});
+      console.log('PRADERA_NETWORK_PREVIEW_JPEG='+networkPreview.toString('base64'));
+    }
   }
   await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
   await wait(150);
