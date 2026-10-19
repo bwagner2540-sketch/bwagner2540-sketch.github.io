@@ -211,13 +211,11 @@
     if (items.length<2) return;
     wheelGestureBusy=true;
     var currentIndex=nearestSection(items), direction=delta>0?1:-1;
-    var current=items[currentIndex], top=topOf(current);
-    var bottom=Math.max(top,top+current.offsetHeight-window.innerHeight);
-    var y=window.scrollY;
-    var dest = direction>0
-      ? (y<bottom-8 ? bottom : currentIndex<items.length-1 ? topOf(items[currentIndex+1]) : bottom)
-      : (y>top+8 ? top : currentIndex>0 ? topOf(items[currentIndex-1]) : top);
-    animateTo(dest,false);
+    var targetIndex=Math.max(0,Math.min(items.length-1,currentIndex+direction));
+    // No interim bottom-of-section stop: an expanded notes field must not
+    // consume the next scroll and leave the page appearing stuck.
+    // Choose exactly ONE adjacent category regardless of its content height.
+    if(targetIndex!==currentIndex)animateTo(topOf(items[targetIndex]),false);
   }, {passive:false});
 
   window.addEventListener('pagehide', function () {
