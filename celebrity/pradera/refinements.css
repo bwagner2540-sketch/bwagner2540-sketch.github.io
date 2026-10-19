@@ -436,3 +436,12 @@
 @media print {
   html:root {scroll-snap-type:none!important;scroll-behavior:auto!important}
 }
+
+/* Keep the drawing, tier tabs, and compact package in one desktop viewport.
+   Only scale the existing composition on shorter displays; never crop it. */
+@media screen and (min-width:1001px) {
+  .sec.vw .study-stage {
+    width:min(100%, max(480px, calc((100svh - 265px) * 1.5)))!important;
+    margin-inline:auto!important;
+  }
+}
