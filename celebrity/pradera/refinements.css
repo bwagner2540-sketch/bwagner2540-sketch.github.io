@@ -488,3 +488,93 @@
 @media screen and (prefers-reduced-motion:reduce) {
   html:root.pr-touch-managed {scroll-snap-type:none!important}
 }
+
+/* Scoped final pass: preserve all package colors, labels, and final-page form. */
+@media screen{
+  /* The original word baseline was descending beneath the cover scene. */
+  #pradera-cover .pr-cover-word {bottom:clamp(4px,1.8svh,19px)}
+  #pradera-cover .pr-cover-copy {transform:translateY(-3svh)}
+  #pradera-cover .pr-cover-eyebrow {margin-bottom:clamp(24px,3.8svh,39px)}
+  #pradera-cover .pr-cover-title {margin-bottom:clamp(24px,3.5svh,35px);line-height:1.09}
+  .pr-design-notes {display:none}
+}
+@media screen and (min-width:1001px){
+  .sec.vw .vdet {display:flex;flex-direction:column;align-self:stretch!important;min-width:0}
+  .sec.vw .pr-design-notes {display:block;width:100%;margin-top:clamp(20px,3vh,30px)}
+  .sec.vw .pr-design-notes-field {
+    box-sizing:border-box;display:block;width:100%;min-height:84px;resize:vertical;
+    padding:16px 19px;background:var(--pr-cream-01);color:var(--pr-ink);
+    border:1px solid var(--pr-line);border-radius:0;outline:none;
+    font:400 14px/1.5 'Instrument Sans',sans-serif;
+  }
+  .sec.vw .pr-design-notes-field::placeholder{color:var(--pr-muted);opacity:1}
+  .sec.vw .pr-design-notes-field:focus-visible{outline:2px solid var(--pr-forest);outline-offset:2px}
+}
+@media screen and (max-width:760px){
+  #pradera-cover .pr-cover-copy {transform:translateY(-2.5svh)}
+  #pradera-cover .pr-cover-word {bottom:clamp(3px,1svh,13px)}
+  #pradera-cover .pr-cover-eyebrow {margin-bottom:clamp(19px,2.8svh,26px)}
+  #pradera-cover .pr-cover-title {margin-bottom:clamp(20px,3.1svh,29px);line-height:1.09}
+  /* Final-page prepared-by information is a normal-flow footer, below all contact fields. */
+  #selections .pbw {width:100%!important;box-sizing:border-box;padding:22px 0 16px!important;margin:24px 0 0!important;flex:none!important}
+  #selections .pbw .pbc {
+    display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+    gap:7px!important;min-height:0!important;white-space:normal!important;line-height:1.5!important;
+  }
+  #selections .pbw .pbc .mono,#selections .pbw .pbc .mv {
+    display:block!important;width:100%!important;max-width:100%!important;
+    line-height:1.55!important;white-space:normal!important;overflow-wrap:anywhere!important;
+  }
+  #selections .fcard {position:relative!important;margin-bottom:0!important;overflow:visible!important}
+  #selections .fcard .fact {position:relative!important;max-width:100%!important;overflow-wrap:anywhere!important}
+  #selections {height:auto!important;min-height:100svh!important;overflow:visible!important}
+}
+
+/* Independent category notes sit beneath, not inside, color-swapping tier panels. */
+@media screen and (min-width:1001px){
+ .sec.vw .vbody {align-items:start!important}
+ .sec.vw .vdet {display:grid!important;grid-template-columns:minmax(0,1fr)!important;align-self:start!important}
+ .sec.vw .vdet>.pr-design-notes {grid-column:1;width:100%;display:block;margin-top:24px}
+ .sec.vw .vdet>.vp {grid-column:1}
+}
+
+@media screen and (min-width:1001px){
+ .sec.vw .vdet:has(.pr-design-notes){background:transparent!important;border:0!important}
+ .sec.vw .vdet .vp.p1{background:var(--pr-cream-02)}
+ .sec.vw .vdet .vp.p2{background:var(--pr-forest)}
+ .sec.vw .vdet .vp.p3{background:var(--pr-ink)}
+ .sec.vw .vdet .vp.p4{background:var(--pr-reference)}
+ .sec.vw .vdet .vp{width:100%;box-sizing:border-box}
+}
+
+/* Final Allowances: the mobile fields, Celebrity contact and Prepared by must not share grid cells. */
+@media screen and (max-width:760px) {
+  #selections .fcard {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-auto-rows:auto!important;
+    grid-auto-flow:row!important;
+    gap:14px!important;
+    padding:18px!important;
+    width:100%!important;
+    height:auto!important;
+  }
+  #selections .fcard .frow3 {display:contents!important}
+  #selections .fcard .fld2,
+  #selections .fcard .fnotes,
+  #selections .fcard .reqmsg,
+  #selections .fcard .fact {
+    grid-column:1!important;
+    grid-row:auto!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+    margin:0!important;
+  }
+  #selections .fcard .fact {padding:12px 0 2px!important;align-items:flex-start!important}
+  #selections .fcard .fact .fnote {max-width:100%!important;overflow-wrap:anywhere!important}
+  #selections .fcard .ff {box-sizing:border-box!important;max-width:100%!important;width:100%!important}
+  #selections .pbw {display:block!important;clear:both!important;margin:22px 0 0!important}
+  #selections .pbw .pbc {padding:16px 0 4px!important}
+}

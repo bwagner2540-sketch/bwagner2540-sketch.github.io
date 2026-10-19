@@ -52,22 +52,20 @@
     animating = true;
 
     var started = performance.now();
-    var duration = mobile
-      ? Math.min(760, Math.max(510, 470 + Math.abs(delta) * .18))
-      : Math.min(820, Math.max(620, 630 + Math.abs(delta) * .13));
+    var duration = mobile ? 600 : 680;
 
     function finish() {
       window.scrollTo(0, y);
       root.style.scrollSnapType = snap;
       root.style.scrollBehavior = behavior;
       animating = false;
-      ignoreUntil = performance.now() + (mobile ? 170 : 210);
+      ignoreUntil = performance.now() + (mobile ? 90 : 110);
       accumulated = 0;
       animation = 0;
     }
     function frame(time) {
       var t = Math.min(1, (time - started) / duration);
-      var eased = 1 - Math.pow(1 - t, 3);
+      var eased = t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
       window.scrollTo(0, start + delta * eased);
       if (t < 1 && !reduceMotion.matches) {
         animation = requestAnimationFrame(frame);
@@ -155,13 +153,14 @@
     var top = topOf(item);
     var bottom = Math.max(top, top + item.offsetHeight - window.innerHeight);
     var origin = swipe.origin;
-    var step = Math.max(160, window.innerHeight * .78);
     var destination;
 
+    // Land only on fixed, exact architectural section boundaries:
+    // full section top, or its bottom when mobile content exceeds the viewport.
+    // Avoid arbitrary 78vh partial scrolling that feels like a missed catch.
     if (delta > 0) {
-      // Walk the visible remainder of an oversized section before leaving it.
       if (origin < bottom - 8) {
-        destination = Math.min(bottom, origin + step);
+        destination = bottom;
       } else if (i < items.length - 1) {
         destination = topOf(items[i + 1]);
       } else {
@@ -169,7 +168,7 @@
       }
     } else {
       if (origin > top + 8) {
-        destination = Math.max(top, origin - step);
+        destination = top;
       } else if (i > 0) {
         destination = topOf(items[i - 1]);
       } else {
@@ -191,7 +190,6 @@
     var items = sections();
     if (items.length < 2) return;
     var index = desktopSection(items);
-    if (items[index].getBoundingClientRect().height > window.innerHeight + 3) return;
 
     var delta = event.deltaY * (event.deltaMode === 1 ? 16 :
       event.deltaMode === 2 ? window.innerHeight : 1);
@@ -200,17 +198,26 @@
 
     var time = performance.now();
     if (animating || time < ignoreUntil) {
-      ignoreUntil = Math.max(ignoreUntil, time + 155);
       return;
     }
     if (time - lastWheel > 190 || accumulated * delta < 0) accumulated = 0;
     lastWheel = time;
     accumulated += delta;
-    if (Math.abs(accumulated) < 40) return;
-    var next = Math.max(0, Math.min(items.length - 1,
-      index + (accumulated > 0 ? 1 : -1)));
+    if (Math.abs(accumulated) < 28) return;
+    var direction = accumulated > 0 ? 1 : -1;
     accumulated = 0;
-    if (next !== index) animateTo(topOf(items[next]), false);
+    var current = items[index];
+    var top = topOf(current);
+    var bottom = Math.max(top, top + current.offsetHeight - window.innerHeight);
+    var destination = window.scrollY;
+    if (direction > 0) {
+      if (destination < bottom - 8) destination = bottom;
+      else if (index < items.length - 1) destination = topOf(items[index + 1]);
+    } else {
+      if (destination > top + 8) destination = top;
+      else if (index > 0) destination = topOf(items[index - 1]);
+    }
+    if (Math.abs(destination - window.scrollY) > 2) animateTo(destination, false);
   }, {passive:false});
 
   window.addEventListener('pagehide', function () {
