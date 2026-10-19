@@ -190,7 +190,6 @@
     var items = sections();
     if (items.length < 2) return;
     var index = desktopSection(items);
-    if (items[index].getBoundingClientRect().height > window.innerHeight + 3) return;
 
     var delta = event.deltaY * (event.deltaMode === 1 ? 16 :
       event.deltaMode === 2 ? window.innerHeight : 1);
@@ -205,10 +204,20 @@
     lastWheel = time;
     accumulated += delta;
     if (Math.abs(accumulated) < 28) return;
-    var next = Math.max(0, Math.min(items.length - 1,
-      index + (accumulated > 0 ? 1 : -1)));
+    var direction = accumulated > 0 ? 1 : -1;
     accumulated = 0;
-    if (next !== index) animateTo(topOf(items[next]), false);
+    var current = items[index];
+    var top = topOf(current);
+    var bottom = Math.max(top, top + current.offsetHeight - window.innerHeight);
+    var destination = window.scrollY;
+    if (direction > 0) {
+      if (destination < bottom - 8) destination = bottom;
+      else if (index < items.length - 1) destination = topOf(items[index + 1]);
+    } else {
+      if (destination > top + 8) destination = top;
+      else if (index > 0) destination = topOf(items[index - 1]);
+    }
+    if (Math.abs(destination - window.scrollY) > 2) animateTo(destination, false);
   }, {passive:false});
 
   window.addEventListener('pagehide', function () {
