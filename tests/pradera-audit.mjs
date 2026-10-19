@@ -56,7 +56,7 @@ for (const [name,width,height,mobile] of sizes){
   await page.locator('#selections').scrollIntoViewIfNeeded();
   const foot=await page.evaluate(()=>{
     let rect=s=>{let n=document.querySelector(s);if(!n||getComputedStyle(n).display==='none')return null;const r=n.getBoundingClientRect();return {top:r.top,bottom:r.bottom}};
-    return {contact:rect('#selections .fact'),prepared:rect(window.innerWidth<=1000?'#selections .pr-mobile-prepared':'#selections .pbw')};
+    return {contact:rect('#selections .fact'),prepared:rect('#selections > .pbw')};
   });
   if(mobile){assert(!!foot.contact&&!!foot.prepared,name+' expected footer/contact missing');if(foot.contact&&foot.prepared)assert(foot.prepared.top>=foot.contact.bottom+10,name+' footer overlaps contacts');}
   mkdirSync('qa-results',{recursive:true});
