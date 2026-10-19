@@ -537,3 +537,12 @@
  .sec.vw .vdet>.pr-design-notes {grid-column:1;width:100%;display:block;margin-top:24px}
  .sec.vw .vdet>.vp {grid-column:1}
 }
+
+@media screen and (min-width:1001px){
+ .sec.vw .vdet:has(.pr-design-notes){background:transparent!important;border:0!important}
+ .sec.vw .vdet .vp.p1{background:var(--pr-cream-02)}
+ .sec.vw .vdet .vp.p2{background:var(--pr-forest)}
+ .sec.vw .vdet .vp.p3{background:var(--pr-ink)}
+ .sec.vw .vdet .vp.p4{background:var(--pr-reference)}
+ .sec.vw .vdet .vp{width:100%;box-sizing:border-box}
+}
