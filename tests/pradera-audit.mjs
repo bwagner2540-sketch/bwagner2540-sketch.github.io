@@ -39,6 +39,13 @@ for (const [name,width,height,mobile] of sizes){
         assert(Math.abs(n.width-p.width)<3,name+' '+sys+' notes wrong width');
       }
       await field.fill('Retained '+sys+' preference');
+      const initialHeight=await field.evaluate(el=>el.getBoundingClientRect().height);
+      assert(initialHeight>=189,name+' '+sys+' notes field too small: '+initialHeight);
+      await field.fill(('Design meeting notes: discuss speaker zones, wiring, room priorities and allowances. ').repeat(28));
+      const growing=await field.evaluate(el=>({height:el.getBoundingClientRect().height,visible:el.clientHeight,scroll:el.scrollHeight}));
+      assert(growing.height>initialHeight,name+' '+sys+' notes box failed to expand');
+      assert(growing.scroll<=growing.visible+3,name+' '+sys+' typed notes hidden');
+      await field.fill('Retained '+sys+' preference');
       await page.locator('#'+sys+'-tab-2').click();
       assert(await field.inputValue()==='Retained '+sys+' preference',name+' '+sys+' notes lost on tier change');
     }else{
