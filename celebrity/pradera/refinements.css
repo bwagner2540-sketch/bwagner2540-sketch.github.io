@@ -578,3 +578,37 @@
   #selections .pbw {display:block!important;clear:both!important;margin:22px 0 0!important}
   #selections .pbw .pbc {padding:16px 0 4px!important}
 }
+
+/* Fixed architectural comparison: notes are OUTSIDE selected package cards. */
+@media screen {
+ .sec.vw .pr-detail-column {min-width:0;display:flex;flex-direction:column;align-self:start}
+ .sec.vw .pr-detail-column>.vdet {
+  width:100%;min-width:0;display:block!important;box-sizing:border-box;
+  border:1px solid var(--pr-line)!important;
+ }
+ .sec.vw .pr-detail-column>.vdet>.vp {width:100%!important;box-sizing:border-box}
+ .sec.vw .pr-detail-column>.vdet>.vp:not([style]) {position:static!important}
+ .sec.vw .pr-detail-column>.vdet {background:var(--pr-cream-02)}
+ .sec.vw.sel-2 .pr-detail-column>.vdet {background:var(--pr-forest)}
+ .sec.vw.sel-3 .pr-detail-column>.vdet {background:var(--pr-ink)}
+ .sec.audio.vw.sel-4 .pr-detail-column>.vdet {background:var(--pr-reference)}
+ .sec.vw .pr-detail-column>.pr-design-notes {display:none}
+}
+@media screen and (min-width:1001px) {
+ .sec.vw .pr-detail-column>.pr-design-notes {
+  display:block!important;position:static!important;isolation:auto!important;
+  width:100%!important;min-width:0!important;box-sizing:border-box;
+  margin:clamp(20px,2.8svh,30px) 0 0!important;flex:none;
+ }
+ .sec.vw .pr-detail-column>.pr-design-notes>.pr-design-notes-field {
+  display:block!important;position:static!important;width:100%!important;
+  box-sizing:border-box;height:clamp(118px,18svh,170px);min-height:118px;
+  padding:17px 20px!important;background:var(--pr-cream-01);
+  border:1px solid var(--pr-line);border-radius:0;resize:vertical;
+  color:var(--pr-ink);font:400 15px/1.5 'Instrument Sans',sans-serif;
+ }
+ .sec.vw .pr-detail-column>.pr-design-notes-field::placeholder{color:var(--pr-muted)}
+}
+@media screen and (max-width:1000px) {
+ .sec.vw .pr-detail-column>.pr-design-notes{display:none!important}
+}
