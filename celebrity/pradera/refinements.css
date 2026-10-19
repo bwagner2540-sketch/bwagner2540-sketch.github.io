@@ -529,3 +529,11 @@
   #selections .fcard .fact {position:relative!important;max-width:100%!important;overflow-wrap:anywhere!important}
   #selections {height:auto!important;min-height:100svh!important;overflow:visible!important}
 }
+
+/* Independent category notes sit beneath, not inside, color-swapping tier panels. */
+@media screen and (min-width:1001px){
+ .sec.vw .vbody {align-items:start!important}
+ .sec.vw .vdet {display:grid!important;grid-template-columns:minmax(0,1fr)!important;align-self:start!important}
+ .sec.vw .vdet>.pr-design-notes {grid-column:1;width:100%;display:block;margin-top:24px}
+ .sec.vw .vdet>.vp {grid-column:1}
+}
