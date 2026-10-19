@@ -654,3 +654,9 @@
   }
   #selections .fcard .pr-mobile-prepared{display:none!important}
 }
+
+/* Emergency recovery: native desktop wheel scrolling, no JS wheel lock. */
+@media screen and (min-width:1001px){
+ html:root{scroll-snap-type:y mandatory!important;scroll-behavior:auto!important;overscroll-behavior-y:auto!important}
+ #top > section.sec.paper{scroll-snap-align:start!important;scroll-snap-stop:always!important}
+}

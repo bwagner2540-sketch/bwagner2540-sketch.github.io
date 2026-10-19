@@ -182,44 +182,11 @@
     gesture = null;
   }, {passive:true});
 
-  // One physical desktop wheel/trackpad gesture moves at most one adjacent section.
-  // Its inertial tail is suppressed until there has been a quiet interval.
-  var wheelGestureBusy = false;
-  var wheelQuietTimer = 0;
-  function nearestSection(items) {
-    var y = window.scrollY, nearest = 0, distance = Infinity;
-    items.forEach(function(item, i) {
-      var gap = Math.abs(topOf(item)-y);
-      if (gap < distance) { nearest=i; distance=gap; }
-    });
-    return nearest;
-  }
-  window.addEventListener('wheel', function(event) {
-    if (reduceMotion.matches || !desktopPointer.matches || window.innerWidth < 1001) return;
-    if (event.ctrlKey || event.metaKey || event.shiftKey ||
-        Math.abs(event.deltaX) > Math.abs(event.deltaY) || skipGesture(event.target)) return;
-    var delta = event.deltaY * (event.deltaMode===1 ? 16 :
-      event.deltaMode===2 ? window.innerHeight : 1);
-    if (Math.abs(delta)<1) return;
-    event.preventDefault();
-    if (wheelQuietTimer) clearTimeout(wheelQuietTimer);
-    wheelQuietTimer = setTimeout(function() {
-      wheelGestureBusy=false; wheelQuietTimer=0;
-    }, 380);
-    if (wheelGestureBusy || animating) return;
-    var items=sections();
-    if (items.length<2) return;
-    wheelGestureBusy=true;
-    var currentIndex=nearestSection(items), direction=delta>0?1:-1;
-    var targetIndex=Math.max(0,Math.min(items.length-1,currentIndex+direction));
-    // No interim bottom-of-section stop: an expanded notes field must not
-    // consume the next scroll and leave the page appearing stuck.
-    // Choose exactly ONE adjacent category regardless of its content height.
-    if(targetIndex!==currentIndex)animateTo(topOf(items[targetIndex]),false);
-  }, {passive:false});
+  // Desktop navigation is native browser scroll with CSS section snapping.
+  // Do not intercept or debounce wheel/trackpad input: locking it made
+  // repeated scrolling appear unresponsive and trapped visitors on categories.
 
   window.addEventListener('pagehide', function () {
-    if (wheelQuietTimer) clearTimeout(wheelQuietTimer);
     if (animation) cancelAnimationFrame(animation);
     root.style.scrollSnapType = '';
     root.style.scrollBehavior = '';
