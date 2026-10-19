@@ -612,3 +612,25 @@
 @media screen and (max-width:1000px) {
  .sec.vw .pr-detail-column>.pr-design-notes{display:none!important}
 }
+
+/* Final Allowances mobile credit follows the contact block IN the form grid.
+   The former outer footer was laid out above overflowing form grid content. */
+@media screen {.pr-mobile-prepared{display:none!important}}
+@media screen and (max-width:1000px){
+ #selections>.pbw{display:none!important}
+ #selections .fcard>.pr-mobile-prepared{
+  display:flex!important;grid-column:1 / -1!important;grid-row:5!important;
+  position:static!important;clear:both;min-width:0;max-width:100%;
+  flex-direction:column;align-items:flex-start;gap:5px;
+  padding:18px 0 6px;margin:22px 0 0;border-top:1px solid var(--pr-line);
+  color:var(--pr-muted);font:400 11px/1.6 'Instrument Sans',sans-serif;
+ }
+ #selections .fcard>.pr-mobile-prepared .mono{
+  white-space:normal;overflow-wrap:anywhere;letter-spacing:.05em;
+  line-height:1.6;display:block;font-size:11px;
+ }
+ #selections .fcard>.pr-mobile-prepared .mono:first-child{color:var(--pr-forest);letter-spacing:.12em}
+}
+@media screen and (max-width:760px){
+ #selections .fcard>.pr-mobile-prepared {grid-column:1!important;grid-row:auto!important}
+}
