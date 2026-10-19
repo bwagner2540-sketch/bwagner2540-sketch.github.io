@@ -93,6 +93,28 @@ for (const [name,width,height,mobile] of sizes){
     await wait(850);
     const y=await page.locator('#audio').evaluate(e=>e.getBoundingClientRect().top);
     assert(Math.abs(y)<16,name+' desktop wheel missed first section: '+Math.round(y));
+    const expected=['pradera-cover','audio','surround','network','cameras','selections'];
+    // Dispatch inertial wheel tails: only the FIRST event may advance a section.
+    for(let target=2;target<expected.length;target++){
+      await wait(465);
+      await page.mouse.wheel(0,310);
+      await page.mouse.wheel(0,80);
+      await page.mouse.wheel(0,15);
+      await wait(620);
+      for(let ix=0;ix<expected.length;ix++){
+        const pos=await page.locator('#'+expected[ix]).evaluate(e=>e.getBoundingClientRect().top);
+        if(ix===target)assert(Math.abs(pos)<18,name+' forward skipped '+expected[target]+': '+Math.round(pos));
+      }
+    }
+    for(let target=expected.length-2;target>=0;target--){
+      await wait(465);
+      await page.mouse.wheel(0,-310);
+      await page.mouse.wheel(0,-80);
+      await page.mouse.wheel(0,-15);
+      await wait(620);
+      const pos=await page.locator('#'+expected[target]).evaluate(e=>e.getBoundingClientRect().top);
+      assert(Math.abs(pos)<18,name+' backward skipped '+expected[target]+': '+Math.round(pos));
+    }
   }
   assert(runtimeErrors.length===0,name+' JS errors: '+runtimeErrors.join(' | '));
   measurements.push({name,state,foot,runtimeErrors});
