@@ -726,3 +726,10 @@
   white-space:pre-wrap!important;overflow-wrap:anywhere!important;
  }
 }
+
+/* PDF only: remove the legacy thick section-top rule above the brand lockup.
+   Preserve the intentional thin rule below the two logos. */
+@media print {
+  #selections.sec.paper { border-top:0!important; }
+  #selections .pplogos { border-top:0!important; }
+}

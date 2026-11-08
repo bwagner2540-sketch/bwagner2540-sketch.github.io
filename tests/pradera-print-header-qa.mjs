@@ -1,0 +1,26 @@
+import { chromium } from 'playwright';
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+const browser=await chromium.launch({headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:900}});
+const runtimeErrors=[];
+page.on('pageerror',e=>runtimeErrors.push(e.message));
+await page.goto('http://127.0.0.1:8741/celebrity/pradera/',{waitUntil:'domcontentloaded'});
+await page.locator('#selections').waitFor();
+await page.emulateMedia({media:'print'});
+const details=await page.evaluate(()=>{
+ const section=document.querySelector('#selections');
+ const logos=section.querySelector('.pplogos');
+ const cs=getComputedStyle(section);
+ return {topBorder:cs.borderTopWidth,topBorderStyle:cs.borderTopStyle,logosDisplay:getComputedStyle(logos).display,logoImages:logos.querySelectorAll('img').length};
+});
+mkdirSync('qa-results',{recursive:true});
+const pdf=await page.pdf({format:'Letter',preferCSSPageSize:true,printBackground:true});
+writeFileSync('qa-results/pradera-print-line-fix.pdf',pdf);
+execFileSync('pdftoppm',['-f','1','-l','1','-scale-to','1100','-png','-singlefile','qa-results/pradera-print-line-fix.pdf','qa-results/pradera-print-header']);
+const result={passed:details.topBorder==='0px'&&details.logosDisplay!=='none'&&details.logoImages===2&&runtimeErrors.length===0, ...details, pdfBytes:pdf.length,runtimeErrors};
+console.log('PRADERA_PRINT_LINE_QA '+JSON.stringify(result));
+const file=(await import('node:fs')).readFileSync('qa-results/pradera-print-header.png');
+console.log('PRADERA_PRINT_PREVIEW_PNG='+file.toString('base64'));
+await browser.close();
+if(!result.passed)process.exitCode=1;
