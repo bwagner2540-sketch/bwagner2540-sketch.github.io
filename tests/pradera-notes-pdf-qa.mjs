@@ -2,12 +2,12 @@ import { chromium } from 'playwright';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,channel:process.env.BROWSER_CHANNEL});
 const page=await browser.newPage({viewport:{width:1440,height:900}});
 const errors=[];
 page.on('pageerror',e=>errors.push('JS: '+e.message));
 const check=(ok,label)=>{if(!ok)errors.push(label)};
-await page.goto('http://127.0.0.1:8741/celebrity/pradera/',{waitUntil:'domcontentloaded'});
+await page.goto(process.env.PRADERA_URL || 'http://127.0.0.1:8741/celebrity/pradera/',{waitUntil:'domcontentloaded'});
 await page.locator('#audio-design-notes').waitFor();
 const entries=[
   ['audio','AUDIOBRAVO','AUDIOENDMARKER'],
@@ -37,6 +37,17 @@ for(const [cat,begin,end] of entries){
 check((await page.locator('#selections .pr-print-client-notes').textContent())===clientNote,'client notes print mirror incomplete');
 
 mkdirSync('qa-results',{recursive:true});
+// Exercise the actual Download PDF button, including its required-field validation.
+await page.evaluate(()=>{window.print=()=>{window.__qaPrintCalled=true;};});
+await page.locator('.dlpdf').click();
+check(await page.locator('#reqmsg').isVisible(),'Missing required fields did not block export');
+check(!(await page.evaluate(()=>window.__qaPrintCalled)),'Export opened without required client details');
+await page.locator('input[autocomplete="name"]').fill('Presentation QA');
+await page.locator('input[autocomplete="tel"]').fill('3035550100');
+await page.locator('input[autocomplete="email"]').fill('qa@example.com');
+await page.locator('input[type="date"][data-req]').fill('2026-11-18');
+await page.locator('.dlpdf').click();
+check(await page.evaluate(()=>window.__qaPrintCalled===true),'Download PDF did not invoke browser printing');
 await page.screenshot({path:'qa-results/final-allowances-notes.png'});
 const pdf=await page.pdf({format:'Letter',preferCSSPageSize:true,printBackground:true});
 writeFileSync('qa-results/final-allowances-with-notes.pdf',pdf);

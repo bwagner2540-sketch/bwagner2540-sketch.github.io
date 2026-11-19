@@ -1,0 +1,48 @@
+name: Site route and presentation smoke checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_run:
+    workflows: [pages build and deployment]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser and PDF verifier
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y -qq poppler-utils
+      - name: Check routes, notes and PDF locally
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
+        run: |
+          python3 -m http.server 8741 --bind 127.0.0.1 >/tmp/site-server.log 2>&1 &
+          sleep 2
+          node tests/routes-smoke.mjs
+          node tests/pradera-notes-pdf-qa.mjs
+      - name: Check actual production URLs after publishing
+        if: github.event_name == 'workflow_run' || github.event_name == 'workflow_dispatch'
+        env:
+          SITE_URL: https://davg.ai
+          PRADERA_URL: https://davg.ai/celebrity/pradera/
+        run: |
+          node tests/routes-smoke.mjs
+          node tests/pradera-notes-pdf-qa.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: presentation-smoke-proof
+          path: qa-results/
+          if-no-files-found: ignore
