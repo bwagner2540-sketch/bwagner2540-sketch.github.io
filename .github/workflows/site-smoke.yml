@@ -12,6 +12,8 @@ jobs:
   smoke:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    env:
+      BROWSER_CHANNEL: chrome
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,8 +22,11 @@ jobs:
       - name: Install browser and PDF verifier
         run: |
           npm install --no-save playwright@1.56.1
-          npx playwright install --with-deps chromium
-          sudo apt-get install -y -qq poppler-utils
+          google-chrome --version
+          if ! command -v pdftotext >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq poppler-utils
+          fi
       - name: Check routes, notes and PDF locally
         if: github.event_name == 'push' || github.event_name == 'pull_request'
         run: |
