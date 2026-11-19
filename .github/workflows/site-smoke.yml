@@ -4,15 +4,12 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  workflow_run:
-    workflows: [pages build and deployment]
-    types: [completed]
   workflow_dispatch:
 permissions:
   contents: read
+  pages: read
 jobs:
   smoke:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -32,8 +29,26 @@ jobs:
           sleep 2
           node tests/routes-smoke.mjs
           node tests/pradera-notes-pdf-qa.mjs
+      - name: Wait for this commit to publish on GitHub Pages
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for attempt in {1..40}; do
+            build=$(gh api "repos/$GITHUB_REPOSITORY/pages/builds/latest")
+            if jq -e --arg sha "$GITHUB_SHA" '.commit == $sha and .status == "built"' <<< "$build" >/dev/null; then
+              exit 0
+            fi
+            if jq -e --arg sha "$GITHUB_SHA" '.commit == $sha and .status == "errored"' <<< "$build" >/dev/null; then
+              echo "Pages publishing failed"
+              exit 1
+            fi
+            sleep 10
+          done
+          echo "This commit was not confirmed published within the wait period"
+          exit 1
       - name: Check actual production URLs after publishing
-        if: github.event_name == 'workflow_run' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         env:
           SITE_URL: https://davg.ai
           PRADERA_URL: https://davg.ai/celebrity/pradera/

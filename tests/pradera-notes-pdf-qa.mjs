@@ -23,6 +23,16 @@ for(const [cat,begin,end] of entries){
 }
 const clientNote='CLIENTDETAILS\nClient preferences that must remain separate from the four design categories.\nCLIENTENDMARKER';
 await page.locator('#selections .fnotes textarea').fill(clientNote);
+await page.reload({waitUntil:'networkidle'});
+await page.locator('#audio-design-notes').waitFor();
+for(const [cat,begin,end] of entries){
+  await page.locator('#'+cat+'-tab-1').click();
+  await page.locator('#'+cat+' .vsel').first().click();
+  check(await page.locator('#'+cat+' .vsel').first().getAttribute('aria-pressed')==='true',cat+' selection failed');
+  const restored=await page.locator('#'+cat+'-design-notes').inputValue();
+  check(restored.includes(begin)&&restored.includes(end),cat+' notes lost after reload');
+}
+check(await page.locator('#selections .fnotes textarea').inputValue()===clientNote,'client notes lost after reload');
 await page.locator('#selections').scrollIntoViewIfNeeded();
 await page.waitForTimeout(150);
 const noteBlock=page.locator('#pr-final-design-notes');

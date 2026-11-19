@@ -1873,6 +1873,8 @@ class Component extends DCLogic {
     host.hidden=items.length===0;
   }
   function restore(){
+    // Keep saved notes out of the source template that React compiles at boot.
+    if(!document.getElementById('dc-root'))return;
     cats.forEach(cat=>{
       const input=document.getElementById(cat+'-design-notes');
       if(input && document.activeElement!==input && input.value!==notes[cat])input.value=notes[cat];
@@ -1905,7 +1907,9 @@ class Component extends DCLogic {
     if(queued)return;queued=true;
     requestAnimationFrame(function(){queued=false;restore()});
   });
-  observer.observe(document.getElementById('top')||document.body,{subtree:true,childList:true});
+  // The presentation runtime replaces the initial #top during hydration.
+  // Watch its stable parent so stored notes also restore into the rendered form.
+  observer.observe(document.body,{subtree:true,childList:true});
   restore();
   window.addEventListener('resize',restore,{passive:true});
 })();
